@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamaverse Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14305A;--sky:#6DC3DB;--yellow:#FFC233;--surface:#f7f9ff;--surface-dim:#e8eef6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;background:var(--surface);color:var(--navy);min-height:100vh}
+.header{text-align:center;padding:5rem 1.5rem 3rem}
+.header-badge{display:inline-block;padding:.35rem 1.2rem;border:3px solid var(--navy);border-radius:9999px;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;background:var(--yellow);color:var(--navy)}
+.header h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:1rem}
+.header h1 span{color:var(--sky)}
+.header p{font-family:'Noto Sans KR',sans-serif;font-size:1.1rem;color:#5a6a7a;max-width:540px;margin:0 auto;line-height:1.7}
+.grid{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
+.card{position:relative;border:3px solid var(--navy);border-radius:1.5rem;overflow:hidden;background:#fff;box-shadow:8px 8px 0 0 var(--navy);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.card:hover{transform:translateY(-6px);box-shadow:12px 12px 0 0 var(--navy)}
+.card:focus-visible{outline:none;box-shadow:12px 12px 0 0 var(--navy),0 0 0 4px var(--yellow)}
+.card-preview{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.preview-basic{background:linear-gradient(135deg,#33C1FF 0%,#FFE500 50%,#FF6B9D 100%)}
+.preview-basic::after{content:'';position:absolute;inset:0;background:repeating-conic-gradient(rgba(255,255,255,.08) 0% 25%,transparent 0% 50%) 0 0/40px 40px}
+.preview-basic-text{position:relative;z-index:1;font-size:1.6rem;font-weight:900;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.15)}
+.preview-plat{background:var(--surface-dim)}
+.preview-plat-inner{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;align-items:center;padding:1.5rem}
+.plat-chip{padding:.5rem 1.2rem;border:3px solid var(--navy);border-radius:9999px;font-weight:700;font-size:.8rem;box-shadow:3px 3px 0 0 var(--navy)}
+.plat-chip-sky{background:var(--sky);color:var(--navy)}
+.plat-chip-yellow{background:var(--yellow);color:var(--navy)}
+.plat-chip-white{background:#fff;color:var(--navy)}
+.plat-chip-navy{background:var(--navy);color:var(--sky)}
+.preview-kawaii{background:#1a0033;position:relative}
+.preview-kawaii::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,255,255,.07) 1px,transparent 1px),linear-gradient(0deg,rgba(0,255,255,.07) 1px,transparent 1px);background-size:40px 40px}
+.preview-kawaii-text{position:relative;z-index:1;font-size:1.5rem;font-weight:900;color:#FFFF00;text-shadow:0 0 20px #FF00FF,0 0 40px #FF00FF,2px 2px 0 #FF00FF;letter-spacing:.05em;animation:kawaiiGlow 2s ease-in-out infinite alternate}
+@keyframes kawaiiGlow{from{text-shadow:0 0 10px #FF00FF,0 0 20px #FF00FF,2px 2px 0 #FF00FF}to{text-shadow:0 0 20px #00FFFF,0 0 40px #00FFFF,2px 2px 0 #00FFFF}}
+.card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.card-version{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a95a5;margin-bottom:.5rem}
+.card-title{font-size:1.4rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.2}
+.card-desc{font-family:'Noto Sans KR',sans-serif;font-size:.9rem;color:#5a6a7a;line-height:1.6;flex:1;margin-bottom:1rem}
+.card-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{padding:.2rem .6rem;border-radius:9999px;font-size:.65rem;font-weight:700;letter-spacing:.05em}
+.tag-sky{background:#d6f3fb;color:#006070}
+.tag-yellow{background:#fff3c4;color:#6f5100}
+.tag-pink{background:#ffd6ff;color:#6a006a}
+.tag-navy{background:#d6dce8;color:var(--navy)}
+.tag-green{background:#d6ffe0;color:#1B6B3A}
+.footer{text-align:center;padding:3rem 1.5rem;border-top:3px solid var(--navy);background:var(--navy);color:#fff}
+.footer-brand{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:.5rem}
+.footer-brand span{color:var(--sky)}
+.footer-copy{font-size:.75rem;opacity:.4;margin-top:.75rem}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{box-shadow:5px 5px 0 0 var(--navy)}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">Design System Hub</div>
+  <h1>TAMAVERSE <span>DESIGN</span></h1>
+  <p>타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 3가지 테마 변형을 탐색하세요.</p>
+</div>
+<div class="grid">
+  <a href="tamaverse-basic-design-system.html" class="card">
+    <div class="card-preview preview-basic"><div class="preview-basic-text">BASIC</div></div>
+    <div class="card-body">
+      <div class="card-version">v1.0 — Foundation</div>
+      <div class="card-title">Tamaverse Basic</div>
+      <div class="card-desc">CSS 커스텀 프로퍼티 기반 파운데이션 테마. Poppins + Noto Sans KR/JP + Yusei Magic 서체 조합과 캐릭터 중심의 컬러풀한 디자인.</div>
+      <div class="card-tags">
+        <span class="tag tag-sky">CSS Variables</span>
+        <span class="tag tag-yellow">KR + JP</span>
+        <span class="tag tag-pink">Colorful</span>
+      </div>
+    </div>
+  </a>
+  <a href="tamaverse-plat-design-system-v2.html" class="card">
+    <div class="card-preview preview-plat">
+      <div class="preview-plat-inner">
+        <div class="plat-chip plat-chip-sky">SKY</div>
+        <div class="plat-chip plat-chip-yellow">YELLOW</div>
+        <div class="plat-chip plat-chip-white">WHITE</div>
+        <div class="plat-chip plat-chip-navy">NAVY</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">v2.1 — Neo-Brutalist</div>
+      <div class="card-title">Tamaverse PLAT</div>
+      <div class="card-desc">Tailwind CSS + Material Design 3 토큰 기반의 네오-브루탈리스트 테마. 3px 네이비 보더, 오프셋 그림자, 극단적 라운딩.</div>
+      <div class="card-tags">
+        <span class="tag tag-sky">Tailwind CSS</span>
+        <span class="tag tag-navy">MD3 Tokens</span>
+        <span class="tag tag-green">WCAG AA</span>
+      </div>
+    </div>
+  </a>
+  <a href="tamaverse-kawaii-cyberpop-design-system.html" class="card">
+    <div class="card-preview preview-kawaii"><div class="preview-kawaii-text">CYBER-POP</div></div>
+    <div class="card-body">
+      <div class="card-version">v3.0 — Kawaii Cyber-Pop</div>
+      <div class="card-title">Tamaverse KAWAII CYBER-POP</div>
+      <div class="card-desc">네온 글로우, 글래스모피즘, 파티클 캔버스, 3D 틸트, 마그네틱 버튼. 다크 테마 + 듀얼 테마(tama-arena / monster-carnival) 지원.</div>
+      <div class="card-tags">
+        <span class="tag tag-pink">Neon Glow</span>
+        <span class="tag tag-sky">Glass-morphism</span>
+        <span class="tag tag-yellow">Dual Theme</span>
+      </div>
+    </div>
+  </a>
+</div>
+<footer class="footer">
+  <div class="footer-brand">TAMAVERSE <span>DESIGN</span></div>
+  <div style="font-size:.8rem;opacity:.6;">Design System Collection — 3 Theme Variants</div>
+  <div class="footer-copy">&copy; 2024-2026 TAMAVERSE DESIGN</div>
+</footer>
+</body>
+</html>
