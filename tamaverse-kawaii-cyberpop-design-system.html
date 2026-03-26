@@ -158,7 +158,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 #particle-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
 .tm-env-grid {
   position: fixed; bottom: 0; left: 0; width: 100vw; height: 50vh;
-  perspective: 400px; overflow: hidden; z-index: 9999;
+  perspective: max(400px, 60vh); overflow: hidden; z-index: 9999;
   pointer-events: none; opacity: 0.35;
   background: linear-gradient(0deg, var(--grid-bg) 0%, transparent 100%);
 }
@@ -170,7 +170,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 .tm-env-grid::after {
   content: ''; position: absolute; z-index: 1; top: 0; left: -100vw; width: 300vw; height: 250vh;
   background-image: linear-gradient(90deg, var(--grid-line) 2px, transparent 2px), linear-gradient(0deg, var(--grid-line) 2px, transparent 2px);
-  background-size: 80px 80px; transform: rotateX(60deg); transform-origin: top center;
+  background-size: 80px 80px; transform: rotateX(55deg); transform-origin: top center;
   animation: gridMove 2s linear infinite; box-shadow: inset 0 0 50px var(--grid-line);
 }
 
@@ -1540,10 +1540,6 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         </div>
         <div style="font-size: var(--text-sm); opacity: 0.5; margin-bottom: var(--sp-8);">
             Design System Guide v3.0 &mdash; CSS Custom Properties + Glass-Morphism + Neon Glow
-        </div>
-        <div class="tm-d-flex tm-gap-4 tm-justify-center tm-flex-wrap" style="margin-bottom: var(--sp-8);">
-            <button class="tm-btn tm-btn-primary tm-magnetic btn-ripple" style="padding: var(--sp-4) var(--sp-8);">GET STARTED</button>
-            <button class="tm-btn tm-btn-secondary tm-magnetic btn-ripple" style="padding: var(--sp-4) var(--sp-8);">CONTACT US</button>
         </div>
         <div style="font-size: var(--text-xs); opacity: 0.3;">&copy; 2024&ndash;2026 TAMAVERSE KAWAII CYBER-POP</div>
     </div>
