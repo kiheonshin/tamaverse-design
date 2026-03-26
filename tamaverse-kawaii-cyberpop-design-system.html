@@ -158,7 +158,8 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 #particle-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
 .tm-env-grid {
   position: fixed; bottom: 0; left: 0; width: 100vw; height: 50vh;
-  perspective: 400px; overflow: hidden; z-index: 2;
+  perspective: 400px; overflow: hidden; z-index: 9999;
+  pointer-events: none; opacity: 0.35;
   background: linear-gradient(0deg, var(--grid-bg) 0%, transparent 100%);
 }
 .tm-env-grid::before {
