@@ -157,21 +157,21 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 .tm-env-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle at top, var(--color-bg) 10%, #04010a 100%); z-index: 0; transition: background var(--trans-normal); }
 #particle-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
 .tm-env-grid {
-  position: fixed; bottom: 0; left: 0; width: 100vw; height: 50vh;
-  perspective: max(400px, 60vh); overflow: hidden; z-index: 9999;
-  pointer-events: none; opacity: 0.35;
+  position: fixed; bottom: 0; left: 0; width: 100vw; height: 25vh;
+  perspective: 500px; overflow: hidden; z-index: 2;
+  pointer-events: none; opacity: 0.2;
   background: linear-gradient(0deg, var(--grid-bg) 0%, transparent 100%);
 }
 .tm-env-grid::before {
   content: ''; position: absolute; z-index: 10; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to bottom, var(--color-bg) 0%, transparent 20%, transparent 80%, var(--color-bg) 100%);
+  background: linear-gradient(to bottom, var(--color-bg) 0%, transparent 60%, transparent 90%, var(--color-bg) 100%);
   pointer-events: none;
 }
 .tm-env-grid::after {
   content: ''; position: absolute; z-index: 1; top: 0; left: -100vw; width: 300vw; height: 250vh;
-  background-image: linear-gradient(90deg, var(--grid-line) 2px, transparent 2px), linear-gradient(0deg, var(--grid-line) 2px, transparent 2px);
-  background-size: 80px 80px; transform: rotateX(55deg); transform-origin: top center;
-  animation: gridMove 2s linear infinite; box-shadow: inset 0 0 50px var(--grid-line);
+  background-image: linear-gradient(90deg, var(--grid-line) 1px, transparent 1px), linear-gradient(0deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px; transform: rotateX(50deg); transform-origin: top center;
+  animation: gridMove 2s linear infinite;
 }
 
 /* --------------------------------------------------------------------------
