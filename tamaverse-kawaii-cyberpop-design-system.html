@@ -102,6 +102,21 @@
   --particles-color: rgba(57, 255, 20, 0.4);
 }
 
+[data-theme="hologram-drift"] {
+  --color-bg: #050a18;
+  --color-bg-transparent: rgba(5, 10, 24, 0.75);
+  --color-surface: rgba(10, 30, 80, 0.5);
+  --color-text: #c8daf0;
+  --color-text-muted: rgba(200, 218, 240, 0.5);
+  --color-primary: #4A90FF;
+  --color-secondary: #A8D8FF;
+  --color-accent: #FFD700;
+  --color-border: rgba(74, 144, 255, 0.35);
+  --grid-line: #4A90FF;
+  --grid-bg: #0a1e50;
+  --particles-color: rgba(168, 216, 255, 0.4);
+}
+
 /* --------------------------------------------------------------------------
    3. BASE STYLES & RESET
    -------------------------------------------------------------------------- */
@@ -480,6 +495,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 .tm-theme-btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
 .btn-theme-arena { background: linear-gradient(135deg, var(--tm-pink-500), var(--tm-cyan-500)); }
 .btn-theme-monster { background: linear-gradient(135deg, #8A2BE2, #39FF14); }
+.btn-theme-hologram { background: linear-gradient(135deg, #4A90FF, #FFD700); }
 
 /* --------------------------------------------------------------------------
    17. RESPONSIVE
@@ -529,29 +545,15 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 <!-- TOP NAVBAR -->
 <!-- ============================================ -->
 <nav class="tm-navbar" aria-label="Main Navigation">
-    <a href="#" class="tm-nav-brand">TAMAVERSE DESIGN</a>
-    <div class="tm-nav-links">
-        <a href="#colors">Colors</a>
-        <a href="#typography">Type</a>
-        <a href="#spacing">Space</a>
-        <a href="#shadows">Shadows</a>
-        <a href="#buttons">Buttons</a>
-        <a href="#badges">Badges</a>
-        <a href="#cards">Cards</a>
-        <a href="#sections">Sections</a>
-        <a href="#navigation">Nav</a>
-        <a href="#patterns">Patterns</a>
-        <a href="#tokens">Tokens</a>
-        <a href="#forms">Forms</a>
-        <a href="#feedback">Feedback</a>
-        <a href="#data-display">Data</a>
-        <a href="#motion">Motion</a>
+    <div class="tm-d-flex tm-gap-4 tm-align-center">
+        <a href="#" class="tm-nav-brand">TAMAVERSE DESIGN</a>
+        <span class="tm-badge tm-badge-primary" style="font-size: 0.6rem; padding: 0.2rem 0.6rem;">v3.0</span>
     </div>
     <div class="tm-d-flex tm-gap-4 tm-align-center">
-        <span class="tm-badge tm-badge-primary tm-badge-pulse">v3.0</span>
         <div class="tm-theme-switcher">
             <button class="tm-theme-btn btn-theme-arena tm-magnetic" data-set-theme="tama-arena" aria-label="Tama Arena Theme"></button>
             <button class="tm-theme-btn btn-theme-monster tm-magnetic" data-set-theme="monster-carnival" aria-label="Monster Carnival Theme"></button>
+            <button class="tm-theme-btn btn-theme-hologram tm-magnetic" data-set-theme="hologram-drift" aria-label="Hologram Drift Theme"></button>
         </div>
     </div>
 </nav>
