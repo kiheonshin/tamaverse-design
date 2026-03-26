@@ -584,21 +584,21 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
             <span class="tm-sidebar-icon tm-mobile-only" aria-hidden="true">&#9660;</span>
         </div>
         <ul class="tm-sidebar-nav" id="sidebar-nav-list">
-            <li><a href="#colors" class="is-active">01 Colors</a></li>
-            <li><a href="#typography">02 Typography</a></li>
-            <li><a href="#spacing">03 Spacing</a></li>
-            <li><a href="#shadows">04 Shadows &amp; Radius</a></li>
-            <li><a href="#buttons">05 Buttons</a></li>
+            <li><a href="#cards" class="is-active">01 Cards</a></li>
+            <li><a href="#motion">02 Motion</a></li>
+            <li><a href="#buttons">03 Buttons</a></li>
+            <li><a href="#sections">04 Section Layouts</a></li>
+            <li><a href="#shadows">05 Shadows &amp; Radius</a></li>
             <li><a href="#badges">06 Badges</a></li>
-            <li><a href="#cards">07 Cards</a></li>
-            <li><a href="#sections">08 Section Layouts</a></li>
-            <li><a href="#navigation">09 Navigation</a></li>
-            <li><a href="#patterns">10 Design Patterns</a></li>
-            <li><a href="#tokens">11 Token Reference</a></li>
-            <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--sp-2); margin-top: var(--sp-2);"><a href="#forms">12 Forms</a></li>
-            <li><a href="#feedback">13 Feedback UI</a></li>
-            <li><a href="#data-display">14 Data Display</a></li>
-            <li><a href="#motion">15 Motion</a></li>
+            <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--sp-2); margin-top: var(--sp-2);"><a href="#colors">07 Colors</a></li>
+            <li><a href="#typography">08 Typography</a></li>
+            <li><a href="#spacing">09 Spacing</a></li>
+            <li><a href="#forms">10 Forms</a></li>
+            <li><a href="#navigation">11 Navigation</a></li>
+            <li><a href="#feedback">12 Feedback UI</a></li>
+            <li><a href="#data-display">13 Data Display</a></li>
+            <li><a href="#patterns">14 Design Patterns</a></li>
+            <li><a href="#tokens">15 Token Reference</a></li>
         </ul>
     </aside>
 
@@ -621,6 +621,354 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
             </header>
 
             <hr style="border:0; border-bottom: 2px dashed var(--color-border); margin: 3rem 0;">
+
+<!-- ============================================ -->
+<!-- 7. CARDS -->
+<!-- ============================================ -->
+<section id="cards" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">7</span>
+        <h2>Cards</h2>
+    </div>
+    <p class="section-desc">글래스모피즘 Surface 카드와 3D 틸트 카드. backdrop-filter: blur와 네온 보더로 구성됩니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glass-Morphism Surface</div>
+            <div class="tama-section-title-jp">グラスモーフィズム・サーフェス</div>
+        </div>
+        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">backdrop-filter: blur(16px) + 반투명 배경 + 네온 보더</p>
+        <div class="tm-row">
+            <div class="tm-col">
+                <div class="tm-surface tm-text-center">
+                    <h4 style="color: var(--color-primary);">Surface Card</h4>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">기본 카드. hover시 보더 색상 변경 + 상승 효과 + 글래스 리플렉션.</p>
+                </div>
+            </div>
+            <div class="tm-col">
+                <div class="tm-surface tm-text-center">
+                    <span class="tm-badge tm-badge-success" style="margin-bottom: var(--sp-3);">ONLINE</span>
+                    <h4 style="color: var(--color-secondary);">Status Card</h4>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">뱃지와 아이콘을 포함한 상태 카드 패턴.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">3D Tilt Cards</div>
+            <div class="tama-section-title-jp">3Dティルト・カード</div>
+        </div>
+        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">마우스 이동에 따라 perspective(1000px) 기반 3D 회전 적용</p>
+        <div class="tm-row">
+            <div class="tm-col">
+                <div class="tm-surface tm-tilt-card tm-text-center">
+                    <h3 class="tm-text-primary" style="animation: floatY 2s infinite ease-in-out;">Tilt + Float</h3>
+                    <p style="font-size: var(--text-sm);">이 카드는 마우스 방향으로 기울어지고 부유합니다.</p>
+                </div>
+            </div>
+            <div class="tm-col">
+                <div class="tm-surface tm-tilt-card tm-text-center">
+                    <h3 class="tm-text-accent" style="animation: neonFlicker 3s infinite;">Neon Flicker</h3>
+                    <p style="font-size: var(--text-sm);">사이버펑크 사이니지 스타일링에 사용.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 15. MOTION & KEYFRAMES (NEW) -->
+<!-- ============================================ -->
+<section id="motion" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">15</span>
+        <h2>Motion &amp; Keyframes</h2>
+    </div>
+    <p class="section-desc">애니메이션 토큰과 키프레임 라이브러리. 이징 함수와 지속 시간 토큰을 문서화합니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Keyframe Animations</div>
+            <div class="tama-section-title-jp">キーフレーム・アニメーション</div>
+        </div>
+        <div class="tm-row">
+            <div class="tm-col tm-text-center">
+                <div class="tm-surface tm-tilt-card">
+                    <h3 class="tm-text-primary" style="animation: floatY 2s infinite ease-in-out;">floatY</h3>
+                    <p style="font-size: var(--text-sm);">translateY(0 &rarr; -15px &rarr; 0)</p>
+                </div>
+            </div>
+            <div class="tm-col tm-text-center">
+                <div class="tm-surface">
+                    <h3 class="tm-text-accent" style="animation: neonFlicker 3s infinite;">neonFlicker</h3>
+                    <p style="font-size: var(--text-sm);">opacity + drop-shadow toggle</p>
+                </div>
+            </div>
+        </div>
+        <div class="tm-row" style="margin-top: var(--sp-4);">
+            <div class="tm-col tm-text-center">
+                <div class="tm-surface">
+                    <h3 style="animation: scalePulse 2s infinite ease-in-out; color: var(--color-secondary);">scalePulse</h3>
+                    <p style="font-size: var(--text-sm);">scale(1 &rarr; 1.05 &rarr; 1)</p>
+                </div>
+            </div>
+            <div class="tm-col tm-text-center">
+                <div class="tm-surface">
+                    <h3 class="tm-glitch-text" data-text="glitch" style="font-size: var(--text-3xl);">glitch</h3>
+                    <p style="font-size: var(--text-sm);">clip-path + translate offsets</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Easing Tokens</div>
+            <div class="tama-section-title-jp">イージング・トークン</div>
+        </div>
+        <table class="tm-token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead>
+            <tbody>
+                <tr><td><code>--ease-linear</code></td><td>linear</td><td>무한 반복 애니메이션 (marquee, spin)</td></tr>
+                <tr><td><code>--ease-in</code></td><td>cubic-bezier(0.4, 0, 1, 1)</td><td>요소 퇴장</td></tr>
+                <tr><td><code>--ease-out</code></td><td>cubic-bezier(0, 0, 0.2, 1)</td><td>요소 등장, 빠른 응답</td></tr>
+                <tr><td><code>--ease-in-out</code></td><td>cubic-bezier(0.4, 0, 0.2, 1)</td><td>일반 전환</td></tr>
+                <tr><td><code>--ease-spring</code></td><td>cubic-bezier(0.175, 0.885, 0.32, 1.275)</td><td>탄성 있는 인터랙션</td></tr>
+                <tr><td><code>--ease-bounce</code></td><td>cubic-bezier(0.68, -0.55, 0.265, 1.55)</td><td>과장된 바운스 효과</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Duration Tokens</div>
+            <div class="tama-section-title-jp">デュレーション・トークン</div>
+        </div>
+        <table class="tm-token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead>
+            <tbody>
+                <tr><td><code>--duration-100</code></td><td>100ms</td><td>호버 피드백, 색상 변경</td></tr>
+                <tr><td><code>--duration-200</code></td><td>200ms</td><td>빠른 전환</td></tr>
+                <tr><td><code>--duration-300</code></td><td>300ms</td><td>일반 전환 (기본)</td></tr>
+                <tr><td><code>--duration-500</code></td><td>500ms</td><td>바운스, 스프링 전환</td></tr>
+                <tr><td><code>--duration-1000</code></td><td>1000ms</td><td>느린 전환, 페이드</td></tr>
+                <tr><td><code>--duration-slow</code></td><td>3000ms</td><td>배경 전환, 환경 효과</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 5. BUTTONS -->
+<!-- ============================================ -->
+<section id="buttons" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">5</span>
+        <h2>Buttons</h2>
+    </div>
+    <p class="section-desc">마그네틱 호버와 리플 이펙트를 지원하는 네온 글로우 버튼. Primary / Secondary / Accent / Ghost 변형을 제공합니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Magnetic Buttons</div>
+            <div class="tama-section-title-jp">マグネティック・ボタン</div>
+        </div>
+        <p class="tm-mb-4 tm-text-center" style="color: var(--color-text-muted);">JavaScript 기반 마그네틱 풀링과 캔버스 리플 클릭 지원</p>
+        <div class="tm-d-flex tm-gap-4 tm-flex-wrap tm-align-center tm-justify-center">
+            <button class="tm-btn tm-btn-primary tm-magnetic btn-ripple">Primary</button>
+            <button class="tm-btn tm-btn-secondary tm-magnetic btn-ripple">Secondary</button>
+            <button class="tm-btn tm-btn-accent tm-magnetic btn-ripple">Accent</button>
+            <button class="tm-btn tm-btn-ghost btn-ripple">Ghost</button>
+        </div>
+    </div>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Disabled State</div>
+            <div class="tama-section-title-jp">無効状態</div>
+        </div>
+        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">비활성 상태 &mdash; opacity 50% + grayscale + cursor-not-allowed</p>
+        <div class="tm-d-flex tm-gap-4 tm-flex-wrap tm-align-center tm-justify-center">
+            <button class="tm-btn tm-btn-primary" disabled>Primary (Disabled)</button>
+            <button class="tm-btn tm-btn-secondary" disabled>Secondary (Disabled)</button>
+            <button class="tm-btn tm-btn-accent" disabled>Accent (Disabled)</button>
+        </div>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Full-Width CTA</div>
+            <div class="tama-section-title-jp">フルワイドCTA</div>
+        </div>
+        <div style="max-width: 320px; margin: 0 auto;">
+            <button class="tm-btn tm-btn-primary btn-ripple" style="width: 100%; padding: var(--sp-4) var(--sp-6);">Deploy Agent</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 8. SECTION LAYOUTS -->
+<!-- ============================================ -->
+<section id="sections" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">8</span>
+        <h2>Section Layouts</h2>
+    </div>
+    <p class="section-desc">마키 배너, 바이링구얼 섹션 헤더(EN+JP), 배경 교차 패턴으로 페이지를 구성합니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Marquee Banner</div>
+            <div class="tama-section-title-jp">マーキー・バナー</div>
+        </div>
+        <div class="tama-marquee" style="margin: var(--sp-4) calc(var(--sp-6) * -1); border-radius: 0;">
+            <div class="tama-marquee-inner">
+                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
+                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
+                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
+                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
+            </div>
+        </div>
+        <p class="tm-text-center" style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-4);">skewY(-2deg) + infinite marquee animation + accent background</p>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Background Alternation</div>
+            <div class="tama-section-title-jp">背景交替パターン</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
+            <div style="height: 60px; border-radius: var(--rad-lg); background: var(--color-surface); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">SURFACE (Glass)</span>
+            </div>
+            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(0,255,255,0.1); border: 2px solid var(--color-secondary); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-secondary);">SECONDARY TINT</span>
+            </div>
+            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(255,0,255,0.1); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">PRIMARY TINT</span>
+            </div>
+            <div style="height: 60px; border-radius: var(--rad-lg); background: var(--tm-dark-900); border: 2px solid var(--color-accent); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-accent);">DARK BACKGROUND</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 4. SHADOWS & RADIUS -->
+<!-- ============================================ -->
+<section id="shadows" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">4</span>
+        <h2>Shadows &amp; Radius</h2>
+    </div>
+    <p class="section-desc">네온 글로우 쉐도우와 글래스모피즘 엘리베이션이 Kawaii Cyber-Pop의 핵심 시각 요소입니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glow &amp; Elevation Shadows</div>
+            <div class="tama-section-title-jp">グロー＆エレベーションシャドウ</div>
+        </div>
+        <div class="tm-shadow-grid">
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-sm);">shadow-sm<br><span style="color: var(--color-text-muted);">Subtle</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-md);">shadow-md<br><span style="color: var(--color-text-muted);">Default</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-lg);">shadow-lg<br><span style="color: var(--color-text-muted);">Elevated</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-primary); border-color: var(--color-primary);">glow-primary<br><span style="color: var(--color-primary);">Neon Pink</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-secondary); border-color: var(--color-secondary);">glow-secondary<br><span style="color: var(--color-secondary);">Neon Cyan</span></div>
+        </div>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Border Radius</div>
+            <div class="tama-section-title-jp">ボーダー・ラディウス</div>
+        </div>
+        <div class="tm-radius-row" style="margin-bottom: var(--sp-6);">
+            <div style="text-align: center;">
+                <div class="tm-radius-box" style="border-radius: var(--rad-sm);">sm</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">6px</div>
+            </div>
+            <div style="text-align: center;">
+                <div class="tm-radius-box" style="border-radius: var(--rad-md);">md</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">12px</div>
+            </div>
+            <div style="text-align: center;">
+                <div class="tm-radius-box" style="border-radius: var(--rad-lg);">lg</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">24px</div>
+            </div>
+            <div style="text-align: center;">
+                <div class="tm-radius-box" style="border-radius: var(--rad-pill); width: 96px;">pill</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">9999px</div>
+            </div>
+            <div style="text-align: center;">
+                <div class="tm-radius-box" style="border-radius: var(--rad-blob);">blob</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">organic</div>
+            </div>
+        </div>
+        <table class="tm-token-table">
+            <thead><tr><th>Element</th><th>Token</th></tr></thead>
+            <tbody>
+                <tr><td>버튼</td><td><code>--rad-pill</code></td></tr>
+                <tr><td>카드 / Surface</td><td><code>--rad-lg</code></td></tr>
+                <tr><td>뱃지</td><td><code>--rad-pill</code></td></tr>
+                <tr><td>입력 필드</td><td><code>--rad-md</code></td></tr>
+                <tr><td>사이드바</td><td><code>--rad-lg</code></td></tr>
+                <tr><td>장식적 요소</td><td><code>--rad-blob</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 6. BADGES -->
+<!-- ============================================ -->
+<section id="badges" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">6</span>
+        <h2>Badges</h2>
+    </div>
+    <p class="section-desc">네온 글로우 뱃지로 카테고리 태그, 상태 표시에 사용합니다. 펄스 애니메이션 변형을 지원합니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Neon Glow Badges</div>
+            <div class="tama-section-title-jp">ネオングロー・バッジ</div>
+        </div>
+        <div class="tm-badge-panel" style="margin-bottom: var(--sp-6);">
+            <span class="tm-badge tm-badge-primary">Primary</span>
+            <span class="tm-badge tm-badge-secondary">Secondary</span>
+            <span class="tm-badge tm-badge-success">Success</span>
+            <span class="tm-badge tm-badge-warning">Warning</span>
+            <span class="tm-badge tm-badge-danger">Danger</span>
+            <span class="tm-badge tm-badge-info">Info</span>
+            <span class="tm-badge tm-badge-accent">Accent</span>
+        </div>
+        <div class="tm-badge-panel">
+            <span class="tm-badge tm-badge-primary tm-badge-pulse">LIVE</span>
+            <span class="tm-badge tm-badge-danger tm-badge-pulse">ALERT</span>
+            <span class="tm-badge tm-badge-success tm-badge-pulse">ONLINE</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- ACT 2 DIVIDER -->
+<!-- ============================================ -->
+<div class="tama-marquee tm-reveal" aria-hidden="true">
+    <div class="tama-marquee-inner">
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+        <span class="tama-marquee-text">&diams; FOUNDATION &diams;</span>
+    </div>
+</div>
 
 <!-- ============================================ -->
 <!-- 1. COLORS -->
@@ -862,249 +1210,57 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 </section>
 
 <!-- ============================================ -->
-<!-- 4. SHADOWS & RADIUS -->
+<!-- 12. FORMS (NEW) -->
 <!-- ============================================ -->
-<section id="shadows" class="tm-mb-16 tm-reveal">
+<section id="forms" class="tm-mb-16 tm-reveal">
     <div class="section-heading">
-        <span class="section-num" aria-hidden="true">4</span>
-        <h2>Shadows &amp; Radius</h2>
+        <span class="section-num" aria-hidden="true">12</span>
+        <h2>Forms</h2>
     </div>
-    <p class="section-desc">네온 글로우 쉐도우와 글래스모피즘 엘리베이션이 Kawaii Cyber-Pop의 핵심 시각 요소입니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glow &amp; Elevation Shadows</div>
-            <div class="tama-section-title-jp">グロー＆エレベーションシャドウ</div>
-        </div>
-        <div class="tm-shadow-grid">
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-sm);">shadow-sm<br><span style="color: var(--color-text-muted);">Subtle</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-md);">shadow-md<br><span style="color: var(--color-text-muted);">Default</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-lg);">shadow-lg<br><span style="color: var(--color-text-muted);">Elevated</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-primary); border-color: var(--color-primary);">glow-primary<br><span style="color: var(--color-primary);">Neon Pink</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-secondary); border-color: var(--color-secondary);">glow-secondary<br><span style="color: var(--color-secondary);">Neon Cyan</span></div>
-        </div>
-    </div>
+    <p class="section-desc">글로우 포커스 입력 필드, 에너지 레인지 슬라이더, 토글 스위치로 구성된 인터랙티브 폼 요소.</p>
 
     <div class="tm-surface">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Border Radius</div>
-            <div class="tama-section-title-jp">ボーダー・ラディウス</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Interactive Forms</div>
+            <div class="tama-section-title-jp">インタラクティブ・フォーム</div>
         </div>
-        <div class="tm-radius-row" style="margin-bottom: var(--sp-6);">
-            <div style="text-align: center;">
-                <div class="tm-radius-box" style="border-radius: var(--rad-sm);">sm</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">6px</div>
-            </div>
-            <div style="text-align: center;">
-                <div class="tm-radius-box" style="border-radius: var(--rad-md);">md</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">12px</div>
-            </div>
-            <div style="text-align: center;">
-                <div class="tm-radius-box" style="border-radius: var(--rad-lg);">lg</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">24px</div>
-            </div>
-            <div style="text-align: center;">
-                <div class="tm-radius-box" style="border-radius: var(--rad-pill); width: 96px;">pill</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">9999px</div>
-            </div>
-            <div style="text-align: center;">
-                <div class="tm-radius-box" style="border-radius: var(--rad-blob);">blob</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">organic</div>
-            </div>
-        </div>
-        <table class="tm-token-table">
-            <thead><tr><th>Element</th><th>Token</th></tr></thead>
-            <tbody>
-                <tr><td>버튼</td><td><code>--rad-pill</code></td></tr>
-                <tr><td>카드 / Surface</td><td><code>--rad-lg</code></td></tr>
-                <tr><td>뱃지</td><td><code>--rad-pill</code></td></tr>
-                <tr><td>입력 필드</td><td><code>--rad-md</code></td></tr>
-                <tr><td>사이드바</td><td><code>--rad-lg</code></td></tr>
-                <tr><td>장식적 요소</td><td><code>--rad-blob</code></td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 5. BUTTONS -->
-<!-- ============================================ -->
-<section id="buttons" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">5</span>
-        <h2>Buttons</h2>
-    </div>
-    <p class="section-desc">마그네틱 호버와 리플 이펙트를 지원하는 네온 글로우 버튼. Primary / Secondary / Accent / Ghost 변형을 제공합니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Magnetic Buttons</div>
-            <div class="tama-section-title-jp">マグネティック・ボタン</div>
-        </div>
-        <p class="tm-mb-4 tm-text-center" style="color: var(--color-text-muted);">JavaScript 기반 마그네틱 풀링과 캔버스 리플 클릭 지원</p>
-        <div class="tm-d-flex tm-gap-4 tm-flex-wrap tm-align-center tm-justify-center">
-            <button class="tm-btn tm-btn-primary tm-magnetic btn-ripple">Primary</button>
-            <button class="tm-btn tm-btn-secondary tm-magnetic btn-ripple">Secondary</button>
-            <button class="tm-btn tm-btn-accent tm-magnetic btn-ripple">Accent</button>
-            <button class="tm-btn tm-btn-ghost btn-ripple">Ghost</button>
-        </div>
-    </div>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Disabled State</div>
-            <div class="tama-section-title-jp">無効状態</div>
-        </div>
-        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">비활성 상태 &mdash; opacity 50% + grayscale + cursor-not-allowed</p>
-        <div class="tm-d-flex tm-gap-4 tm-flex-wrap tm-align-center tm-justify-center">
-            <button class="tm-btn tm-btn-primary" disabled>Primary (Disabled)</button>
-            <button class="tm-btn tm-btn-secondary" disabled>Secondary (Disabled)</button>
-            <button class="tm-btn tm-btn-accent" disabled>Accent (Disabled)</button>
-        </div>
-    </div>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Full-Width CTA</div>
-            <div class="tama-section-title-jp">フルワイドCTA</div>
-        </div>
-        <div style="max-width: 320px; margin: 0 auto;">
-            <button class="tm-btn tm-btn-primary btn-ripple" style="width: 100%; padding: var(--sp-4) var(--sp-6);">Deploy Agent</button>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 6. BADGES -->
-<!-- ============================================ -->
-<section id="badges" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">6</span>
-        <h2>Badges</h2>
-    </div>
-    <p class="section-desc">네온 글로우 뱃지로 카테고리 태그, 상태 표시에 사용합니다. 펄스 애니메이션 변형을 지원합니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Neon Glow Badges</div>
-            <div class="tama-section-title-jp">ネオングロー・バッジ</div>
-        </div>
-        <div class="tm-badge-panel" style="margin-bottom: var(--sp-6);">
-            <span class="tm-badge tm-badge-primary">Primary</span>
-            <span class="tm-badge tm-badge-secondary">Secondary</span>
-            <span class="tm-badge tm-badge-success">Success</span>
-            <span class="tm-badge tm-badge-warning">Warning</span>
-            <span class="tm-badge tm-badge-danger">Danger</span>
-            <span class="tm-badge tm-badge-info">Info</span>
-            <span class="tm-badge tm-badge-accent">Accent</span>
-        </div>
-        <div class="tm-badge-panel">
-            <span class="tm-badge tm-badge-primary tm-badge-pulse">LIVE</span>
-            <span class="tm-badge tm-badge-danger tm-badge-pulse">ALERT</span>
-            <span class="tm-badge tm-badge-success tm-badge-pulse">ONLINE</span>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 7. CARDS -->
-<!-- ============================================ -->
-<section id="cards" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">7</span>
-        <h2>Cards</h2>
-    </div>
-    <p class="section-desc">글래스모피즘 Surface 카드와 3D 틸트 카드. backdrop-filter: blur와 네온 보더로 구성됩니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glass-Morphism Surface</div>
-            <div class="tama-section-title-jp">グラスモーフィズム・サーフェス</div>
-        </div>
-        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">backdrop-filter: blur(16px) + 반투명 배경 + 네온 보더</p>
         <div class="tm-row">
             <div class="tm-col">
-                <div class="tm-surface tm-text-center">
-                    <h4 style="color: var(--color-primary);">Surface Card</h4>
-                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">기본 카드. hover시 보더 색상 변경 + 상승 효과 + 글래스 리플렉션.</p>
+                <div class="tm-form-group">
+                    <label class="tm-label" for="demo-input">Glitch Input Field</label>
+                    <input type="text" class="tm-input" id="demo-input" placeholder="Focus me...">
+                </div>
+                <div class="tm-form-group">
+                    <label class="tm-label" for="demo-email">Email Field</label>
+                    <input type="email" class="tm-input" id="demo-email" placeholder="agent@tamaverse.io">
+                </div>
+                <div class="tm-form-group">
+                    <label class="tm-label" for="demo-range">Energy Slider</label>
+                    <input type="range" class="tm-range" id="demo-range" min="0" max="100" value="50" aria-label="Energy level">
                 </div>
             </div>
             <div class="tm-col">
-                <div class="tm-surface tm-text-center">
-                    <span class="tm-badge tm-badge-success" style="margin-bottom: var(--sp-3);">ONLINE</span>
-                    <h4 style="color: var(--color-secondary);">Status Card</h4>
-                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">뱃지와 아이콘을 포함한 상태 카드 패턴.</p>
+                <div class="tm-form-group tm-text-center">
+                    <label class="tm-label">System Override Switches</label>
+                    <div class="tm-d-flex tm-gap-4 tm-justify-center tm-mt-4">
+                        <label class="tm-switch">
+                            <input type="checkbox" checked aria-label="Switch 1">
+                            <span class="tm-switch-slider"></span>
+                        </label>
+                        <label class="tm-switch">
+                            <input type="checkbox" checked aria-label="Switch 2">
+                            <span class="tm-switch-slider" style="background: var(--color-secondary);"></span>
+                        </label>
+                        <label class="tm-switch">
+                            <input type="checkbox" aria-label="Switch 3">
+                            <span class="tm-switch-slider" style="background: var(--color-accent);"></span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">3D Tilt Cards</div>
-            <div class="tama-section-title-jp">3Dティルト・カード</div>
-        </div>
-        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">마우스 이동에 따라 perspective(1000px) 기반 3D 회전 적용</p>
-        <div class="tm-row">
-            <div class="tm-col">
-                <div class="tm-surface tm-tilt-card tm-text-center">
-                    <h3 class="tm-text-primary" style="animation: floatY 2s infinite ease-in-out;">Tilt + Float</h3>
-                    <p style="font-size: var(--text-sm);">이 카드는 마우스 방향으로 기울어지고 부유합니다.</p>
+                <div class="tm-form-group" style="margin-top: var(--sp-8);">
+                    <label class="tm-label" for="demo-textarea">Textarea</label>
+                    <textarea class="tm-input" id="demo-textarea" rows="3" placeholder="Enter mission briefing..." style="resize: vertical;"></textarea>
                 </div>
-            </div>
-            <div class="tm-col">
-                <div class="tm-surface tm-tilt-card tm-text-center">
-                    <h3 class="tm-text-accent" style="animation: neonFlicker 3s infinite;">Neon Flicker</h3>
-                    <p style="font-size: var(--text-sm);">사이버펑크 사이니지 스타일링에 사용.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 8. SECTION LAYOUTS -->
-<!-- ============================================ -->
-<section id="sections" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">8</span>
-        <h2>Section Layouts</h2>
-    </div>
-    <p class="section-desc">마키 배너, 바이링구얼 섹션 헤더(EN+JP), 배경 교차 패턴으로 페이지를 구성합니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Marquee Banner</div>
-            <div class="tama-section-title-jp">マーキー・バナー</div>
-        </div>
-        <div class="tama-marquee" style="margin: var(--sp-4) calc(var(--sp-6) * -1); border-radius: 0;">
-            <div class="tama-marquee-inner">
-                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
-                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
-                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
-                <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
-            </div>
-        </div>
-        <p class="tm-text-center" style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-4);">skewY(-2deg) + infinite marquee animation + accent background</p>
-    </div>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Background Alternation</div>
-            <div class="tama-section-title-jp">背景交替パターン</div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
-            <div style="height: 60px; border-radius: var(--rad-lg); background: var(--color-surface); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">SURFACE (Glass)</span>
-            </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(0,255,255,0.1); border: 2px solid var(--color-secondary); display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-secondary);">SECONDARY TINT</span>
-            </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(255,0,255,0.1); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">PRIMARY TINT</span>
-            </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: var(--tm-dark-900); border: 2px solid var(--color-accent); display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-accent);">DARK BACKGROUND</span>
             </div>
         </div>
     </div>
@@ -1149,6 +1305,109 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2);">02 Typography</div>
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2);">03 Spacing</div>
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm);">04 Shadows</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 13. FEEDBACK UI (NEW) -->
+<!-- ============================================ -->
+<section id="feedback" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">13</span>
+        <h2>Feedback UI</h2>
+    </div>
+    <p class="section-desc">CSS 스피너, 스켈레톤 로더, 툴팁으로 구성된 피드백 UI 요소.</p>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Loaders &amp; Tooltips</div>
+            <div class="tama-section-title-jp">フィードバック・ツール</div>
+        </div>
+        <div class="tm-row tm-align-center">
+            <div class="tm-col tm-text-center">
+                <div class="tm-spinner" style="margin: 0 auto;" role="status" aria-label="Loading"></div>
+                <p class="tm-mt-4" style="font-size: var(--text-sm);">CSS Spinner</p>
+            </div>
+            <div class="tm-col">
+                <div class="tm-skeleton" style="width: 100%; height: 20px; margin-bottom: 10px;" aria-hidden="true"></div>
+                <div class="tm-skeleton" style="width: 80%; height: 20px; margin-bottom: 10px;" aria-hidden="true"></div>
+                <div class="tm-skeleton" style="width: 90%; height: 20px;" aria-hidden="true"></div>
+                <p class="tm-mt-4 tm-text-center" style="font-size: var(--text-sm);">Skeleton Loader</p>
+            </div>
+            <div class="tm-col tm-text-center">
+                <div class="tm-tooltip-wrapper" style="margin-top: var(--sp-6);">
+                    <button class="tm-btn tm-btn-secondary" style="border-radius: var(--rad-pill);">HOVER ME</button>
+                    <div class="tm-tooltip" role="tooltip">Tamaverse Secret Data!</div>
+                </div>
+                <p class="tm-mt-4" style="font-size: var(--text-sm);">Tooltip</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 14. DATA DISPLAY (NEW) -->
+<!-- ============================================ -->
+<section id="data-display" class="tm-mb-16 tm-reveal">
+    <div class="section-heading">
+        <span class="section-num" aria-hidden="true">14</span>
+        <h2>Data Display</h2>
+    </div>
+    <p class="section-desc">스타일링된 테이블과 아코디언 컴포넌트로 데이터를 표현합니다.</p>
+
+    <div class="tm-surface tm-mb-6">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Styled Tables</div>
+            <div class="tama-section-title-jp">データ・テーブル</div>
+        </div>
+        <div class="tm-table-wrap">
+            <table class="tm-table">
+                <thead><tr><th>Rank</th><th>Player</th><th>Level</th><th>Score</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td><span class="tm-badge tm-badge-primary">Mametchi</span></td><td>Lv.99</td><td>99,999</td></tr>
+                    <tr><td>2</td><td><span class="tm-badge tm-badge-warning">Kuchipatchi</span></td><td>Lv.85</td><td>85,200</td></tr>
+                    <tr><td>3</td><td><span class="tm-badge tm-badge-secondary">Memetchi</span></td><td>Lv.72</td><td>72,100</td></tr>
+                    <tr><td>4</td><td><span class="tm-badge tm-badge-info">Lovelitchi</span></td><td>Lv.68</td><td>68,400</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="4" style="text-align: center; padding: var(--sp-3); font-size: var(--text-xs); opacity: 0.6; font-style: italic; border-top: 2px solid var(--color-border);">&#10022; Tama Arena Season 4 &mdash; Live Leaderboard &#10022;</td></tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="tm-surface">
+        <div class="tama-section-header">
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Accordion</div>
+            <div class="tama-section-title-jp">アコーディオン</div>
+        </div>
+        <div class="tm-accordion tm-mb-4">
+            <div class="tm-accordion-header">
+                <span>Server Status</span>
+                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
+            </div>
+            <div class="tm-accordion-content">
+                <p>All servers operating normally in the Tama Arena. Uptime: 99.97%</p>
+            </div>
+        </div>
+        <div class="tm-accordion tm-mb-4">
+            <div class="tm-accordion-header">
+                <span>Patch Notes v3.0</span>
+                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
+            </div>
+            <div class="tm-accordion-content">
+                <p>Includes advanced motion systems, canvas particles, 3D tilting cards, and glass-morphism surfaces.</p>
+            </div>
+        </div>
+        <div class="tm-accordion">
+            <div class="tm-accordion-header">
+                <span>Known Issues</span>
+                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
+            </div>
+            <div class="tm-accordion-content">
+                <p>Particle canvas may cause performance issues on low-end devices. Use prefers-reduced-motion to disable.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -1345,254 +1604,6 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
   <span class="prop">--color-accent</span>:    <span class="value">#FF0055</span>;
 }</div>
         </div>
-    </div>
-</section>
-
-<hr style="border:0; border-bottom: 2px dashed var(--color-border); margin: 3rem 0;">
-<div class="tama-section-header tm-mb-8">
-    <div class="tama-section-title-en">EXTENDED COMPONENTS</div>
-    <div class="tama-section-title-jp">拡張コンポーネント</div>
-</div>
-
-<!-- ============================================ -->
-<!-- 12. FORMS (NEW) -->
-<!-- ============================================ -->
-<section id="forms" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">12</span>
-        <h2>Forms</h2>
-    </div>
-    <p class="section-desc">글로우 포커스 입력 필드, 에너지 레인지 슬라이더, 토글 스위치로 구성된 인터랙티브 폼 요소.</p>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Interactive Forms</div>
-            <div class="tama-section-title-jp">インタラクティブ・フォーム</div>
-        </div>
-        <div class="tm-row">
-            <div class="tm-col">
-                <div class="tm-form-group">
-                    <label class="tm-label" for="demo-input">Glitch Input Field</label>
-                    <input type="text" class="tm-input" id="demo-input" placeholder="Focus me...">
-                </div>
-                <div class="tm-form-group">
-                    <label class="tm-label" for="demo-email">Email Field</label>
-                    <input type="email" class="tm-input" id="demo-email" placeholder="agent@tamaverse.io">
-                </div>
-                <div class="tm-form-group">
-                    <label class="tm-label" for="demo-range">Energy Slider</label>
-                    <input type="range" class="tm-range" id="demo-range" min="0" max="100" value="50" aria-label="Energy level">
-                </div>
-            </div>
-            <div class="tm-col">
-                <div class="tm-form-group tm-text-center">
-                    <label class="tm-label">System Override Switches</label>
-                    <div class="tm-d-flex tm-gap-4 tm-justify-center tm-mt-4">
-                        <label class="tm-switch">
-                            <input type="checkbox" checked aria-label="Switch 1">
-                            <span class="tm-switch-slider"></span>
-                        </label>
-                        <label class="tm-switch">
-                            <input type="checkbox" checked aria-label="Switch 2">
-                            <span class="tm-switch-slider" style="background: var(--color-secondary);"></span>
-                        </label>
-                        <label class="tm-switch">
-                            <input type="checkbox" aria-label="Switch 3">
-                            <span class="tm-switch-slider" style="background: var(--color-accent);"></span>
-                        </label>
-                    </div>
-                </div>
-                <div class="tm-form-group" style="margin-top: var(--sp-8);">
-                    <label class="tm-label" for="demo-textarea">Textarea</label>
-                    <textarea class="tm-input" id="demo-textarea" rows="3" placeholder="Enter mission briefing..." style="resize: vertical;"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 13. FEEDBACK UI (NEW) -->
-<!-- ============================================ -->
-<section id="feedback" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">13</span>
-        <h2>Feedback UI</h2>
-    </div>
-    <p class="section-desc">CSS 스피너, 스켈레톤 로더, 툴팁으로 구성된 피드백 UI 요소.</p>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Loaders &amp; Tooltips</div>
-            <div class="tama-section-title-jp">フィードバック・ツール</div>
-        </div>
-        <div class="tm-row tm-align-center">
-            <div class="tm-col tm-text-center">
-                <div class="tm-spinner" style="margin: 0 auto;" role="status" aria-label="Loading"></div>
-                <p class="tm-mt-4" style="font-size: var(--text-sm);">CSS Spinner</p>
-            </div>
-            <div class="tm-col">
-                <div class="tm-skeleton" style="width: 100%; height: 20px; margin-bottom: 10px;" aria-hidden="true"></div>
-                <div class="tm-skeleton" style="width: 80%; height: 20px; margin-bottom: 10px;" aria-hidden="true"></div>
-                <div class="tm-skeleton" style="width: 90%; height: 20px;" aria-hidden="true"></div>
-                <p class="tm-mt-4 tm-text-center" style="font-size: var(--text-sm);">Skeleton Loader</p>
-            </div>
-            <div class="tm-col tm-text-center">
-                <div class="tm-tooltip-wrapper" style="margin-top: var(--sp-6);">
-                    <button class="tm-btn tm-btn-secondary" style="border-radius: var(--rad-pill);">HOVER ME</button>
-                    <div class="tm-tooltip" role="tooltip">Tamaverse Secret Data!</div>
-                </div>
-                <p class="tm-mt-4" style="font-size: var(--text-sm);">Tooltip</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 14. DATA DISPLAY (NEW) -->
-<!-- ============================================ -->
-<section id="data-display" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">14</span>
-        <h2>Data Display</h2>
-    </div>
-    <p class="section-desc">스타일링된 테이블과 아코디언 컴포넌트로 데이터를 표현합니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Styled Tables</div>
-            <div class="tama-section-title-jp">データ・テーブル</div>
-        </div>
-        <div class="tm-table-wrap">
-            <table class="tm-table">
-                <thead><tr><th>Rank</th><th>Player</th><th>Level</th><th>Score</th></tr></thead>
-                <tbody>
-                    <tr><td>1</td><td><span class="tm-badge tm-badge-primary">Mametchi</span></td><td>Lv.99</td><td>99,999</td></tr>
-                    <tr><td>2</td><td><span class="tm-badge tm-badge-warning">Kuchipatchi</span></td><td>Lv.85</td><td>85,200</td></tr>
-                    <tr><td>3</td><td><span class="tm-badge tm-badge-secondary">Memetchi</span></td><td>Lv.72</td><td>72,100</td></tr>
-                    <tr><td>4</td><td><span class="tm-badge tm-badge-info">Lovelitchi</span></td><td>Lv.68</td><td>68,400</td></tr>
-                </tbody>
-                <tfoot>
-                    <tr><td colspan="4" style="text-align: center; padding: var(--sp-3); font-size: var(--text-xs); opacity: 0.6; font-style: italic; border-top: 2px solid var(--color-border);">&#10022; Tama Arena Season 4 &mdash; Live Leaderboard &#10022;</td></tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Accordion</div>
-            <div class="tama-section-title-jp">アコーディオン</div>
-        </div>
-        <div class="tm-accordion tm-mb-4">
-            <div class="tm-accordion-header">
-                <span>Server Status</span>
-                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
-            </div>
-            <div class="tm-accordion-content">
-                <p>All servers operating normally in the Tama Arena. Uptime: 99.97%</p>
-            </div>
-        </div>
-        <div class="tm-accordion tm-mb-4">
-            <div class="tm-accordion-header">
-                <span>Patch Notes v3.0</span>
-                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
-            </div>
-            <div class="tm-accordion-content">
-                <p>Includes advanced motion systems, canvas particles, 3D tilting cards, and glass-morphism surfaces.</p>
-            </div>
-        </div>
-        <div class="tm-accordion">
-            <div class="tm-accordion-header">
-                <span>Known Issues</span>
-                <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
-            </div>
-            <div class="tm-accordion-content">
-                <p>Particle canvas may cause performance issues on low-end devices. Use prefers-reduced-motion to disable.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 15. MOTION & KEYFRAMES (NEW) -->
-<!-- ============================================ -->
-<section id="motion" class="tm-mb-16 tm-reveal">
-    <div class="section-heading">
-        <span class="section-num" aria-hidden="true">15</span>
-        <h2>Motion &amp; Keyframes</h2>
-    </div>
-    <p class="section-desc">애니메이션 토큰과 키프레임 라이브러리. 이징 함수와 지속 시간 토큰을 문서화합니다.</p>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Keyframe Animations</div>
-            <div class="tama-section-title-jp">キーフレーム・アニメーション</div>
-        </div>
-        <div class="tm-row">
-            <div class="tm-col tm-text-center">
-                <div class="tm-surface tm-tilt-card">
-                    <h3 class="tm-text-primary" style="animation: floatY 2s infinite ease-in-out;">floatY</h3>
-                    <p style="font-size: var(--text-sm);">translateY(0 &rarr; -15px &rarr; 0)</p>
-                </div>
-            </div>
-            <div class="tm-col tm-text-center">
-                <div class="tm-surface">
-                    <h3 class="tm-text-accent" style="animation: neonFlicker 3s infinite;">neonFlicker</h3>
-                    <p style="font-size: var(--text-sm);">opacity + drop-shadow toggle</p>
-                </div>
-            </div>
-        </div>
-        <div class="tm-row" style="margin-top: var(--sp-4);">
-            <div class="tm-col tm-text-center">
-                <div class="tm-surface">
-                    <h3 style="animation: scalePulse 2s infinite ease-in-out; color: var(--color-secondary);">scalePulse</h3>
-                    <p style="font-size: var(--text-sm);">scale(1 &rarr; 1.05 &rarr; 1)</p>
-                </div>
-            </div>
-            <div class="tm-col tm-text-center">
-                <div class="tm-surface">
-                    <h3 class="tm-glitch-text" data-text="glitch" style="font-size: var(--text-3xl);">glitch</h3>
-                    <p style="font-size: var(--text-sm);">clip-path + translate offsets</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="tm-surface tm-mb-6">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Easing Tokens</div>
-            <div class="tama-section-title-jp">イージング・トークン</div>
-        </div>
-        <table class="tm-token-table">
-            <thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead>
-            <tbody>
-                <tr><td><code>--ease-linear</code></td><td>linear</td><td>무한 반복 애니메이션 (marquee, spin)</td></tr>
-                <tr><td><code>--ease-in</code></td><td>cubic-bezier(0.4, 0, 1, 1)</td><td>요소 퇴장</td></tr>
-                <tr><td><code>--ease-out</code></td><td>cubic-bezier(0, 0, 0.2, 1)</td><td>요소 등장, 빠른 응답</td></tr>
-                <tr><td><code>--ease-in-out</code></td><td>cubic-bezier(0.4, 0, 0.2, 1)</td><td>일반 전환</td></tr>
-                <tr><td><code>--ease-spring</code></td><td>cubic-bezier(0.175, 0.885, 0.32, 1.275)</td><td>탄성 있는 인터랙션</td></tr>
-                <tr><td><code>--ease-bounce</code></td><td>cubic-bezier(0.68, -0.55, 0.265, 1.55)</td><td>과장된 바운스 효과</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="tm-surface">
-        <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Duration Tokens</div>
-            <div class="tama-section-title-jp">デュレーション・トークン</div>
-        </div>
-        <table class="tm-token-table">
-            <thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead>
-            <tbody>
-                <tr><td><code>--duration-100</code></td><td>100ms</td><td>호버 피드백, 색상 변경</td></tr>
-                <tr><td><code>--duration-200</code></td><td>200ms</td><td>빠른 전환</td></tr>
-                <tr><td><code>--duration-300</code></td><td>300ms</td><td>일반 전환 (기본)</td></tr>
-                <tr><td><code>--duration-500</code></td><td>500ms</td><td>바운스, 스프링 전환</td></tr>
-                <tr><td><code>--duration-1000</code></td><td>1000ms</td><td>느린 전환, 페이드</td></tr>
-                <tr><td><code>--duration-slow</code></td><td>3000ms</td><td>배경 전환, 환경 효과</td></tr>
-            </tbody>
-        </table>
     </div>
 </section>
 
