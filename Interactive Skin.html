@@ -1807,7 +1807,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      INTERACTIVE SKIN ENGINE
-     좌우 화살표 단계 입력으로 kawaii-cyberpop ↔ basic 디자인 시스템 전환
+     좌우 화살표 단계 입력으로 basic → kawaii-cyberpop 순서 전환
      이 블록만 다른 HTML 문서에 복사하면 동일하게 작동합니다.
      ═══════════════════════════════════════════════════════════════════════════ -->
 
@@ -2315,11 +2315,11 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
 
 <!-- Skin HUD -->
 <div class="skin-hud" id="skinHud">
-  <span style="font-size:0.65rem;white-space:nowrap;">KAWAII</span>
+  <span style="font-size:0.65rem;white-space:nowrap;">BASIC</span>
   <div class="skin-hud-bar">
     <div class="skin-hud-fill" id="skinHudFill"></div>
   </div>
-  <span style="font-size:0.65rem;white-space:nowrap;">BASIC</span>
+  <span style="font-size:0.65rem;white-space:nowrap;">KAWAII</span>
   <span id="skinPercent" style="min-width:32px;text-align:right;">0%</span>
   <span class="skin-hud-dir" id="skinDir">← → 전환</span>
 </div>
@@ -2329,7 +2329,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   'use strict';
 
   // ── State ──
-  let progress = 0;        // 0 = kawaii, 1 = basic
+  let progress = 0;        // 0 = basic, 1 = kawaii
 
   const root = document.documentElement;
   const body = document.body;
@@ -2365,10 +2365,10 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     return x < 0.5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2;
   }
 
-  // ── Token mapping: kawaii → basic ──
-  // These map to the CSS custom properties used in the original document
+  // ── Token mapping: basic progress → kawaii endpoint ──
+  // Internally, t still represents the amount of "basic" styling remaining.
   function applySkin(p) {
-    const t = easeInOutCubic(p);
+    const t = 1 - easeInOutCubic(p);
     const exactBasic = t >= 0.999;
 
     if (exactBasic) body.dataset.skin = 'basic';
@@ -2631,7 +2631,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
 
   // ── Arrow Key Step Input (10 steps) ──
   const STEPS = 10;
-  let step = 0; // 0 = kawaii, 10 = basic
+  let step = 0; // 0 = basic, 10 = kawaii
 
   function goToStep(newStep) {
     step = Math.max(0, Math.min(STEPS, newStep));
