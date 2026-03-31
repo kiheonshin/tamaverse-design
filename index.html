@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. Basic, PLAT, KAWAII CYBER-POP 3가지 테마.">
+<meta name="description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. Basic, PLAT, KAWAII CYBER-POP, 그리고 Basic Proof 문서까지 포함한 4개 문서 허브.">
 <meta name="keywords" content="Tamaverse, Design System, UI Kit, Neo-Brutalist, Cyber-Pop, Agent Interface">
 <meta name="author" content="Tamaverse">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tamaverse-design.vercel.app/">
 <meta property="og:title" content="Tamaverse Design System">
-<meta property="og:description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 3가지 테마 변형을 탐색하세요.">
+<meta property="og:description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 4개 문서를 탐색하세요.">
 <meta property="og:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tamaverse Design System">
-<meta name="twitter:description" content="3 Theme Variants for Tamaverse Agent Interface">
+<meta name="twitter:description" content="4 Design Documents for Tamaverse Agent Interface">
 <meta name="twitter:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
 <title>Tamaverse Design System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +50,10 @@ body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;backgro
 .preview-kawaii::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,255,255,.07) 1px,transparent 1px),linear-gradient(0deg,rgba(0,255,255,.07) 1px,transparent 1px);background-size:40px 40px}
 .preview-kawaii-text{position:relative;z-index:1;font-size:1.5rem;font-weight:900;color:#FFFF00;text-shadow:0 0 20px #FF00FF,0 0 40px #FF00FF,2px 2px 0 #FF00FF;letter-spacing:.05em;animation:kawaiiGlow 2s ease-in-out infinite alternate}
 @keyframes kawaiiGlow{from{text-shadow:0 0 10px #FF00FF,0 0 20px #FF00FF,2px 2px 0 #FF00FF}to{text-shadow:0 0 20px #00FFFF,0 0 40px #00FFFF,2px 2px 0 #00FFFF}}
+.preview-proof{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 100%);position:relative}
+.preview-proof::before{content:'';position:absolute;left:1rem;top:1rem;bottom:1rem;width:96px;border:2px solid rgba(20,48,90,.12);border-radius:1rem;background:rgba(255,255,255,.9);box-shadow:0 4px 20px rgba(20,48,90,.08)}
+.preview-proof::after{content:'';position:absolute;left:1.75rem;top:3.2rem;width:64px;height:14px;border-radius:.35rem;background:rgba(51,193,255,.18)}
+.preview-proof-text{position:relative;z-index:1;font-size:1.55rem;font-weight:900;color:#14305A;letter-spacing:-.04em;line-height:1.05;text-align:center}
 .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
 .card-version{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a95a5;margin-bottom:.5rem}
 .card-title{font-size:1.4rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.2}
@@ -80,7 +84,7 @@ body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;backgro
 <div class="header">
   <div class="header-badge">Design System Hub</div>
   <h1>TAMAVERSE <span>DESIGN</span></h1>
-  <p>타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 3가지 테마 변형을 탐색하세요.</p>
+  <p>타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 3가지 테마와 1개의 구조 비교용 proof 문서를 탐색하세요.</p>
 </div>
 <div class="grid">
   <a href="tamaverse-basic-design-system.html" class="card">
@@ -129,10 +133,23 @@ body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;backgro
       </div>
     </div>
   </a>
+  <a href="tamaverse-basic-proof.html" class="card">
+    <div class="card-preview preview-proof"><div class="preview-proof-text">BASIC<br>PROOF</div></div>
+    <div class="card-body">
+      <div class="card-version">v1.1 — Structure Proof</div>
+      <div class="card-title">Basic on Kawaii Layout</div>
+      <div class="card-desc">KAWAII CYBER-POP 문서의 구조와 섹션 흐름을 유지하면서, Basic 디자인 시스템의 색/타이포/서피스 규칙으로 재스킨한 비교용 문서.</div>
+      <div class="card-tags">
+        <span class="tag tag-sky">Proof</span>
+        <span class="tag tag-yellow">Basic Style</span>
+        <span class="tag tag-navy">Same Layout</span>
+      </div>
+    </div>
+  </a>
 </div>
 <footer class="footer">
   <div class="footer-brand">TAMAVERSE <span>DESIGN</span></div>
-  <div style="font-size:.8rem;opacity:.6;">Design System Collection — 3 Theme Variants</div>
+  <div style="font-size:.8rem;opacity:.6;">Design System Collection — 4 Published Documents</div>
   <div class="footer-copy">&copy; 2024-2026 TAMAVERSE DESIGN</div>
 </footer>
 </body>
