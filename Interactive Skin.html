@@ -1859,13 +1859,6 @@ document.addEventListener('DOMContentLoaded', () => {
 .skin-hud.basic-mode .skin-hud-fill {
   background: linear-gradient(90deg, #33C1FF, #FFE500);
 }
-.skin-hud-dir {
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 0.7rem;
-}
-.skin-hud-dir.visible { opacity: 1; }
-
 /* ── Smooth transitions for skin changes ── */
 body, .tm-env-bg, .tm-navbar, .tm-sidebar, .tm-surface, .tm-footer,
 .tm-btn, .tm-badge, .tm-input, .tm-table th, .tm-table td,
@@ -2321,7 +2314,6 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   </div>
   <span style="font-size:0.65rem;white-space:nowrap;">KAWAII</span>
   <span id="skinPercent" style="min-width:32px;text-align:right;">0%</span>
-  <span class="skin-hud-dir" id="skinDir">← → 전환</span>
 </div>
 
 <script id="skin-controller">
@@ -2342,7 +2334,6 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   }
   const hudFill = document.getElementById('skinHudFill');
   const hudPercent = document.getElementById('skinPercent');
-  const hudDir = document.getElementById('skinDir');
   const skinHud = document.getElementById('skinHud');
 
   // ── Color helpers ──
@@ -2637,14 +2628,6 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     step = Math.max(0, Math.min(STEPS, newStep));
     progress = step / STEPS;
     applySkin(progress);
-    updateHudSteps();
-  }
-
-  function updateHudSteps() {
-    hudDir.textContent = `${step} / ${STEPS}`;
-    hudDir.classList.add('visible');
-    clearTimeout(hudDir._hideTimer);
-    hudDir._hideTimer = setTimeout(() => hudDir.classList.remove('visible'), 3000);
   }
 
   window.addEventListener('keydown', (e) => {
@@ -2686,7 +2669,6 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
       step = Math.round(clamped * STEPS);
       progress = clamped;
       applySkin(clamped);
-      updateHudSteps();
     },
     get: () => progress,
     step: () => step,
