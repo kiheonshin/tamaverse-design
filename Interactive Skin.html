@@ -225,7 +225,12 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
    8. MARQUEE
    -------------------------------------------------------------------------- */
 .tama-marquee { background: var(--color-accent); padding: var(--sp-3) 0; overflow: hidden; white-space: nowrap; transform: skewY(-2deg); margin: var(--sp-4) 0 var(--sp-8) 0; border-top: 3px solid var(--tm-dark-900); border-bottom: 3px solid var(--tm-dark-900); }
-.tama-marquee-flat { transform: none; }
+.tama-marquee-flat {
+  transform: none;
+  background: #FFFF00;
+  position: relative;
+  z-index: 12;
+}
 .tama-marquee-inner { display: inline-flex; animation: marquee 20s linear infinite; }
 .tama-marquee-text { font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-2xl); color: var(--tm-dark-900); letter-spacing: 2px; margin-right: var(--sp-8); }
 
@@ -1624,35 +1629,51 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --------------------------------------------------------------------------
        5. 3D TILT CARDS
        -------------------------------------------------------------------------- */
-    const tiltCards = document.querySelectorAll('.tm-tilt-card');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -15;
-            const rotateY = ((x - centerX) / centerX) * 15;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    function bindTiltCards(scope = document) {
+        const tiltCards = scope.querySelectorAll('.tm-tilt-card');
+        tiltCards.forEach(card => {
+            if (card.dataset.tiltBound === '1') return;
+            card.dataset.tiltBound = '1';
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.transition = 'transform 0.5s var(--ease-bounce)';
+                setTimeout(() => { card.style.transition = ''; }, 500);
+            });
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            card.style.transition = 'transform 0.5s var(--ease-bounce)';
-            setTimeout(() => { card.style.transition = ''; }, 500);
-        });
-    });
+    }
+
+    bindTiltCards();
 
     /* --------------------------------------------------------------------------
        6. ACCORDION LOGIC
        -------------------------------------------------------------------------- */
-    const accordions = document.querySelectorAll('.tm-accordion-header');
-    accordions.forEach(acc => {
-        acc.addEventListener('click', () => {
-            const parent = acc.parentElement;
-            parent.classList.toggle('is-open');
+    function bindAccordions(scope = document) {
+        const accordions = scope.querySelectorAll('.tm-accordion-header');
+        accordions.forEach(acc => {
+            if (acc.dataset.accordionBound === '1') return;
+            acc.dataset.accordionBound = '1';
+            acc.addEventListener('click', () => {
+                const parent = acc.parentElement;
+                parent.classList.toggle('is-open');
+            });
         });
-    });
+    }
+
+    bindAccordions();
+    window.__rebindInteractiveSkinDemos = (scope = document) => {
+        bindTiltCards(scope);
+        bindAccordions(scope);
+    };
 
     /* --------------------------------------------------------------------------
        7. THEME SWITCHER
@@ -2011,6 +2032,10 @@ body[data-skin="basic"] .tama-marquee {
   box-shadow: none;
 }
 
+body[data-skin="basic"] .tama-marquee-flat {
+  background: #FFE500 !important;
+}
+
 body[data-skin="basic"] .tama-marquee-text {
   color: #14305A;
   letter-spacing: 0.1em;
@@ -2311,6 +2336,10 @@ body[data-skin="basic"] .guide-code-block .comment { color: #A0AEC0; }
 body[data-skin="basic"] .guide-code-block .prop { color: #0EA5E9; }
 body[data-skin="basic"] .guide-code-block .value { color: #FF6B9D; }
 body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
+body[data-skin="basic"] .tm-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 
 <!-- Skin HUD -->
@@ -2323,6 +2352,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   <span id="skinPercent" style="min-width:32px;text-align:right;">0%</span>
 </div>
 
+<script src="interactive-basic-endpoint-patches.js"></script>
 <script id="skin-controller">
 (function() {
   'use strict';
@@ -2332,6 +2362,9 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
 
   const root = document.documentElement;
   const body = document.body;
+  const basicEndpointPatches = Array.isArray(window.__basicEndpointPatches) ? window.__basicEndpointPatches : [];
+  const basicEndpointOriginals = new Map();
+  let basicEndpointApplied = false;
 
   // The original document sets CSS variables via [data-theme="tama-arena"] on <body>,
   // which takes precedence over :root. We must set variables on body too.
@@ -2444,6 +2477,37 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     clearInlineProps('.tm-accordion-header', ['background', 'color']);
   }
 
+  function getEndpointNode(path) {
+    let node = body;
+    for (const index of path) {
+      if (!node || !node.children || !node.children[index]) return null;
+      node = node.children[index];
+    }
+    return node;
+  }
+
+  function syncBasicEndpointContent(mode) {
+    if (!basicEndpointPatches.length) return;
+    if (mode === 'basic' && basicEndpointApplied) return;
+    if (mode !== 'basic' && !basicEndpointApplied) return;
+
+    basicEndpointPatches.forEach((patch, index) => {
+      const node = getEndpointNode(patch.path);
+      if (!node) return;
+      if (!basicEndpointOriginals.has(index)) {
+        basicEndpointOriginals.set(index, node.innerHTML);
+      }
+      node.innerHTML = mode === 'basic'
+        ? patch.value
+        : basicEndpointOriginals.get(index);
+    });
+
+    basicEndpointApplied = mode === 'basic';
+    if (typeof window.__rebindInteractiveSkinDemos === 'function') {
+      window.__rebindInteractiveSkinDemos(document);
+    }
+  }
+
   function renderHud(p, isBasicMode) {
     hudFill.style.width = (p * 100) + '%';
     hudPercent.textContent = Math.round(p * 100) + '%';
@@ -2481,11 +2545,13 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
       clearManagedVars();
       resetSkinOverrides();
       body.dataset.skin = 'basic';
+      syncBasicEndpointContent('basic');
       renderHud(p, true);
       return;
     }
 
     if (exactKawaii) {
+      syncBasicEndpointContent('kawaii');
       clearManagedVars();
       resetSkinOverrides();
       body.removeAttribute('data-skin');
@@ -2493,6 +2559,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
       return;
     }
 
+    syncBasicEndpointContent('kawaii');
     body.removeAttribute('data-skin');
 
     // === Core semantic colors ===
