@@ -225,6 +225,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
    8. MARQUEE
    -------------------------------------------------------------------------- */
 .tama-marquee { background: var(--color-accent); padding: var(--sp-3) 0; overflow: hidden; white-space: nowrap; transform: skewY(-2deg); margin: var(--sp-4) 0 var(--sp-8) 0; border-top: 3px solid var(--tm-dark-900); border-bottom: 3px solid var(--tm-dark-900); }
+.tama-marquee-flat { transform: none; }
 .tama-marquee-inner { display: inline-flex; animation: marquee 20s linear infinite; }
 .tama-marquee-text { font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-2xl); color: var(--tm-dark-900); letter-spacing: 2px; margin-right: var(--sp-8); }
 
@@ -560,7 +561,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 </nav>
 
 <!-- Dynamic Marquee Banner -->
-<div class="tama-marquee tm-reveal" style="margin-top: 0;" aria-hidden="true">
+<div class="tama-marquee tama-marquee-flat tm-reveal" style="margin-top: 0;" aria-hidden="true">
     <div class="tama-marquee-inner">
         <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
         <span class="tama-marquee-text">&diams; KAWAII CYBER-POP &diams;</span>
@@ -2479,7 +2480,8 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
 
     // === Marquees ===
     document.querySelectorAll('.tama-marquee').forEach(el => {
-      el.style.transform = `skewY(${lerp(-2, 0, t)}deg)`;
+      const isFlatMarquee = el.classList.contains('tama-marquee-flat');
+      el.style.transform = isFlatMarquee ? 'none' : `skewY(${lerp(-2, 0, t)}deg)`;
       el.style.background = lerpColor('FFFF00','FFE500',t);
       el.style.borderTopWidth = `${lerp(3, 0, t).toFixed(2)}px`;
       el.style.borderTopColor = lerpColor('0d001a','14305A',t);
