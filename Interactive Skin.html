@@ -225,12 +225,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
    8. MARQUEE
    -------------------------------------------------------------------------- */
 .tama-marquee { background: var(--color-accent); padding: var(--sp-3) 0; overflow: hidden; white-space: nowrap; transform: skewY(-2deg); margin: var(--sp-4) 0 var(--sp-8) 0; border-top: 3px solid var(--tm-dark-900); border-bottom: 3px solid var(--tm-dark-900); }
-.tama-marquee-flat {
-  transform: none;
-  background: #FFFF00;
-  position: relative;
-  z-index: 12;
-}
+.tama-marquee-flat { transform: none; }
 .tama-marquee-inner { display: inline-flex; animation: marquee 20s linear infinite; }
 .tama-marquee-text { font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-2xl); color: var(--tm-dark-900); letter-spacing: 2px; margin-right: var(--sp-8); }
 
@@ -636,16 +631,16 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">1</span>
         <h2>Navigation</h2>
     </div>
-    <p class="section-desc">화이트 서피스 기반의 스티키 네비바, 스크롤 스파이 사이드바, 모바일 아코디언 사이드바로 구성됩니다.</p>
+    <p class="section-desc">글래스-블러 스티키 네비바, 스크롤 스파이 사이드바, 모바일 아코디언 사이드바로 구성됩니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
             <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Sticky Navbar</div>
             <div class="tama-section-title-jp">スティッキー・ナビバー</div>
         </div>
-        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">white surface + navy border + compact accent controls</p>
+        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">backdrop-filter: blur(15px) + glass background + neon border</p>
         <div style="background: var(--color-bg-transparent); backdrop-filter: blur(15px); border: 2px solid var(--color-border); border-radius: var(--rad-lg); padding: var(--sp-4) var(--sp-6); display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-xl); color: var(--color-primary);">TAMAVERSE</span>
+            <span style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-xl); color: var(--color-accent); text-shadow: 0 0 10px var(--color-primary);">TAMAVERSE</span>
             <div class="tm-d-flex tm-gap-4">
                 <span style="font-size: var(--text-sm); color: var(--color-secondary); font-weight: 700;">Agent</span>
                 <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Work</span>
@@ -660,10 +655,10 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
             <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Sidebar with Scroll Spy</div>
             <div class="tama-section-title-jp">スクロールスパイ・サイドバー</div>
         </div>
-        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">white card sidebar + active indicator bar + compact spacing</p>
-        <div style="background: rgba(255,255,255,0.94); border: 1px solid rgba(20,48,90,0.1); border-radius: var(--rad-lg); padding: var(--sp-6) var(--sp-4); max-width: 260px; margin: 0 auto; box-shadow: 0 8px 24px rgba(20,48,90,0.08);">
+        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">glass-blur backdrop + active indicator bar + tension scroll</p>
+        <div style="background: rgba(10,5,20,0.65); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--rad-lg); padding: var(--sp-6) var(--sp-4); max-width: 260px; margin: 0 auto;">
             <div style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-xl); color: var(--color-primary); margin-bottom: var(--sp-4);">SYSTEM INDEX</div>
-            <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); background: rgba(51,193,255,0.12); color: #14305A; font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2); border-left: 4px solid #33C1FF;">01 Colors</div>
+            <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); background: rgba(255,0,255,0.15); color: #fff; font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2); border-left: 4px solid var(--color-primary);">01 Colors</div>
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2);">02 Typography</div>
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-2);">03 Spacing</div>
             <div style="padding: var(--sp-2) var(--sp-4); border-radius: var(--rad-sm); color: var(--color-text-muted); font-weight: 700; font-size: var(--text-sm);">04 Shadows</div>
@@ -816,7 +811,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
                 <span class="tm-accordion-icon" aria-hidden="true">&#9660;</span>
             </div>
             <div class="tm-accordion-content">
-                <p>Includes compact navigation patterns, elevation cards, restrained motion, and foundation color accents.</p>
+                <p>Includes advanced motion systems, canvas particles, 3D tilting cards, and glass-morphism surfaces.</p>
             </div>
         </div>
         <div class="tm-accordion">
@@ -839,25 +834,25 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">5</span>
         <h2>Cards</h2>
     </div>
-    <p class="section-desc">화이트 카드 서피스와 3D 틸트 카드. 네이비 보더와 얕은 elevation 그림자로 계층을 만듭니다.</p>
+    <p class="section-desc">글래스모피즘 Surface 카드와 3D 틸트 카드. backdrop-filter: blur와 네온 보더로 구성됩니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Foundation Surface</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glass-Morphism Surface</div>
             <div class="tama-section-title-jp">グラスモーフィズム・サーフェス</div>
         </div>
-        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">white fill + navy border + subtle card elevation</p>
+        <p class="tm-text-center" style="color: var(--color-text-muted); margin-bottom: var(--sp-4);">backdrop-filter: blur(16px) + 반투명 배경 + 네온 보더</p>
         <div class="tm-row">
             <div class="tm-col">
                 <div class="tm-surface tm-text-center">
                     <h4 style="color: var(--color-primary);">Surface Card</h4>
-                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">기본 카드. hover시 얕은 상승과 navy-tint 그림자로만 반응합니다.</p>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">기본 카드. hover시 보더 색상 변경 + 상승 효과 + 글래스 리플렉션.</p>
                 </div>
             </div>
             <div class="tm-col">
                 <div class="tm-surface tm-text-center">
                     <span class="tm-badge tm-badge-success" style="margin-bottom: var(--sp-3);">ONLINE</span>
-                    <h4 style="color: var(--color-primary);">Status Card</h4>
+                    <h4 style="color: var(--color-secondary);">Status Card</h4>
                     <p style="font-size: var(--text-sm); color: var(--color-text-muted);">뱃지와 아이콘을 포함한 상태 카드 패턴.</p>
                 </div>
             </div>
@@ -879,8 +874,8 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
             </div>
             <div class="tm-col">
                 <div class="tm-surface tm-tilt-card tm-text-center">
-                    <h3 class="tm-text-accent" style="animation: none;">Accent Highlight</h3>
-                    <p style="font-size: var(--text-sm);">핑크 포인트 컬러를 소량 사용해 시선을 모읍니다.</p>
+                    <h3 class="tm-text-accent" style="animation: neonFlicker 3s infinite;">Neon Flicker</h3>
+                    <p style="font-size: var(--text-sm);">사이버펑크 사이니지 스타일링에 사용.</p>
                 </div>
             </div>
         </div>
@@ -895,7 +890,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">6</span>
         <h2>Buttons</h2>
     </div>
-    <p class="section-desc">플랫한 필 버튼과 outline 버튼을 기본으로 사용합니다. hover에서는 얕은 elevation만 추가됩니다.</p>
+    <p class="section-desc">마그네틱 호버와 리플 이펙트를 지원하는 네온 글로우 버튼. Primary / Secondary / Accent / Ghost 변형을 제공합니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
@@ -968,16 +963,16 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         </div>
         <div style="display: flex; flex-direction: column; gap: var(--sp-3);">
             <div style="height: 60px; border-radius: var(--rad-lg); background: var(--color-surface); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">SURFACE (Base)</span>
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">SURFACE (Glass)</span>
             </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(51,193,255,0.12); border: 2px solid #33C1FF; display: flex; align-items: center; padding: 0 var(--sp-6);">
+            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(0,255,255,0.1); border: 2px solid var(--color-secondary); display: flex; align-items: center; padding: 0 var(--sp-6);">
                 <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-secondary);">SECONDARY TINT</span>
             </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(255,107,157,0.12); border: 2px solid #FF6B9D; display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: #FF6B9D;">PRIMARY TINT</span>
+            <div style="height: 60px; border-radius: var(--rad-lg); background: rgba(255,0,255,0.1); border: 2px solid var(--color-primary); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-primary);">PRIMARY TINT</span>
             </div>
-            <div style="height: 60px; border-radius: var(--rad-lg); background: #14305A; border: 2px solid #FFE500; display: flex; align-items: center; padding: 0 var(--sp-6);">
-                <span style="font-family: var(--font-family-heading); font-weight: 900; color: #ffffff;">DARK BACKGROUND</span>
+            <div style="height: 60px; border-radius: var(--rad-lg); background: var(--tm-dark-900); border: 2px solid var(--color-accent); display: flex; align-items: center; padding: 0 var(--sp-6);">
+                <span style="font-family: var(--font-family-heading); font-weight: 900; color: var(--color-accent);">DARK BACKGROUND</span>
             </div>
         </div>
     </div>
@@ -991,19 +986,19 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">8</span>
         <h2>Shadows &amp; Radius</h2>
     </div>
-    <p class="section-desc">Basic 스타일은 glow 대신 navy-tint elevation을 사용합니다. 라운드 값은 간결하게, 그림자는 얕고 또렷하게 유지합니다.</p>
+    <p class="section-desc">네온 글로우 쉐도우와 글래스모피즘 엘리베이션이 Kawaii Cyber-Pop의 핵심 시각 요소입니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Elevation Shadows</div>
-            <div class="tama-section-title-jp">エレベーションシャドウ</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Glow &amp; Elevation Shadows</div>
+            <div class="tama-section-title-jp">グロー＆エレベーションシャドウ</div>
         </div>
         <div class="tm-shadow-grid">
             <div class="tm-shadow-box" style="box-shadow: var(--shadow-sm);">shadow-sm<br><span style="color: var(--color-text-muted);">Subtle</span></div>
             <div class="tm-shadow-box" style="box-shadow: var(--shadow-md);">shadow-md<br><span style="color: var(--color-text-muted);">Default</span></div>
             <div class="tm-shadow-box" style="box-shadow: var(--shadow-lg);">shadow-lg<br><span style="color: var(--color-text-muted);">Elevated</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-xl);">shadow-xl<br><span style="color: var(--color-text-muted);">Large Surface</span></div>
-            <div class="tm-shadow-box" style="box-shadow: var(--shadow-card-hover);">card-hover<br><span style="color: var(--color-text-muted);">Interactive Card</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-primary); border-color: var(--color-primary);">glow-primary<br><span style="color: var(--color-primary);">Neon Pink</span></div>
+            <div class="tm-shadow-box" style="box-shadow: var(--shadow-glow-secondary); border-color: var(--color-secondary);">glow-secondary<br><span style="color: var(--color-secondary);">Neon Cyan</span></div>
         </div>
     </div>
 
@@ -1015,15 +1010,15 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <div class="tm-radius-row" style="margin-bottom: var(--sp-16);">
             <div style="text-align: center;">
                 <div class="tm-radius-box" style="border-radius: var(--rad-sm);">sm</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">4px</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">6px</div>
             </div>
             <div style="text-align: center;">
                 <div class="tm-radius-box" style="border-radius: var(--rad-md);">md</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">8px</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">12px</div>
             </div>
             <div style="text-align: center;">
                 <div class="tm-radius-box" style="border-radius: var(--rad-lg);">lg</div>
-                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">16px</div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--sp-2);">24px</div>
             </div>
             <div style="text-align: center;">
                 <div class="tm-radius-box" style="border-radius: var(--rad-pill); width: 96px;">pill</div>
@@ -1056,11 +1051,11 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">9</span>
         <h2>Badges</h2>
     </div>
-    <p class="section-desc">스카이, 옐로우, 핑크 포인트 컬러를 카테고리 태그와 상태 표시에 사용합니다.</p>
+    <p class="section-desc">네온 글로우 뱃지로 카테고리 태그, 상태 표시에 사용합니다. 펄스 애니메이션 변형을 지원합니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Color Utility Badges</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Neon Glow Badges</div>
             <div class="tama-section-title-jp">ネオングロー・バッジ</div>
         </div>
         <div class="tm-badge-panel" style="margin-bottom: var(--sp-16);">
@@ -1106,82 +1101,88 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <h2>Colors</h2>
     </div>
     <p class="section-desc">
-        Basic 스타일은 Sky Blue, Yellow, Pink를 포인트 컬러로 사용하고, Navy와 Gray 계열을 텍스트와 구조 색으로 사용합니다. 강한 glow 대신 선명한 면 대비와 얕은 elevation을 우선합니다.
+        Kawaii Cyber-Pop의 컬러 팔레트는 네온 글로우 기반입니다. CSS 커스텀 프로퍼티(<code>--tm-pink</code>, <code>--tm-cyan</code>, <code>--tm-yellow</code>)로 정의되며, 두 가지 테마(tama-arena, monster-carnival)를 지원합니다.
     </p>
 
-    <!-- Foundation Colors -->
+    <!-- Primary Neon Colors -->
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Foundation Colors</div>
-            <div class="tama-section-title-jp">ファンデーションカラー</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Primary Neon Colors</div>
+            <div class="tama-section-title-jp">プライマリ・ネオンカラー</div>
         </div>
-        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">핵심 포인트 컬러 — Sky / Yellow / Pink</p>
+        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">핵심 네온 컬러 — Pink / Cyan / Yellow 계열</p>
         <div class="tm-swatch-grid">
-            <div class="tm-swatch" style="background: #33C1FF; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Sky</div>
-            <div class="tm-swatch" style="background: #7CDCFF; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Sky Light</div>
-            <div class="tm-swatch" style="background: #0EA5E9; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Sky Dark</div>
-            <div class="tm-swatch" style="background: #FFE500; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Yellow</div>
-            <div class="tm-swatch" style="background: #FFF176; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Yellow Light</div>
+            <div class="tm-swatch" style="background: #ffd6ff; box-shadow: 0 0 10px #ffd6ff; color: #333;">Pink 100</div>
+            <div class="tm-swatch" style="background: #ff80ff; box-shadow: 0 0 10px #ff80ff;">Pink 300</div>
+            <div class="tm-swatch" style="background: #FF00FF; box-shadow: 0 0 15px #FF00FF;">Pink 500</div>
+            <div class="tm-swatch" style="background: #b300b3; box-shadow: 0 0 10px #b300b3;">Pink 700</div>
+            <div class="tm-swatch" style="background: #4d004d; box-shadow: 0 0 10px #4d004d;">Pink 900</div>
         </div>
         <div class="tm-swatch-grid" style="margin-top: var(--sp-3);">
-            <div class="tm-swatch" style="background: #F9D100; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Yellow Dark</div>
-            <div class="tm-swatch" style="background: #FF6B9D; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Pink</div>
-            <div class="tm-swatch" style="background: #FFB6D3; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Pink Light</div>
-            <div class="tm-swatch" style="background: #4ECDC4; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Green</div>
-            <div class="tm-swatch" style="background: #FF8C42; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Orange</div>
+            <div class="tm-swatch" style="background: #d6ffff; box-shadow: 0 0 10px #d6ffff; color: #333;">Cyan 100</div>
+            <div class="tm-swatch" style="background: #80ffff; box-shadow: 0 0 10px #80ffff; color: #333;">Cyan 300</div>
+            <div class="tm-swatch" style="background: #00FFFF; box-shadow: 0 0 15px #00FFFF; color: #111;">Cyan 500</div>
+            <div class="tm-swatch" style="background: #00b3b3; box-shadow: 0 0 10px #00b3b3;">Cyan 700</div>
+            <div class="tm-swatch" style="background: #004d4d; box-shadow: 0 0 10px #004d4d;">Cyan 900</div>
+        </div>
+        <div class="tm-swatch-grid" style="margin-top: var(--sp-3);">
+            <div class="tm-swatch" style="background: #ffffd6; box-shadow: 0 0 10px #ffffd6; color: #333;">Yellow 100</div>
+            <div class="tm-swatch" style="background: #ffff80; box-shadow: 0 0 10px #ffff80; color: #333;">Yellow 300</div>
+            <div class="tm-swatch" style="background: #FFFF00; box-shadow: 0 0 15px #FFFF00; color: #111;">Yellow 500</div>
+            <div class="tm-swatch" style="background: #b3b300; box-shadow: 0 0 10px #b3b300;">Yellow 700</div>
+            <div class="tm-swatch" style="background: #4d4d00; box-shadow: 0 0 10px #4d4d00;">Yellow 900</div>
         </div>
     </div>
 
-    <!-- Neutral & Semantic Colors -->
+    <!-- Dark & Semantic Colors -->
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Neutral &amp; Semantic Colors</div>
-            <div class="tama-section-title-jp">ニュートラル＆セマンティックカラー</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Dark &amp; Semantic Colors</div>
+            <div class="tama-section-title-jp">ダーク・セマンティックカラー</div>
         </div>
-        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">구조, 텍스트, 상태 표시에 사용하는 중성 및 시맨틱 색상</p>
+        <p style="text-align: center; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-4);">배경, 상태 표시에 사용하는 다크 및 시맨틱 색상</p>
         <div class="tm-swatch-grid">
-            <div class="tm-swatch" style="background: #14305A; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Navy</div>
-            <div class="tm-swatch" style="background: #1E4D8C; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Navy Light</div>
-            <div class="tm-swatch" style="background: #2D3748; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Gray 800</div>
-            <div class="tm-swatch" style="background: #A0AEC0; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Gray 400</div>
-            <div class="tm-swatch" style="background: #F1F5F9; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Gray 100</div>
+            <div class="tm-swatch" style="background: #8A2BE2; box-shadow: 0 0 10px #8A2BE2;">Dark 100</div>
+            <div class="tm-swatch" style="background: #3a0066; box-shadow: 0 0 10px #3a0066;">Dark 500</div>
+            <div class="tm-swatch" style="background: #1a0033; box-shadow: 0 0 10px #1a0033;">Dark 800</div>
+            <div class="tm-swatch" style="background: #0d001a; box-shadow: 0 0 10px #0d001a;">Dark 900</div>
         </div>
         <div class="tm-swatch-grid" style="margin-top: var(--sp-3);">
-            <div class="tm-swatch" style="background: #48BB78; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Success</div>
-            <div class="tm-swatch" style="background: #ECC94B; border: 1px solid rgba(20,48,90,0.08); color: #14305A;">Warning</div>
-            <div class="tm-swatch" style="background: #F56565; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Error</div>
-            <div class="tm-swatch" style="background: #4299E1; border: 1px solid rgba(20,48,90,0.08); color: #ffffff;">Info</div>
+            <div class="tm-swatch" style="background: #39FF14; box-shadow: 0 0 12px #39FF14; color: #111;">Success</div>
+            <div class="tm-swatch" style="background: #FF8C00; box-shadow: 0 0 12px #FF8C00;">Warning</div>
+            <div class="tm-swatch" style="background: #FF0055; box-shadow: 0 0 12px #FF0055;">Danger</div>
+            <div class="tm-swatch" style="background: #00BFFF; box-shadow: 0 0 12px #00BFFF;">Info</div>
         </div>
     </div>
 
-    <!-- Palette Roles -->
+    <!-- Theme Palettes -->
     <div class="tm-surface">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Palette Roles</div>
-            <div class="tama-section-title-jp">パレットロール</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Theme Palettes</div>
+            <div class="tama-section-title-jp">テーマ・パレット</div>
         </div>
         <div class="tm-row">
             <div class="tm-col">
-                <h4 style="color: #14305A;">Structure &amp; Text</h4>
+                <h4 style="color: var(--tm-pink-500); text-shadow: 0 0 10px var(--tm-pink-500);">tama-arena</h4>
                 <table class="tm-token-table">
                     <tbody>
-                        <tr><td>본문 / 제목 텍스트</td><td><code>#14305A</code> Navy</td></tr>
-                        <tr><td>카드 보더</td><td><code>#14305A</code> 3px</td></tr>
-                        <tr><td>보조 텍스트</td><td><code>#4A5568</code> Gray 600</td></tr>
-                        <tr><td>페이지 배경</td><td><code>#F1F5F9</code> Gray 100</td></tr>
-                        <tr><td>카드 배경</td><td><code>#FFFFFF</code> White</td></tr>
+                        <tr><td>--color-bg</td><td><code>#1a0033</code></td></tr>
+                        <tr><td>--color-primary</td><td><code>#FF00FF</code></td></tr>
+                        <tr><td>--color-secondary</td><td><code>#00FFFF</code></td></tr>
+                        <tr><td>--color-accent</td><td><code>#FFFF00</code></td></tr>
+                        <tr><td>--grid-line</td><td><code>#00FFFF</code></td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="tm-col">
-                <h4 style="color: #33C1FF;">Accent &amp; Section Colors</h4>
+                <h4 style="color: #39FF14; text-shadow: 0 0 10px #39FF14;">monster-carnival</h4>
                 <table class="tm-token-table">
                     <tbody>
-                        <tr><td>캐릭터 / 링크 포인트</td><td><code>#33C1FF</code> Sky</td></tr>
-                        <tr><td>뉴스 / CTA 포인트</td><td><code>#FFE500</code> Yellow</td></tr>
-                        <tr><td>NEW / 하이라이트</td><td><code>#FF6B9D</code> Pink</td></tr>
-                        <tr><td>보조 액센트</td><td><code>#4ECDC4</code> Green</td></tr>
-                        <tr><td>캠페인 포인트</td><td><code>#FF8C42</code> Orange</td></tr>
+                        <tr><td>--color-bg</td><td><code>#0a0a0a</code></td></tr>
+                        <tr><td>--color-primary</td><td><code>#8A2BE2</code></td></tr>
+                        <tr><td>--color-secondary</td><td><code>#39FF14</code></td></tr>
+                        <tr><td>--color-accent</td><td><code>#FF0055</code></td></tr>
+                        <tr><td>--grid-line</td><td><code>#39FF14</code></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1209,8 +1210,8 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
 
         <div style="margin-bottom: var(--sp-8);">
             <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-3);">Heading &mdash; Poppins</p>
-            <div style="padding-bottom: var(--sp-4); border-bottom: 1px solid rgba(20,48,90,0.1);">
-                <div style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-4xl); color: var(--color-primary);">TAMAVERSE BASIC FOUNDATION</div>
+            <div style="padding-bottom: var(--sp-4); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-4xl); color: var(--color-accent); text-shadow: 0 0 10px var(--color-accent);">TAMAVERSE KAWAII CYBER-POP</div>
                 <div class="tm-d-flex tm-gap-4" style="margin-top: var(--sp-2); flex-wrap: wrap;">
                     <code>--font-family-heading</code>
                     <span style="font-size: var(--text-xs); color: var(--color-text-muted);">영문 제목, 섹션 헤더, 네비게이션</span>
@@ -1219,7 +1220,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         </div>
 
         <div style="margin-bottom: var(--sp-8);">
-            <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-3);">Body &mdash; Noto Sans KR / JP</p>
+            <p style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-muted); margin-bottom: var(--sp-3);">Body &mdash; Nunito</p>
             <div style="padding-bottom: var(--sp-4); border-bottom: 1px solid rgba(255,255,255,0.1);">
                 <div style="font-family: var(--font-family-body); font-size: var(--text-md); line-height: 1.7;">
                     The quick brown fox jumps over the lazy dog. Nunito is a well-balanced rounded sans-serif designed for excellent readability in body text and UI elements.
@@ -1338,7 +1339,7 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">13</span>
         <h2>Design Patterns</h2>
     </div>
-    <p class="section-desc">Tamaverse Basic 디자인 시스템에서 가져온 핵심 파운데이션 패턴 요약입니다.</p>
+    <p class="section-desc">Kawaii Cyber-Pop 테마에서 추출한 핵심 디자인 패턴 요약입니다.</p>
 
     <div class="tm-surface tm-mb-6">
         <div class="tama-section-header">
@@ -1348,14 +1349,14 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <table class="tm-token-table">
             <thead><tr><th>Principle</th><th>Description</th></tr></thead>
             <tbody>
-                <tr><td><strong>Character-Centric Palette</strong></td><td>Sky, Yellow, Pink를 포인트 컬러로 사용하고 Navy를 구조 색으로 사용.</td></tr>
-                <tr><td><strong>White Surface Cards</strong></td><td>카드는 화이트 배경 + 네이비 보더 + 얕은 navy-tint 그림자로 구성.</td></tr>
-                <tr><td><strong>Bright Foundation Theme</strong></td><td>밝은 배경 위 명료한 색면 대비를 사용하며, 텍스트는 항상 Navy 계열 유지.</td></tr>
-                <tr><td><strong>Restrained Motion</strong></td><td>호버 시 작은 상승, 색상 전환, 마키 이동 등 목적이 분명한 모션만 사용.</td></tr>
+                <tr><td><strong>Neon Glow Foundation</strong></td><td>네온 box-shadow + 사이버 보더로 미래적이고 몰입감 있는 느낌을 부여.</td></tr>
+                <tr><td><strong>Glass-Morphism Surfaces</strong></td><td>backdrop-filter: blur(16px) + 반투명 배경으로 깊이감과 계층 생성.</td></tr>
+                <tr><td><strong>Dark-First Theming</strong></td><td>다크 퍼플/블랙 배경 위 네온 컬러. CSS 변수로 테마 전환 지원.</td></tr>
+                <tr><td><strong>Micro-Interactions</strong></td><td>마그네틱 호버, 리플 클릭, 3D 틸트, 파티클 캔버스 등 JS 기반 인터랙션.</td></tr>
                 <tr><td><strong>Bilingual Headers</strong></td><td>영문 대문자 + 일본어 서브타이틀의 이중 구조 (EN + JP).</td></tr>
                 <tr><td><strong>Fluid Typography</strong></td><td>clamp() 기반 유동 타입 스케일로 반응형 타이포그래피.</td></tr>
                 <tr><td><strong>Token-Driven System</strong></td><td>모든 시각적 속성을 CSS 커스텀 프로퍼티로 정의하여 일관성 유지.</td></tr>
-                <tr><td><strong>Component Consistency</strong></td><td>버튼, 뱃지, 카드, 섹션 타이틀이 동일한 컬러 역할 체계를 공유.</td></tr>
+                <tr><td><strong>Cyberpunk Motion</strong></td><td>neonFlicker, floatY, glitch, scalePulse 등 키프레임 애니메이션 라이브러리.</td></tr>
             </tbody>
         </table>
     </div>
@@ -1368,14 +1369,14 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <table class="tm-token-table">
             <thead><tr><th>Context</th><th>Color Token</th></tr></thead>
             <tbody>
-                <tr><td>메인 배경</td><td><code>--color-bg</code> (Gray 100)</td></tr>
-                <tr><td>카드 / Surface 배경</td><td><code>--color-surface</code> (White)</td></tr>
-                <tr><td>제목 / 구조색</td><td><code>--color-primary</code> (Navy)</td></tr>
-                <tr><td>링크 / 스카이 포인트</td><td><code>--color-secondary</code> (Sky Blue)</td></tr>
-                <tr><td>하이라이트 / NEW</td><td><code>--color-accent</code> (Pink)</td></tr>
-                <tr><td>CTA / 강조 배경</td><td><code>--tm-yellow-500</code> (Yellow)</td></tr>
-                <tr><td>본문 텍스트</td><td><code>--color-text</code> (Navy)</td></tr>
-                <tr><td>보더 / 구분선</td><td><code>--color-border</code> (Navy 12%)</td></tr>
+                <tr><td>메인 배경</td><td><code>--color-bg</code> (dark purple / black)</td></tr>
+                <tr><td>카드 / Surface 배경</td><td><code>--color-surface</code> (반투명 + blur)</td></tr>
+                <tr><td>주요 강조 / CTA</td><td><code>--color-primary</code> (Pink / Violet)</td></tr>
+                <tr><td>보조 강조 / 링크</td><td><code>--color-secondary</code> (Cyan / Green)</td></tr>
+                <tr><td>포인트 / 경고</td><td><code>--color-accent</code> (Yellow / Red)</td></tr>
+                <tr><td>본문 텍스트</td><td><code>--color-text</code> (White / Light gray)</td></tr>
+                <tr><td>보더 / 구분선</td><td><code>--color-border</code> (반투명 네온)</td></tr>
+                <tr><td>보조 텍스트</td><td><code>--color-text-muted</code> (60% 투명도)</td></tr>
             </tbody>
         </table>
     </div>
@@ -1388,10 +1389,10 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <table class="tm-token-table">
             <thead><tr><th>규칙</th><th>이유</th></tr></thead>
             <tbody>
-                <tr><td><strong>포인트 컬러를 본문 텍스트에 과도하게 사용 금지</strong></td><td>가독성을 위해 제목/본문 텍스트는 Navy를 우선 사용.</td></tr>
-                <tr><td><strong>카드에 과한 glow 또는 깊은 shadow 중첩 금지</strong></td><td>Basic 스타일은 얕은 elevation으로만 계층을 표현.</td></tr>
-                <tr><td><strong>반투명 글래스 효과 남용 금지</strong></td><td>화이트 서피스가 기본이며, blur는 필수 규칙이 아님.</td></tr>
-                <tr><td><strong>스카이, 옐로우, 핑크를 동시에 같은 비중으로 사용 금지</strong></td><td>한 화면에서 1개 주색 + 1개 보조 포인트 정도로 제한.</td></tr>
+                <tr><td><strong>밝은 배경(white, light gray) 사용 금지</strong></td><td>다크 테마 기반 시스템. 네온 글로우 효과가 밝은 배경에서 보이지 않음.</td></tr>
+                <tr><td><strong>글로우 쉐도우 없이 네온 컬러만 단독 사용 금지</strong></td><td>글로우 없는 네온색은 플랫해 보임. 항상 box-shadow와 함께 적용.</td></tr>
+                <tr><td><strong>backdrop-filter 없이 반투명 배경 사용 금지</strong></td><td>블러 없는 반투명 배경은 가독성을 해침. blur(16px) 이상 적용.</td></tr>
+                <tr><td><strong>두 테마의 토큰을 직접 혼합 사용 금지</strong></td><td>--color-* 변수를 통해 간접 참조할 것. 테마 전환 시 깨짐 방지.</td></tr>
                 <tr><td><strong>과도한 애니메이션 중첩 금지</strong></td><td>성능 저하 및 접근성 문제. prefers-reduced-motion 미디어 쿼리 존중.</td></tr>
             </tbody>
         </table>
@@ -1405,12 +1406,12 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <table class="tm-token-table">
             <thead><tr><th>Interaction</th><th>Token</th><th>Effect</th></tr></thead>
             <tbody>
-                <tr><td>버튼 hover</td><td><code>--trans-normal</code></td><td>-2px 상승 + 배경색 전환 + 얕은 shadow</td></tr>
-                <tr><td>버튼 active</td><td><code>--trans-normal</code></td><td>원위치 복귀 + shadow 제거</td></tr>
-                <tr><td>카드 hover</td><td><code>--trans-normal</code></td><td>-4px 상승 + card-hover shadow 적용</td></tr>
-                <tr><td>입력 focus</td><td><code>--trans-normal</code></td><td>Sky outline + 4px focus ring</td></tr>
+                <tr><td>버튼 hover</td><td><code>--trans-bounce</code></td><td>-4px 상승 + glow 확장 + brightness(1.2)</td></tr>
+                <tr><td>버튼 active</td><td><code>--trans-bounce</code></td><td>+4px 눌림 + glow 축소</td></tr>
+                <tr><td>카드 hover</td><td><code>--trans-bounce</code></td><td>-8px 상승 + border-color 전환 + glass 리플렉션</td></tr>
+                <tr><td>입력 focus</td><td><code>--trans-normal</code></td><td>border glow + scale(1.02) + background 변경</td></tr>
                 <tr><td>사이드바 링크</td><td><code>--trans-bounce</code></td><td>active bar scaleY + padding 변경</td></tr>
-                <tr><td>3D 틸트</td><td>JS direct</td><td>perspective 유지, 과한 회전/깜빡임 없이 데모 용도로만 사용</td></tr>
+                <tr><td>3D 틸트</td><td>JS direct</td><td>perspective + rotateX/Y max 15deg + scale3d(1.05)</td></tr>
             </tbody>
         </table>
     </div>
@@ -1424,11 +1425,11 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
         <span class="section-num" aria-hidden="true">14</span>
         <h2>Token Reference</h2>
     </div>
-    <p class="section-desc">이 섹션은 구조 비교를 위한 토큰 참조 블록입니다. 현재 문서는 좌우 화살표로 kawaii와 basic 상태를 겹쳐 비교할 수 있도록 구성되어 있습니다.</p>
+    <p class="section-desc">모든 디자인 토큰을 CSS 커스텀 프로퍼티로 참조할 수 있습니다.</p>
 
     <div class="tm-surface">
         <div class="tama-section-header">
-            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Reference &mdash; Source Token Block</div>
+            <div class="tama-section-title-en" style="font-size: var(--text-2xl);">Copy &amp; Paste &mdash; :root tokens</div>
             <div class="tama-section-title-jp">CSSカスタムプロパティ</div>
         </div>
         <div style="position: relative;">
@@ -1536,12 +1537,12 @@ code { font-family: var(--font-family-code); font-size: 0.85em; background: rgba
     <div class="tm-footer-dots" aria-hidden="true"></div>
     <div style="position: relative; z-index: 10;">
         <div style="font-family: var(--font-family-heading); font-weight: 900; font-size: var(--text-3xl); margin-bottom: var(--sp-2);">
-            TAMAVERSE BASIC FOUNDATION
+            TAMAVERSE <span style="color: var(--color-primary); text-shadow: 0 0 15px var(--color-primary);">KAWAII</span> <span style="color: var(--color-secondary); text-shadow: 0 0 15px var(--color-secondary);">CYBER-POP</span>
         </div>
         <div style="font-size: var(--text-sm); opacity: 0.5; margin-bottom: var(--sp-8);">
-            Design Proof Document &mdash; Basic visual language on Kawaii Cyber-Pop layout
+            Design System Guide v3.0 &mdash; CSS Custom Properties + Glass-Morphism + Neon Glow
         </div>
-        <div style="font-size: var(--text-xs); opacity: 0.3;">Open Source 2026 TAMAVERSE BASIC PROOF</div>
+        <div style="font-size: var(--text-xs); opacity: 0.3;">Open Source 2026 TAMAVERSE KAWAII CYBER-POP</div>
     </div>
 </footer>
 
@@ -2338,9 +2339,116 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     root.style.setProperty(name, value);
     body.style.setProperty(name, value);
   }
+  function clearVar(name) {
+    root.style.removeProperty(name);
+    body.style.removeProperty(name);
+  }
   const hudFill = document.getElementById('skinHudFill');
   const hudPercent = document.getElementById('skinPercent');
   const skinHud = document.getElementById('skinHud');
+
+  const managedVars = [
+    '--color-bg',
+    '--color-bg-transparent',
+    '--color-surface',
+    '--color-text',
+    '--color-text-muted',
+    '--color-primary',
+    '--color-secondary',
+    '--color-accent',
+    '--color-border',
+    '--tm-pink-100',
+    '--tm-pink-300',
+    '--tm-pink-500',
+    '--tm-pink-700',
+    '--tm-pink-900',
+    '--tm-cyan-100',
+    '--tm-cyan-300',
+    '--tm-cyan-500',
+    '--tm-cyan-700',
+    '--tm-cyan-900',
+    '--tm-yellow-100',
+    '--tm-yellow-300',
+    '--tm-yellow-500',
+    '--tm-yellow-700',
+    '--tm-yellow-900',
+    '--tm-dark-100',
+    '--tm-dark-500',
+    '--tm-dark-800',
+    '--tm-dark-900',
+    '--tm-light',
+    '--tm-success',
+    '--tm-warning',
+    '--tm-danger',
+    '--tm-info',
+    '--grid-line',
+    '--grid-bg',
+    '--particles-color',
+    '--shadow-sm',
+    '--shadow-md',
+    '--shadow-lg',
+    '--shadow-xl',
+    '--shadow-card',
+    '--shadow-card-hover',
+    '--shadow-glow-primary',
+    '--shadow-glow-secondary',
+    '--rad-sm',
+    '--rad-md',
+    '--rad-lg',
+    '--font-family-heading',
+    '--font-family-body',
+    '--btn-shadow-depth',
+  ];
+
+  function clearManagedVars() {
+    managedVars.forEach(clearVar);
+  }
+
+  function clearInlineProps(selector, props) {
+    document.querySelectorAll(selector).forEach((el) => {
+      props.forEach((prop) => el.style.removeProperty(prop));
+    });
+  }
+
+  function resetSkinOverrides() {
+    const envBg = document.querySelector('.tm-env-bg');
+    if (envBg) envBg.style.removeProperty('background');
+
+    const particleCanvas = document.getElementById('particle-canvas');
+    if (particleCanvas) {
+      particleCanvas.style.removeProperty('opacity');
+      particleCanvas.style.removeProperty('display');
+    }
+
+    const envGrid = document.querySelector('.tm-env-grid');
+    if (envGrid) {
+      envGrid.style.removeProperty('opacity');
+      envGrid.style.removeProperty('display');
+    }
+
+    clearInlineProps('.tm-title', ['color', 'text-shadow', '-webkit-text-stroke', 'animation-duration', 'letter-spacing']);
+    clearInlineProps('.tm-glitch-text', ['--glitch-opacity']);
+    clearInlineProps('.tama-marquee', ['transform', 'background', 'border-top-width', 'border-top-color', 'border-bottom-color', 'box-shadow']);
+    clearInlineProps('.tama-marquee-text', ['color', 'letter-spacing']);
+    clearInlineProps('.tm-surface', ['background', 'border-color', 'box-shadow', 'backdrop-filter', '-webkit-backdrop-filter']);
+    clearInlineProps('.section-num', ['background', 'color', 'box-shadow']);
+    clearInlineProps('.tm-btn', ['border-width', 'border-style', 'letter-spacing']);
+    clearInlineProps('.tm-btn-primary, .tm-btn-secondary, .tm-btn-accent, .tm-btn-ghost', ['background', 'color', 'border-color', 'box-shadow']);
+    clearInlineProps('.tm-badge', ['box-shadow']);
+    clearInlineProps('.tm-sidebar', ['background', 'border-color', 'box-shadow', 'backdrop-filter', '-webkit-backdrop-filter']);
+    clearInlineProps('.tm-navbar', ['background', 'border-bottom-color', 'box-shadow', 'backdrop-filter', '-webkit-backdrop-filter']);
+    clearInlineProps('.tm-footer', ['background', 'border-top-color']);
+    clearInlineProps('.guide-code-block, .tm-table-wrap, .tm-accordion', ['background', 'color', 'border-color', 'box-shadow']);
+    clearInlineProps('.tm-shadow-box', ['background', 'border-color', 'color']);
+    clearInlineProps('.tm-input', ['background', 'color', 'border-color', 'box-shadow']);
+    clearInlineProps('.tm-accordion-header', ['background', 'color']);
+  }
+
+  function renderHud(p, isBasicMode) {
+    hudFill.style.width = (p * 100) + '%';
+    hudPercent.textContent = Math.round(p * 100) + '%';
+    skinHud.classList.toggle('basic-mode', isBasicMode);
+  }
 
   // ── Color helpers ──
   function hexToRgb(hex) {
@@ -2365,11 +2473,27 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   // ── Token mapping: basic progress → kawaii endpoint ──
   // Internally, t still represents the amount of "basic" styling remaining.
   function applySkin(p) {
+    const exactBasic = p <= 0.001;
+    const exactKawaii = p >= 0.999;
     const t = 1 - easeInOutCubic(p);
-    const exactBasic = t >= 0.999;
 
-    if (exactBasic) body.dataset.skin = 'basic';
-    else body.removeAttribute('data-skin');
+    if (exactBasic) {
+      clearManagedVars();
+      resetSkinOverrides();
+      body.dataset.skin = 'basic';
+      renderHud(p, true);
+      return;
+    }
+
+    if (exactKawaii) {
+      clearManagedVars();
+      resetSkinOverrides();
+      body.removeAttribute('data-skin');
+      renderHud(p, false);
+      return;
+    }
+
+    body.removeAttribute('data-skin');
 
     // === Core semantic colors ===
     setVar('--color-bg', lerpColor('1a0033','F1F5F9',t));
@@ -2620,9 +2744,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     });
 
     // === HUD update ===
-    hudFill.style.width = (p * 100) + '%';
-    hudPercent.textContent = Math.round(p * 100) + '%';
-    skinHud.classList.toggle('basic-mode', t > 0.5);
+    renderHud(p, t > 0.5);
   }
 
   // (Animation loop removed — now using discrete arrow-key steps)
@@ -2666,7 +2788,7 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     }
   });
 
-  // ── Initialize at kawaii state ──
+  // ── Initialize at basic state ──
   goToStep(0);
 
   // ── Expose test API for debugging ──
