@@ -2752,11 +2752,61 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   // ── Arrow Key Step Input (10 steps) ──
   const STEPS = 10;
   let step = 0; // 0 = basic, 10 = kawaii
+  let mobileTapDirection = 1;
+  let mobileTouchTrack = null;
+  let mobileTouchAnimId = 0;
+  let mobileTouchLastTs = 0;
+  const MOBILE_TOUCH_SPEED = 1.1;
+  const MOBILE_TAP_THRESHOLD = 12;
+
+  function setProgressValue(nextProgress) {
+    progress = Math.max(0, Math.min(1, nextProgress));
+    step = Math.round(progress * STEPS);
+    applySkin(progress);
+  }
+
+  function stopMobileTouchAnimation() {
+    if (!mobileTouchAnimId) return;
+    cancelAnimationFrame(mobileTouchAnimId);
+    mobileTouchAnimId = 0;
+    mobileTouchLastTs = 0;
+  }
+
+  function animateMobileDirection(direction) {
+    stopMobileTouchAnimation();
+
+    const tick = (ts) => {
+      if (!mobileTouchLastTs) mobileTouchLastTs = ts;
+      const dt = (ts - mobileTouchLastTs) / 1000;
+      mobileTouchLastTs = ts;
+
+      setProgressValue(progress + direction * dt * MOBILE_TOUCH_SPEED);
+
+      const reachedEndpoint = direction > 0 ? progress >= 1 : progress <= 0;
+      if (reachedEndpoint) {
+        stopMobileTouchAnimation();
+        return;
+      }
+
+      mobileTouchAnimId = requestAnimationFrame(tick);
+    };
+
+    mobileTouchAnimId = requestAnimationFrame(tick);
+  }
+
+  function triggerMobileTapSweep() {
+    const direction = progress <= 0.001 ? 1 : progress >= 0.999 ? -1 : mobileTapDirection;
+    animateMobileDirection(direction);
+    mobileTapDirection = direction * -1;
+  }
+
+  function isTouchControlTarget(target) {
+    return target instanceof Element && !!target.closest('a, button, input, textarea, select, label, .skin-hud, .tm-theme-btn, .tm-nav-links a, .tm-sidebar-nav a');
+  }
 
   function goToStep(newStep) {
-    step = Math.max(0, Math.min(STEPS, newStep));
-    progress = step / STEPS;
-    applySkin(progress);
+    stopMobileTouchAnimation();
+    setProgressValue(Math.max(0, Math.min(STEPS, newStep)) / STEPS);
   }
 
   window.addEventListener('keydown', (e) => {
@@ -2788,6 +2838,45 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
     }
   });
 
+  // ── Mobile Tap Toggle: each tap alternates sweep direction ──
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1 || isTouchControlTarget(e.target)) {
+      mobileTouchTrack = null;
+      return;
+    }
+
+    const touch = e.touches[0];
+    mobileTouchTrack = {
+      x: touch.clientX,
+      y: touch.clientY,
+      moved: false,
+    };
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!mobileTouchTrack || e.touches.length !== 1) return;
+
+    const touch = e.touches[0];
+    const movedDistance = Math.hypot(touch.clientX - mobileTouchTrack.x, touch.clientY - mobileTouchTrack.y);
+    if (movedDistance > MOBILE_TAP_THRESHOLD) {
+      mobileTouchTrack.moved = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    if (!mobileTouchTrack) return;
+
+    const shouldTrigger = !mobileTouchTrack.moved;
+    mobileTouchTrack = null;
+    if (!shouldTrigger) return;
+
+    triggerMobileTapSweep();
+  }, { passive: true });
+
+  window.addEventListener('touchcancel', () => {
+    mobileTouchTrack = null;
+  }, { passive: true });
+
   // ── Initialize at basic state ──
   goToStep(0);
 
@@ -2795,9 +2884,8 @@ body[data-skin="basic"] .guide-code-block .string { color: #14305A; }
   window.__skin = {
     set: (p) => {
       const clamped = Math.max(0, Math.min(1, p));
-      step = Math.round(clamped * STEPS);
-      progress = clamped;
-      applySkin(clamped);
+      stopMobileTouchAnimation();
+      setProgressValue(clamped);
     },
     get: () => progress,
     step: () => step,
