@@ -264,7 +264,30 @@
     return layout;
   }
 
+  function buildDesignPayload(concept) {
+    if (!concept) {
+      return null;
+    }
+
+    return {
+      id: concept.id,
+      name: concept.name,
+      type: concept.type,
+      typeLabel: concept.typeLabel,
+      preview: concept.preview,
+      archiveHref: concept.archiveHref,
+      summary: concept.summary,
+      traits: concept.traits,
+      recommendedUse: concept.recommendedUse,
+      motionNotes: concept.motionNotes
+    };
+  }
+
   function buildLayoutPayload(layout) {
+    if (!layout) {
+      return null;
+    }
+
     return {
       id: layout.id,
       familySlug: layout.familySlug,
@@ -276,6 +299,24 @@
       density: layout.density,
       tags: layout.tags,
       url: layout.url
+    };
+  }
+
+  function buildCompositionPayload({
+    designConcept = null,
+    layoutTemplate = null,
+    candidateLayouts = [],
+    compatibilityNote = "",
+    exportedAt = new Date().toISOString(),
+    source = "tama-templates.compose"
+  } = {}) {
+    return {
+      exportedAt,
+      source,
+      designConcept: buildDesignPayload(designConcept),
+      layoutTemplate: buildLayoutPayload(layoutTemplate),
+      candidateLayouts: candidateLayouts.map((layout) => buildLayoutPayload(layout)).filter(Boolean),
+      compatibilityNote
     };
   }
 
@@ -294,6 +335,8 @@
     getLayoutCollection,
     getSelectedLayout,
     setSelectedLayout,
-    buildLayoutPayload
+    buildDesignPayload,
+    buildLayoutPayload,
+    buildCompositionPayload
   };
 })();

@@ -273,12 +273,12 @@ The current site archives design documents well, but it does not support the act
 
 #### 4. Export bundle
 
-Recommended MVP export payload:
+MVP export payload for the current Tama Templates milestone:
 
-- `composition.json`
-- `design-template.json`
-- `layout-template.json`
-- `implementation-brief.md`
+- `composition.json` — combined handoff context with selected design, selected layout, candidate layouts, and compatibility note
+- `design-template.json` — the selected design concept payload only
+- `layout-template.json` — the selected layout template payload only
+- `implementation-brief.md` — downstream implementation instructions in text form
 
 Optional later export:
 

@@ -67,9 +67,11 @@
       <aside class="compose-stack">
         <article class="panel summary-block">
           <h3>Export Actions</h3>
-          <p>다른 LLM 기반 개발 환경으로 이어갈 수 있도록 JSON과 brief 파일을 바로 생성합니다.</p>
+          <p>구현 handoff를 4개 파일로 분리합니다: composition, design template, layout template, implementation brief.</p>
           <div class="button-row">
-            <button class="btn primary" id="download-json" type="button">composition.json 다운로드</button>
+            <button class="btn primary" id="download-composition" type="button">composition.json 다운로드</button>
+            <button class="btn secondary" id="download-design" type="button">design-template.json 다운로드</button>
+            <button class="btn secondary" id="download-layout" type="button">layout-template.json 다운로드</button>
             <button class="btn secondary" id="download-brief" type="button">implementation-brief.md 다운로드</button>
             <button class="btn ghost" id="copy-brief" type="button">brief 복사</button>
           </div>
@@ -107,10 +109,16 @@
       const pairingPreview = document.getElementById("pairing-preview");
       const candidateCopy = document.getElementById("candidate-copy");
       const candidateMeta = document.getElementById("candidate-meta");
+      const downloadCompositionButton = document.getElementById("download-composition");
+      const downloadDesignButton = document.getElementById("download-design");
+      const downloadLayoutButton = document.getElementById("download-layout");
+      const downloadBriefButton = document.getElementById("download-brief");
+      const copyBriefButton = document.getElementById("copy-brief");
+      const hasCompleteSelection = !!(selectedDesign && selectedLayout);
 
       function getCompatibilityNote() {
         if (!selectedDesign || !selectedLayout) {
-          return "선택을 모두 완료하면 조합 가이드를 생성합니다.";
+          return "디자인 컨셉과 레이아웃을 모두 선택해야 구현 handoff bundle을 생성할 수 있습니다.";
         }
 
         if (selectedDesign.type === "motion") {
@@ -121,28 +129,17 @@
       }
 
       function buildCompositionPayload() {
-        return {
-          exportedAt: new Date().toISOString(),
-          source: "tama-templates.compose",
-          designConcept: selectedDesign ? {
-            id: selectedDesign.id,
-            name: selectedDesign.name,
-            type: selectedDesign.type,
-            typeLabel: selectedDesign.typeLabel,
-            traits: selectedDesign.traits,
-            summary: selectedDesign.summary,
-            recommendedUse: selectedDesign.recommendedUse,
-            motionNotes: selectedDesign.motionNotes
-          } : null,
-          layoutTemplate: selectedLayout ? data.buildLayoutPayload(selectedLayout) : null,
-          candidateLayouts: collection.map((layout) => data.buildLayoutPayload(layout)),
+        return data.buildCompositionPayload({
+          designConcept: selectedDesign,
+          layoutTemplate: selectedLayout,
+          candidateLayouts: collection,
           compatibilityNote: getCompatibilityNote()
-        };
+        });
       }
 
       function buildImplementationBrief() {
         if (!selectedDesign || !selectedLayout) {
-          return "디자인 컨셉과 레이아웃을 모두 선택하면 implementation brief가 생성됩니다.";
+          return "디자인 컨셉과 레이아웃을 모두 선택하면 implementation brief와 export bundle이 생성됩니다.";
         }
 
         return [
@@ -166,6 +163,12 @@
           `- Density: ${selectedLayout.density}`,
           `- Tags: ${selectedLayout.tags.join(", ")}`,
           `- Source preview: ${selectedLayout.url}`,
+          "",
+          "## Export Bundle",
+          "- composition.json: 전체 조합 컨텍스트와 후보 레이아웃 보드",
+          "- design-template.json: 선택한 디자인 컨셉의 스타일 계층",
+          "- layout-template.json: 선택한 레이아웃 템플릿의 구조 계층",
+          "- implementation-brief.md: 다운스트림 구현을 위한 텍스트 handoff",
           "",
           "## Implementation Guidance",
           `- Compatibility note: ${getCompatibilityNote()}`,
@@ -208,6 +211,18 @@
         document.body.removeChild(textArea);
       }
 
+      function setExportEnabled(enabled) {
+        [
+          downloadCompositionButton,
+          downloadDesignButton,
+          downloadLayoutButton,
+          downloadBriefButton,
+          copyBriefButton
+        ].forEach((button) => {
+          button.disabled = !enabled;
+        });
+      }
+
       if (!selectedDesign && !selectedLayout) {
         status.innerHTML = "<strong>아직 조합이 시작되지 않았습니다.</strong><p>디자인과 레이아웃을 먼저 선택한 뒤 다시 오세요.</p>";
       } else if (!selectedDesign) {
@@ -225,6 +240,8 @@
           </div>
         `;
       }
+
+      setExportEnabled(hasCompleteSelection);
 
       if (selectedDesign) {
         designSummary.innerHTML = `
@@ -257,15 +274,23 @@
         : "후보 레이아웃이 아직 없습니다.";
       candidateMeta.innerHTML = collection.map((layout) => `<span class="trait">${layout.familyName} ${layout.layoutNumber}/${layout.totalLayouts}</span>`).join("");
 
-      document.getElementById("download-json").addEventListener("click", () => {
+      downloadCompositionButton.addEventListener("click", () => {
         downloadFile("composition.json", JSON.stringify(buildCompositionPayload(), null, 2), "application/json");
       });
 
-      document.getElementById("download-brief").addEventListener("click", () => {
+      downloadDesignButton.addEventListener("click", () => {
+        downloadFile("design-template.json", JSON.stringify(data.buildDesignPayload(selectedDesign), null, 2), "application/json");
+      });
+
+      downloadLayoutButton.addEventListener("click", () => {
+        downloadFile("layout-template.json", JSON.stringify(data.buildLayoutPayload(selectedLayout), null, 2), "application/json");
+      });
+
+      downloadBriefButton.addEventListener("click", () => {
         downloadFile("implementation-brief.md", buildImplementationBrief(), "text/markdown");
       });
 
-      document.getElementById("copy-brief").addEventListener("click", async () => {
+      copyBriefButton.addEventListener("click", async () => {
         await copyText(buildImplementationBrief());
       });
     })();
