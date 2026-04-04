@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Tama Templates · Design Concepts</title>
+  <meta name="description" content="Tamaverse의 static design templates와 motion references를 분리해 선택하는 페이지입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/tama-templates.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="site-nav" aria-label="Primary">
+      <div class="brand-lockup">
+        <div class="brand-mark">DS</div>
+        <div class="brand-copy">
+          <strong>Design Concepts</strong>
+          <span>Choose static templates or motion references</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/templates/designs/" class="is-active">Designs</a>
+        <a href="/templates/layouts/">Layouts</a>
+        <a href="/compose/">Compose</a>
+        <a href="/archive/">Archive</a>
+      </div>
+    </nav>
+
+    <section class="hero-grid">
+      <article class="hero-panel">
+        <p class="eyebrow">Step 1</p>
+        <h1 class="headline">Choose A Design<span>Know Its Role</span></h1>
+        <p class="lede">
+          정적 디자인 템플릿과 인터랙션 레퍼런스를 섞지 않고 선택할 수 있도록 다시
+          구성했습니다. 특히 `Basic Motion Proof` 는 일반 테마가 아니라, 동일 레이아웃
+          전환을 검증하는 interactive proof로 강조합니다.
+        </p>
+      </article>
+      <aside class="selection-banner" id="design-selection-banner">
+        <strong>현재 선택된 디자인이 없습니다.</strong>
+        <p>카드를 선택하면 `Compose` 와 `Layouts` 흐름에 바로 반영됩니다.</p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2>Available Concepts</h2>
+          <p>각 카드에는 역할, 핵심 특징, 추천 사용 맥락만 남겼습니다. 설명은 길게 두지 않았습니다.</p>
+        </div>
+      </div>
+      <div class="catalog-grid" id="design-grid"></div>
+    </section>
+  </div>
+
+  <script src="/assets/tama-templates-data.js"></script>
+  <script>
+    (() => {
+      const data = window.TamaTemplatesData;
+      const selected = data.getSelectedDesign();
+      const grid = document.getElementById("design-grid");
+      const banner = document.getElementById("design-selection-banner");
+
+      function renderBanner(concept) {
+        if (!concept) {
+          banner.innerHTML = "<strong>현재 선택된 디자인이 없습니다.</strong><p>카드를 선택하면 `Compose` 와 `Layouts` 흐름에 바로 반영됩니다.</p>";
+          return;
+        }
+
+        banner.innerHTML = `
+          <strong>${concept.name} 가 현재 선택되었습니다.</strong>
+          <p>${concept.summary}</p>
+          <div class="selection-meta">
+            <span class="pill ${concept.type}">${concept.typeLabel}</span>
+            ${concept.traits.map((trait) => `<span class="trait">${trait}</span>`).join("")}
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="/templates/layouts/">이 디자인으로 레이아웃 고르기</a>
+            <a class="btn ghost" href="/compose/">Compose 보기</a>
+          </div>
+        `;
+      }
+
+      function render() {
+        const current = data.getSelectedDesign();
+        renderBanner(current);
+
+        grid.innerHTML = data.designConcepts.map((concept, index) => {
+          const isSelected = current && current.id === concept.id;
+          return `
+            <article class="template-card ${isSelected ? "is-selected" : ""}">
+              <div class="template-top">
+                <div class="template-kicker">
+                  <span class="pill ${concept.type}">${concept.typeLabel}</span>
+                </div>
+                <span class="template-order">${String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div class="template-preview ${concept.preview}">
+                <div class="preview-copy">
+                  <strong>${concept.name}</strong>
+                  <span>${concept.recommendedUse}</span>
+                </div>
+              </div>
+              <div class="template-body">
+                <h3>${concept.name}</h3>
+                <p>${concept.summary}</p>
+              </div>
+              <div class="trait-list">
+                ${concept.traits.map((trait) => `<span class="trait">${trait}</span>`).join("")}
+              </div>
+              <div class="button-row">
+                <button class="btn primary" type="button" data-design-id="${concept.id}">
+                  ${isSelected ? "선택됨" : "이 디자인 선택"}
+                </button>
+                <a class="btn secondary" href="${concept.archiveHref}">아카이브 보기</a>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      grid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-design-id]");
+        if (!button) {
+          return;
+        }
+
+        data.setSelectedDesign(button.dataset.designId);
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>Tama Templates · Layout Templates</title>
+  <meta name="description" content="허용된 TMS template-lab UI만을 사용해 16:9 레이아웃 패밀리를 탐색하는 Tama Templates의 layout picker입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/tama-templates.css">
+</head>
+<body class="layout-page">
+  <div class="shell">
+    <nav class="site-nav" aria-label="Primary">
+      <div class="brand-lockup">
+        <div class="brand-mark">LY</div>
+        <div class="brand-copy">
+          <strong>Layout Templates</strong>
+          <span>Approved subset from TMS template lab</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/templates/designs/">Designs</a>
+        <a href="/templates/layouts/" class="is-active">Layouts</a>
+        <a href="/compose/">Compose</a>
+        <a href="/archive/">Archive</a>
+      </div>
+    </nav>
+
+    <section class="hero-grid">
+      <article class="hero-panel">
+        <p class="eyebrow">Step 2</p>
+        <h1 class="headline">Choose A Layout<span>Not The Whole Lab</span></h1>
+        <p class="lede">
+          `/Users/artifact/Desktop/tms-slide-template-lab.html` 전체를 옮기지 않고, 스크린샷에
+          보이는 UI만 가져와 레이아웃 탐색기로 바꿨습니다. 상단 패밀리 선택, 16:9 프리뷰,
+          수집 보드, 핵심 컨트롤만 남겼습니다.
+        </p>
+      </article>
+      <aside class="selection-banner" id="layout-design-banner">
+        <strong>선택된 디자인이 없습니다.</strong>
+        <p>먼저 디자인 컨셉을 고르면, 나중에 `Compose` 에서 이 레이아웃과 조합됩니다.</p>
+        <div class="button-row"><a class="btn ghost" href="/templates/designs/">디자인 먼저 고르기</a></div>
+      </aside>
+    </section>
+
+    <p class="notice" id="global-notice" aria-live="polite"></p>
+
+    <main class="layout-shell">
+      <section class="panel layout-panel layout-family-panel" aria-labelledby="family-panel-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Layout Families</p>
+            <h2 id="family-panel-title">레이아웃 패밀리 선택</h2>
+            <p>패밀리를 빠르게 전환하면서 구조 유형과 밀도를 함께 파악할 수 있도록 정리했습니다.</p>
+          </div>
+          <div class="panel-meta">
+            <strong id="family-panel-total">0개 패밀리</strong>
+            <span>클릭하면 각 패밀리의 1번 레이아웃부터 시작합니다.</span>
+          </div>
+        </div>
+        <div class="family-grid" id="family-grid"></div>
+      </section>
+
+      <section class="panel layout-panel" aria-labelledby="stage-panel-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Preview Stage</p>
+            <h2 id="stage-panel-title">16:9 메인 프리뷰</h2>
+            <p>현재 선택한 레이아웃을 크게 보고, 자동 재생 또는 빠른 스캔으로 변형을 훑어볼 수 있습니다.</p>
+          </div>
+          <div class="panel-meta">
+            <strong id="stage-mode-chip">수동</strong>
+            <span id="stage-mode-copy">직접 점프하고 필요한 레이아웃을 후보 보드에 쌓으세요.</span>
+          </div>
+        </div>
+
+        <div class="stage-wrap">
+          <div class="stage-frame">
+            <div class="stage-aspect">
+              <img class="stage-image is-hidden" id="stage-image" alt="">
+              <div class="stage-placeholder" id="stage-placeholder" data-tone="loading">
+                <span class="placeholder-tag" id="stage-placeholder-status">미리보기 준비 중</span>
+                <strong id="stage-placeholder-title">Tama Templates Layout</strong>
+                <p id="stage-placeholder-copy">선택한 레이아웃을 불러오는 동안 현재 패밀리와 순서를 유지한 채 placeholder를 보여줍니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-meta">
+            <article class="meta-card">
+              <div class="meta-row"><span>패밀리</span><strong id="stage-family-name">-</strong></div>
+              <div class="meta-row"><span>레이아웃</span><strong id="stage-layout-count">-</strong></div>
+              <div class="meta-row"><span>구조</span><strong id="stage-structure">-</strong></div>
+              <div class="meta-row"><span>밀도</span><strong id="stage-density">-</strong></div>
+              <div class="meta-row"><span>슬러그</span><code id="stage-slug">-</code></div>
+            </article>
+
+            <article class="meta-card">
+              <span class="meta-label">Source Preview URL</span>
+              <div class="url-box" id="stage-url">-</div>
+            </article>
+          </div>
+
+          <div class="controls">
+            <div class="control-row">
+              <button class="btn secondary" id="prev-button" type="button">이전</button>
+              <button class="btn primary" id="play-button" type="button">재생</button>
+              <button class="btn secondary" id="next-button" type="button">다음</button>
+              <button class="btn signal" id="scan-button" type="button">빠른 스캔 시작</button>
+            </div>
+
+            <div class="speed-card">
+              <div class="speed-top">
+                <label for="speed-range">재생 속도</label>
+                <strong id="speed-readout">900ms</strong>
+              </div>
+              <input id="speed-range" type="range" min="200" max="3000" step="100" value="900">
+              <div class="preset-row">
+                <button class="btn ghost preset-button" type="button" data-speed="400">Fast</button>
+                <button class="btn ghost preset-button" type="button" data-speed="900">Normal</button>
+                <button class="btn ghost preset-button" type="button" data-speed="1800">Slow</button>
+              </div>
+            </div>
+
+            <div class="control-row">
+              <button class="btn primary" id="choose-layout-button" type="button">현재 레이아웃 선택</button>
+              <button class="btn secondary" id="add-collection-button" type="button">후보 보드에 추가</button>
+              <button class="btn ghost" id="copy-layout-button" type="button">현재 레이아웃 정보 복사</button>
+              <button class="btn ghost" id="open-layout-button" type="button">새 탭에서 열기</button>
+            </div>
+
+            <p class="key-hint">단축키: ← 이전 · → 다음 · Space 재생/일시정지 · S 빠른 스캔</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel layout-panel" aria-labelledby="collection-panel-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Collection Board</p>
+            <h2 id="collection-panel-title">레이아웃 후보 보드</h2>
+            <p>좋아 보이는 레이아웃을 모으고, 나중에 조합 대상으로 좁힌 뒤 JSON으로 내보낼 수 있습니다.</p>
+          </div>
+          <div class="panel-meta">
+            <strong id="collection-count-label">0개 후보</strong>
+            <span>중복 추가는 막고, 카드별 삭제는 허용합니다.</span>
+          </div>
+        </div>
+
+        <div class="collection-summary">
+          <article>
+            <span>후보 수</span>
+            <strong id="collection-count">0</strong>
+          </article>
+          <article>
+            <span>현재 선택 포함</span>
+            <strong id="collection-current-flag">아니오</strong>
+          </article>
+        </div>
+
+        <div class="control-row">
+          <button class="btn primary" id="export-collection-button" type="button">후보 JSON 내보내기</button>
+          <button class="btn secondary" id="clear-collection-button" type="button">전체 비우기</button>
+        </div>
+
+        <div class="collection-list" id="collection-list"></div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/assets/tama-templates-data.js"></script>
+  <script>
+    (() => {
+      const data = window.TamaTemplatesData;
+      const families = data.layoutFamilies;
+      const allLayouts = data.allLayouts;
+      const layoutMetaById = new Map(allLayouts.map((layout) => [layout.id, layout]));
+      const globalIndexById = new Map(allLayouts.map((layout, index) => [layout.id, index]));
+      const refs = {
+        globalNotice: document.getElementById("global-notice"),
+        familyGrid: document.getElementById("family-grid"),
+        familyPanelTotal: document.getElementById("family-panel-total"),
+        stageImage: document.getElementById("stage-image"),
+        stagePlaceholder: document.getElementById("stage-placeholder"),
+        stagePlaceholderStatus: document.getElementById("stage-placeholder-status"),
+        stagePlaceholderTitle: document.getElementById("stage-placeholder-title"),
+        stagePlaceholderCopy: document.getElementById("stage-placeholder-copy"),
+        stageModeChip: document.getElementById("stage-mode-chip"),
+        stageModeCopy: document.getElementById("stage-mode-copy"),
+        stageFamilyName: document.getElementById("stage-family-name"),
+        stageLayoutCount: document.getElementById("stage-layout-count"),
+        stageStructure: document.getElementById("stage-structure"),
+        stageDensity: document.getElementById("stage-density"),
+        stageSlug: document.getElementById("stage-slug"),
+        stageUrl: document.getElementById("stage-url"),
+        prevButton: document.getElementById("prev-button"),
+        playButton: document.getElementById("play-button"),
+        nextButton: document.getElementById("next-button"),
+        scanButton: document.getElementById("scan-button"),
+        speedRange: document.getElementById("speed-range"),
+        speedReadout: document.getElementById("speed-readout"),
+        presetButtons: Array.from(document.querySelectorAll(".preset-button")),
+        chooseLayoutButton: document.getElementById("choose-layout-button"),
+        addCollectionButton: document.getElementById("add-collection-button"),
+        copyLayoutButton: document.getElementById("copy-layout-button"),
+        openLayoutButton: document.getElementById("open-layout-button"),
+        collectionCountLabel: document.getElementById("collection-count-label"),
+        collectionCount: document.getElementById("collection-count"),
+        collectionCurrentFlag: document.getElementById("collection-current-flag"),
+        exportCollectionButton: document.getElementById("export-collection-button"),
+        clearCollectionButton: document.getElementById("clear-collection-button"),
+        collectionList: document.getElementById("collection-list"),
+        designBanner: document.getElementById("layout-design-banner")
+      };
+
+      const initialUi = data.readJson(data.STORAGE_KEYS.layoutUi, {});
+      const initialFamilyIndex = Math.max(0, families.findIndex((family) => family.slug === initialUi.familySlug));
+      const initialFamily = families[initialFamilyIndex === -1 ? 0 : initialFamilyIndex];
+      const initialLayoutNumber = Math.min(initialFamily.count, Math.max(1, Number(initialUi.layoutNumber) || 1));
+      const state = {
+        selectedFamilyIndex: initialFamilyIndex === -1 ? 0 : initialFamilyIndex,
+        currentLayoutIndex: initialLayoutNumber - 1,
+        speed: Math.min(3000, Math.max(200, Number(initialUi.speed) || 900)),
+        mode: "manual",
+        timerId: null,
+        collectionIds: data.readJson(data.STORAGE_KEYS.layoutCollection, []).filter((id, index, ids) => ids.indexOf(id) === index && layoutMetaById.has(id)),
+        imageFailures: {},
+        noticeTimer: null
+      };
+
+      function getSelectedFamily() {
+        return families[state.selectedFamilyIndex];
+      }
+
+      function getCurrentLayout() {
+        return getSelectedFamily().layouts[state.currentLayoutIndex];
+      }
+
+      function getCurrentGlobalIndex() {
+        return globalIndexById.get(getCurrentLayout().id) || 0;
+      }
+
+      function persistUiState() {
+        const layout = getCurrentLayout();
+        data.writeJson(data.STORAGE_KEYS.layoutUi, {
+          familySlug: layout.familySlug,
+          layoutNumber: layout.layoutNumber,
+          speed: state.speed
+        });
+      }
+
+      function persistCollection() {
+        data.writeJson(data.STORAGE_KEYS.layoutCollection, state.collectionIds);
+      }
+
+      function setNotice(message) {
+        refs.globalNotice.textContent = message;
+        if (state.noticeTimer) {
+          window.clearTimeout(state.noticeTimer);
+        }
+        if (!message) {
+          return;
+        }
+        state.noticeTimer = window.setTimeout(() => {
+          refs.globalNotice.textContent = "";
+        }, 2400);
+      }
+
+      function renderDesignBanner() {
+        const design = data.getSelectedDesign();
+        if (!design) {
+          refs.designBanner.innerHTML = `
+            <strong>선택된 디자인이 없습니다.</strong>
+            <p>먼저 디자인 컨셉을 고르면, 나중에 Compose 에서 이 레이아웃과 조합됩니다.</p>
+            <div class="button-row"><a class="btn ghost" href="/templates/designs/">디자인 먼저 고르기</a></div>
+          `;
+          return;
+        }
+
+        refs.designBanner.innerHTML = `
+          <strong>${design.name} 와 레이아웃을 조합하는 중입니다.</strong>
+          <p>${design.summary}</p>
+          <div class="selection-meta">
+            <span class="pill ${design.type}">${design.typeLabel}</span>
+            ${design.traits.map((trait) => `<span class="trait">${trait}</span>`).join("")}
+          </div>
+          <div class="button-row">
+            <a class="btn secondary" href="/templates/designs/">디자인 바꾸기</a>
+            <a class="btn primary" href="/compose/">Compose 열기</a>
+          </div>
+        `;
+      }
+
+      function getModeLabel() {
+        if (state.mode === "play") {
+          return "선택 패밀리 자동 재생";
+        }
+        if (state.mode === "scan") {
+          return "빠른 스캔";
+        }
+        return "수동";
+      }
+
+      function getModeCopy() {
+        if (state.mode === "play") {
+          return "현재 패밀리 안에서만 순환하며 변형을 빠르게 비교합니다.";
+        }
+        if (state.mode === "scan") {
+          return "패밀리 경계를 넘어 전체 레이아웃 카탈로그를 연속해서 훑습니다.";
+        }
+        return "직접 점프하고 필요한 레이아웃을 후보 보드에 쌓으세요.";
+      }
+
+      function stopPlayback() {
+        if (state.timerId) {
+          window.clearInterval(state.timerId);
+          state.timerId = null;
+        }
+        if (state.mode !== "manual") {
+          state.mode = "manual";
+        }
+      }
+
+      function restartPlayback() {
+        if (state.timerId) {
+          window.clearInterval(state.timerId);
+        }
+        state.timerId = window.setInterval(() => {
+          if (state.mode === "scan") {
+            moveAcrossAll(1);
+          } else if (state.mode === "play") {
+            moveWithinFamily(1);
+          }
+        }, state.speed);
+      }
+
+      function togglePlay() {
+        if (state.mode === "play") {
+          stopPlayback();
+          syncUI();
+          return;
+        }
+        state.mode = "play";
+        restartPlayback();
+        syncUI();
+      }
+
+      function toggleScan() {
+        if (state.mode === "scan") {
+          stopPlayback();
+          syncUI();
+          return;
+        }
+        state.mode = "scan";
+        restartPlayback();
+        syncUI();
+      }
+
+      function selectFamily(index) {
+        stopPlayback();
+        state.selectedFamilyIndex = index;
+        state.currentLayoutIndex = 0;
+        persistUiState();
+        syncUI();
+      }
+
+      function moveWithinFamily(direction) {
+        const family = getSelectedFamily();
+        state.currentLayoutIndex = (state.currentLayoutIndex + direction + family.count) % family.count;
+        persistUiState();
+        syncUI();
+      }
+
+      function moveAcrossAll(direction) {
+        const nextGlobalIndex = (getCurrentGlobalIndex() + direction + allLayouts.length) % allLayouts.length;
+        const next = allLayouts[nextGlobalIndex];
+        state.selectedFamilyIndex = next.familyIndex;
+        state.currentLayoutIndex = next.layoutIndex;
+        persistUiState();
+        syncUI();
+      }
+
+      function chooseCurrentLayout() {
+        const layout = data.setSelectedLayout(getCurrentLayout());
+        if (layout) {
+          setNotice(`${layout.familyName} ${layout.layoutNumber}번 레이아웃을 현재 선택으로 저장했습니다.`);
+          syncUI();
+        }
+      }
+
+      function addCurrentToCollection() {
+        const layout = getCurrentLayout();
+        if (state.collectionIds.includes(layout.id)) {
+          setNotice("이미 후보 보드에 있는 레이아웃입니다.");
+          syncUI();
+          return;
+        }
+        state.collectionIds.push(layout.id);
+        persistCollection();
+        syncUI();
+        setNotice(`${layout.familyName} ${layout.layoutNumber}번 레이아웃을 후보 보드에 추가했습니다.`);
+      }
+
+      function removeFromCollection(layoutId) {
+        state.collectionIds = state.collectionIds.filter((id) => id !== layoutId);
+        persistCollection();
+        syncUI();
+      }
+
+      async function copyCurrentLayoutInfo() {
+        const payload = JSON.stringify(data.buildLayoutPayload(getCurrentLayout()), null, 2);
+        const copied = await copyText(payload);
+        setNotice(copied ? "현재 레이아웃 정보를 복사했습니다." : "복사에 실패했습니다.");
+      }
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.setAttribute("readonly", "true");
+        textArea.style.position = "fixed";
+        textArea.style.top = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        let copied = false;
+        try {
+          copied = document.execCommand("copy");
+        } catch (error) {
+          copied = false;
+        }
+        document.body.removeChild(textArea);
+        return copied;
+      }
+
+      function exportCollectionAsJson() {
+        if (!state.collectionIds.length) {
+          setNotice("내보낼 후보가 없습니다.");
+          return;
+        }
+
+        const payload = {
+          exportedAt: new Date().toISOString(),
+          source: "tama-templates.layouts",
+          totalItems: state.collectionIds.length,
+          items: state.collectionIds.map((layoutId, index) => ({
+            order: index + 1,
+            ...data.buildLayoutPayload(layoutMetaById.get(layoutId))
+          }))
+        };
+
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+        link.href = url;
+        link.download = `tama-layout-candidates-${stamp}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        setNotice("후보 보드를 JSON으로 내보냈습니다.");
+      }
+
+      function openCurrentLayout() {
+        window.open(getCurrentLayout().url, "_blank", "noopener");
+      }
+
+      function clearCollection() {
+        if (!state.collectionIds.length) {
+          setNotice("비울 후보 보드가 없습니다.");
+          return;
+        }
+        state.collectionIds = [];
+        persistCollection();
+        syncUI();
+        setNotice("후보 보드를 비웠습니다.");
+      }
+
+      function markImageFailure(layoutId) {
+        if (state.imageFailures[layoutId]) {
+          return;
+        }
+        state.imageFailures[layoutId] = true;
+        if (layoutId === getCurrentLayout().id) {
+          updateStageImage();
+        }
+        if (state.collectionIds.includes(layoutId)) {
+          renderCollection();
+        }
+      }
+
+      function showStagePlaceholder(layout, tone, message) {
+        refs.stagePlaceholder.dataset.tone = tone;
+        refs.stagePlaceholderStatus.textContent = tone === "error" ? "이미지를 불러오지 못했습니다." : "미리보기 준비 중";
+        refs.stagePlaceholderTitle.textContent = `${layout.familyName} · ${layout.layoutNumber}/${layout.totalLayouts}`;
+        refs.stagePlaceholderCopy.textContent = message;
+        refs.stagePlaceholder.classList.remove("is-hidden");
+      }
+
+      function updateStageImage() {
+        const layout = getCurrentLayout();
+        if (state.imageFailures[layout.id]) {
+          refs.stageImage.classList.add("is-hidden");
+          refs.stageImage.removeAttribute("src");
+          refs.stageImage.dataset.layoutId = layout.id;
+          showStagePlaceholder(layout, "error", "원본 이미지가 누락되었거나 네트워크 문제로 불러오지 못했습니다. 그래도 레이아웃 정보와 URL은 유지됩니다.");
+          return;
+        }
+
+        if (refs.stageImage.dataset.layoutId !== layout.id) {
+          refs.stageImage.classList.add("is-hidden");
+          refs.stageImage.dataset.layoutId = layout.id;
+          refs.stageImage.alt = `${layout.familyName} 레이아웃 ${layout.layoutNumber}`;
+          showStagePlaceholder(layout, "loading", "선택한 레이아웃을 불러오는 동안 placeholder를 유지합니다.");
+          refs.stageImage.src = layout.url;
+          return;
+        }
+
+        if (refs.stageImage.complete && refs.stageImage.naturalWidth > 0) {
+          refs.stageImage.classList.remove("is-hidden");
+          refs.stagePlaceholder.classList.add("is-hidden");
+        }
+      }
+
+      function renderFamilyGrid() {
+        refs.familyPanelTotal.textContent = `${families.length}개 패밀리`;
+        refs.familyGrid.innerHTML = families.map((family, familyIndex) => {
+          const isActive = familyIndex === state.selectedFamilyIndex;
+          const focusLabel = isActive ? `현재 ${state.currentLayoutIndex + 1}/${family.count}` : `${family.count}개 보기`;
+          return `
+            <button class="family-card ${isActive ? "is-active" : ""}" type="button" data-family-index="${familyIndex}" aria-pressed="${isActive ? "true" : "false"}">
+              <span class="family-order">${String(familyIndex + 1).padStart(2, "0")}</span>
+              <strong>${family.name}</strong>
+              <p>${family.summary}</p>
+              <code>${family.structure}</code>
+              <div class="family-card__footer">
+                <span class="family-count">${family.count} variants</span>
+                <span class="family-state">${focusLabel}</span>
+              </div>
+            </button>
+          `;
+        }).join("");
+      }
+
+      function renderStage() {
+        const layout = getCurrentLayout();
+        const isCurrentSelected = data.getSelectedLayout() && data.getSelectedLayout().id === layout.id;
+        const isCollected = state.collectionIds.includes(layout.id);
+        refs.stageModeChip.textContent = getModeLabel();
+        refs.stageModeCopy.textContent = getModeCopy();
+        refs.stageFamilyName.textContent = layout.familyName;
+        refs.stageLayoutCount.textContent = `${layout.layoutNumber} / ${layout.totalLayouts}`;
+        refs.stageStructure.textContent = layout.structure;
+        refs.stageDensity.textContent = layout.density;
+        refs.stageSlug.textContent = layout.familySlug;
+        refs.stageUrl.textContent = layout.url;
+        refs.chooseLayoutButton.textContent = isCurrentSelected ? "현재 선택된 레이아웃" : "현재 레이아웃 선택";
+        refs.chooseLayoutButton.disabled = !!isCurrentSelected;
+        refs.addCollectionButton.textContent = isCollected ? "이미 후보 보드에 있음" : "후보 보드에 추가";
+        refs.addCollectionButton.disabled = isCollected;
+        updateStageImage();
+      }
+
+      function renderCollection() {
+        const layouts = state.collectionIds.map((id) => layoutMetaById.get(id)).filter(Boolean);
+        const currentId = getCurrentLayout().id;
+        refs.collectionCountLabel.textContent = `${layouts.length}개 후보`;
+        refs.collectionCount.textContent = String(layouts.length);
+        refs.collectionCurrentFlag.textContent = state.collectionIds.includes(currentId) ? "예" : "아니오";
+        refs.exportCollectionButton.disabled = !layouts.length;
+        refs.clearCollectionButton.disabled = !layouts.length;
+
+        if (!layouts.length) {
+          refs.collectionList.innerHTML = `
+            <div class="empty-state">
+              <strong>아직 후보로 저장된 레이아웃이 없습니다.</strong>
+              <p>마음에 드는 변형을 모아두고, 나중에 Compose 단계에서 최종 디자인과 연결할 수 있습니다.</p>
+            </div>
+          `;
+          return;
+        }
+
+        refs.collectionList.innerHTML = layouts.map((layout) => `
+          <article class="collection-card">
+            <div class="collection-visual">
+              <img class="collection-image is-hidden" alt="${layout.familyName} 레이아웃 ${layout.layoutNumber}" data-layout-id="${layout.id}" data-url="${layout.url}" loading="lazy" decoding="async">
+              <div class="collection-placeholder" data-placeholder-for="${layout.id}">
+                <strong>${layout.familyName}</strong>
+                <span>레이아웃 ${layout.layoutNumber} · ${layout.variantLabel}</span>
+              </div>
+            </div>
+            <div class="collection-copy">
+              <strong>${layout.familyName} · ${layout.layoutNumber}/${layout.totalLayouts}</strong>
+              <p>${layout.structure} · ${layout.density}</p>
+              <div class="collection-actions">
+                <button class="mini-btn" type="button" data-focus-layout-id="${layout.id}">보기</button>
+                <button class="mini-btn" type="button" data-select-layout-id="${layout.id}">현재 선택으로 지정</button>
+                <button class="mini-btn" type="button" data-remove-layout-id="${layout.id}">삭제</button>
+              </div>
+            </div>
+          </article>
+        `).join("");
+
+        refs.collectionList.querySelectorAll("img[data-layout-id]").forEach((img) => {
+          const layoutId = img.dataset.layoutId;
+          const placeholder = img.nextElementSibling;
+          img.addEventListener("load", () => {
+            img.classList.remove("is-hidden");
+            placeholder.classList.add("is-hidden");
+          });
+          img.addEventListener("error", () => {
+            img.classList.add("is-hidden");
+            img.removeAttribute("src");
+            placeholder.classList.remove("is-hidden");
+            markImageFailure(layoutId);
+          });
+          if (state.imageFailures[layoutId]) {
+            placeholder.classList.remove("is-hidden");
+            img.classList.add("is-hidden");
+            img.removeAttribute("src");
+            return;
+          }
+          img.src = img.dataset.url;
+        });
+      }
+
+      function renderControls() {
+        refs.speedRange.value = String(state.speed);
+        refs.speedReadout.textContent = `${state.speed}ms`;
+        refs.playButton.textContent = state.mode === "play" ? "일시정지" : "재생";
+        refs.playButton.classList.toggle("is-active", state.mode === "play");
+        refs.scanButton.textContent = state.mode === "scan" ? "빠른 스캔 중지" : "빠른 스캔 시작";
+        refs.scanButton.classList.toggle("is-active", state.mode === "scan");
+        refs.presetButtons.forEach((button) => {
+          button.classList.toggle("is-active", Number(button.dataset.speed) === state.speed);
+        });
+      }
+
+      function syncUI() {
+        renderDesignBanner();
+        renderFamilyGrid();
+        renderStage();
+        renderCollection();
+        renderControls();
+      }
+
+      refs.familyGrid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-family-index]");
+        if (!button) {
+          return;
+        }
+        selectFamily(Number(button.dataset.familyIndex));
+      });
+
+      refs.collectionList.addEventListener("click", (event) => {
+        const focusButton = event.target.closest("[data-focus-layout-id]");
+        if (focusButton) {
+          const layout = layoutMetaById.get(focusButton.dataset.focusLayoutId);
+          stopPlayback();
+          state.selectedFamilyIndex = layout.familyIndex;
+          state.currentLayoutIndex = layout.layoutIndex;
+          persistUiState();
+          syncUI();
+          return;
+        }
+
+        const selectButton = event.target.closest("[data-select-layout-id]");
+        if (selectButton) {
+          const layout = layoutMetaById.get(selectButton.dataset.selectLayoutId);
+          data.setSelectedLayout(layout);
+          syncUI();
+          setNotice(`${layout.familyName} ${layout.layoutNumber}번 레이아웃을 현재 선택으로 저장했습니다.`);
+          return;
+        }
+
+        const removeButton = event.target.closest("[data-remove-layout-id]");
+        if (removeButton) {
+          removeFromCollection(removeButton.dataset.removeLayoutId);
+        }
+      });
+
+      refs.prevButton.addEventListener("click", () => {
+        if (state.mode === "scan") {
+          moveAcrossAll(-1);
+          return;
+        }
+        moveWithinFamily(-1);
+      });
+
+      refs.nextButton.addEventListener("click", () => {
+        if (state.mode === "scan") {
+          moveAcrossAll(1);
+          return;
+        }
+        moveWithinFamily(1);
+      });
+
+      refs.playButton.addEventListener("click", togglePlay);
+      refs.scanButton.addEventListener("click", toggleScan);
+      refs.chooseLayoutButton.addEventListener("click", chooseCurrentLayout);
+      refs.addCollectionButton.addEventListener("click", addCurrentToCollection);
+      refs.copyLayoutButton.addEventListener("click", copyCurrentLayoutInfo);
+      refs.openLayoutButton.addEventListener("click", openCurrentLayout);
+      refs.exportCollectionButton.addEventListener("click", exportCollectionAsJson);
+      refs.clearCollectionButton.addEventListener("click", clearCollection);
+
+      refs.speedRange.addEventListener("input", (event) => {
+        state.speed = Math.min(3000, Math.max(200, Number(event.target.value)));
+        persistUiState();
+        renderControls();
+        if (state.mode !== "manual") {
+          restartPlayback();
+        }
+      });
+
+      refs.presetButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.speed = Number(button.dataset.speed);
+          persistUiState();
+          renderControls();
+          if (state.mode !== "manual") {
+            restartPlayback();
+          }
+        });
+      });
+
+      refs.stageImage.addEventListener("load", () => {
+        const layout = getCurrentLayout();
+        if (refs.stageImage.dataset.layoutId !== layout.id) {
+          return;
+        }
+        refs.stageImage.classList.remove("is-hidden");
+        refs.stagePlaceholder.classList.add("is-hidden");
+      });
+
+      refs.stageImage.addEventListener("error", () => {
+        const layoutId = refs.stageImage.dataset.layoutId;
+        if (!layoutId) {
+          return;
+        }
+        markImageFailure(layoutId);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.target.closest("input, textarea")) {
+          return;
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          refs.nextButton.click();
+        }
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          refs.prevButton.click();
+        }
+        if (event.key === " ") {
+          event.preventDefault();
+          refs.playButton.click();
+        }
+        if (event.key.toLowerCase() === "s") {
+          event.preventDefault();
+          refs.scanButton.click();
+        }
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && state.mode !== "manual") {
+          stopPlayback();
+          syncUI();
+        }
+      });
+
+      window.addEventListener("beforeunload", stopPlayback);
+      syncUI();
+    })();
+  </script>
+</body>
+</html>

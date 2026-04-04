@@ -1,156 +1,254 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. Basic, PLAT, KAWAII CYBER-POP, 그리고 Basic Proof 문서까지 포함한 4개 문서 허브.">
-<meta name="keywords" content="Tamaverse, Design System, UI Kit, Neo-Brutalist, Cyber-Pop, Agent Interface">
-<meta name="author" content="Tamaverse">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tamaverse-design.vercel.app/">
-<meta property="og:title" content="Tamaverse Design System">
-<meta property="og:description" content="타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 4개 문서를 탐색하세요.">
-<meta property="og:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tamaverse Design System">
-<meta name="twitter:description" content="4 Design Documents for Tamaverse Agent Interface">
-<meta name="twitter:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
-<title>Tamaverse Design System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--navy:#14305A;--sky:#6DC3DB;--yellow:#FFC233;--surface:#f7f9ff;--surface-dim:#e8eef6}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;background:var(--surface);color:var(--navy);min-height:100vh}
-.header{text-align:center;padding:5rem 1.5rem 3rem}
-.header-badge{display:inline-block;padding:.35rem 1.2rem;border:3px solid var(--navy);border-radius:9999px;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;background:var(--yellow);color:var(--navy)}
-.header h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:1rem}
-.header h1 span{color:var(--sky)}
-.header p{font-family:'Noto Sans KR',sans-serif;font-size:1.1rem;color:#5a6a7a;max-width:540px;margin:0 auto;line-height:1.7}
-.grid{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
-.card{position:relative;border:3px solid var(--navy);border-radius:1.5rem;overflow:hidden;background:#fff;box-shadow:8px 8px 0 0 var(--navy);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.card:hover{transform:translateY(-6px);box-shadow:12px 12px 0 0 var(--navy)}
-.card:focus-visible{outline:none;box-shadow:12px 12px 0 0 var(--navy),0 0 0 4px var(--yellow)}
-.card-preview{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.preview-basic{background:linear-gradient(135deg,#33C1FF 0%,#FFE500 50%,#FF6B9D 100%)}
-.preview-basic::after{content:'';position:absolute;inset:0;background:repeating-conic-gradient(rgba(255,255,255,.08) 0% 25%,transparent 0% 50%) 0 0/40px 40px}
-.preview-basic-text{position:relative;z-index:1;font-size:1.6rem;font-weight:900;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.15)}
-.preview-plat{background:var(--surface-dim)}
-.preview-plat-inner{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;align-items:center;padding:1.5rem}
-.plat-chip{padding:.5rem 1.2rem;border:3px solid var(--navy);border-radius:9999px;font-weight:700;font-size:.8rem;box-shadow:3px 3px 0 0 var(--navy)}
-.plat-chip-sky{background:var(--sky);color:var(--navy)}
-.plat-chip-yellow{background:var(--yellow);color:var(--navy)}
-.plat-chip-white{background:#fff;color:var(--navy)}
-.plat-chip-navy{background:var(--navy);color:var(--sky)}
-.preview-kawaii{background:#1a0033;position:relative}
-.preview-kawaii::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,255,255,.07) 1px,transparent 1px),linear-gradient(0deg,rgba(0,255,255,.07) 1px,transparent 1px);background-size:40px 40px}
-.preview-kawaii-text{position:relative;z-index:1;font-size:1.5rem;font-weight:900;color:#FFFF00;text-shadow:0 0 20px #FF00FF,0 0 40px #FF00FF,2px 2px 0 #FF00FF;letter-spacing:.05em;animation:kawaiiGlow 2s ease-in-out infinite alternate}
-@keyframes kawaiiGlow{from{text-shadow:0 0 10px #FF00FF,0 0 20px #FF00FF,2px 2px 0 #FF00FF}to{text-shadow:0 0 20px #00FFFF,0 0 40px #00FFFF,2px 2px 0 #00FFFF}}
-.preview-proof{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 100%);position:relative}
-.preview-proof::before{content:'';position:absolute;left:1rem;top:1rem;bottom:1rem;width:96px;border:2px solid rgba(20,48,90,.12);border-radius:1rem;background:rgba(255,255,255,.9);box-shadow:0 4px 20px rgba(20,48,90,.08)}
-.preview-proof::after{content:'';position:absolute;left:1.75rem;top:3.2rem;width:64px;height:14px;border-radius:.35rem;background:rgba(51,193,255,.18)}
-.preview-proof-text{position:relative;z-index:1;font-size:1.55rem;font-weight:900;color:#14305A;letter-spacing:-.04em;line-height:1.05;text-align:center}
-.card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
-.card-version{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a95a5;margin-bottom:.5rem}
-.card-title{font-size:1.4rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.2}
-.card-desc{font-family:'Noto Sans KR',sans-serif;font-size:.9rem;color:#5a6a7a;line-height:1.6;flex:1;margin-bottom:1rem}
-.card-tags{display:flex;gap:.4rem;flex-wrap:wrap}
-.tag{padding:.2rem .6rem;border-radius:9999px;font-size:.65rem;font-weight:700;letter-spacing:.05em}
-.tag-sky{background:#d6f3fb;color:#006070}
-.tag-yellow{background:#fff3c4;color:#6f5100}
-.tag-pink{background:#ffd6ff;color:#6a006a}
-.tag-navy{background:#d6dce8;color:var(--navy)}
-.tag-green{background:#d6ffe0;color:#1B6B3A}
-.footer{text-align:center;padding:3rem 1.5rem;border-top:3px solid var(--navy);background:var(--navy);color:#fff}
-.footer-brand{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:.5rem}
-.footer-brand span{color:var(--sky)}
-.footer-copy{font-size:.75rem;opacity:.4;margin-top:.75rem}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.card{box-shadow:5px 5px 0 0 var(--navy)}}
-</style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHE5CJKYFR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WHE5CJKYFR');
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="description" content="Tama Templates는 디자인 컨셉과 레이아웃 템플릿을 조합해 구현용 handoff를 만드는 Tamaverse의 새 작업 허브입니다.">
+  <meta name="keywords" content="Tama Templates, Tamaverse, Design Templates, Layout Templates, Export Handoff">
+  <meta name="author" content="Tamaverse">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tamaverse-design.vercel.app/">
+  <meta property="og:title" content="Tama Templates">
+  <meta property="og:description" content="디자인 컨셉과 레이아웃 템플릿을 조합해 구현 handoff를 만드는 작업 허브">
+  <meta property="og:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tama Templates">
+  <meta name="twitter:description" content="Layout x Design Concept x Export Handoff">
+  <meta name="twitter:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
+  <title>Tama Templates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/tama-templates.css">
 </head>
 <body>
-<div class="header">
-  <div class="header-badge">Design System Hub</div>
-  <h1>TAMAVERSE <span>DESIGN</span></h1>
-  <p>타마버스 에이전트 인터페이스를 위한 디자인 시스템 컬렉션. 3가지 테마와 1개의 구조 비교용 proof 문서를 탐색하세요.</p>
-</div>
-<div class="grid">
-  <a href="tamaverse-basic-design-system.html" class="card">
-    <div class="card-preview preview-basic"><div class="preview-basic-text">BASIC</div></div>
-    <div class="card-body">
-      <div class="card-version">v1.0 — Foundation</div>
-      <div class="card-title">Tamaverse Basic</div>
-      <div class="card-desc">CSS 커스텀 프로퍼티 기반 파운데이션 테마. Poppins + Noto Sans KR/JP + Yusei Magic 서체 조합과 캐릭터 중심의 컬러풀한 디자인.</div>
-      <div class="card-tags">
-        <span class="tag tag-sky">CSS Variables</span>
-        <span class="tag tag-yellow">KR + JP</span>
-        <span class="tag tag-pink">Colorful</span>
+  <div class="shell">
+    <nav class="site-nav" aria-label="Primary">
+      <div class="brand-lockup">
+        <div class="brand-mark">TT</div>
+        <div class="brand-copy">
+          <strong>Tama Templates</strong>
+          <span>Layout x Design Concept x Export</span>
+        </div>
       </div>
-    </div>
-  </a>
-  <a href="tamaverse-plat-design-system-v2.html" class="card">
-    <div class="card-preview preview-plat">
-      <div class="preview-plat-inner">
-        <div class="plat-chip plat-chip-sky">SKY</div>
-        <div class="plat-chip plat-chip-yellow">YELLOW</div>
-        <div class="plat-chip plat-chip-white">WHITE</div>
-        <div class="plat-chip plat-chip-navy">NAVY</div>
+      <div class="nav-links">
+        <a href="/" class="is-active">Home</a>
+        <a href="/templates/designs/">Designs</a>
+        <a href="/templates/layouts/">Layouts</a>
+        <a href="/compose/">Compose</a>
+        <a href="/archive/">Archive</a>
       </div>
-    </div>
-    <div class="card-body">
-      <div class="card-version">v2.1 — Neo-Brutalist</div>
-      <div class="card-title">Tamaverse PLAT</div>
-      <div class="card-desc">Tailwind CSS + Material Design 3 토큰 기반의 네오-브루탈리스트 테마. 3px 네이비 보더, 오프셋 그림자, 극단적 라운딩.</div>
-      <div class="card-tags">
-        <span class="tag tag-sky">Tailwind CSS</span>
-        <span class="tag tag-navy">MD3 Tokens</span>
-        <span class="tag tag-green">WCAG AA</span>
+    </nav>
+
+    <section class="hero-grid">
+      <article class="hero-panel">
+        <p class="eyebrow">Tama Templates · Main Product Surface</p>
+        <h1 class="headline">Pick A Layout<span>Pick A Design</span></h1>
+        <p class="lede">
+          이제 루트 경험은 아카이브 탐색보다 조합 작업에 초점을 맞춥니다. 먼저
+          Tamaverse의 디자인 컨셉을 고르고, 그다음 16:9 레이아웃 템플릿을 선택한 뒤,
+          다른 개발 환경에서 바로 이어갈 수 있는 handoff bundle로 내보낼 수 있습니다.
+        </p>
+        <div class="button-row">
+          <a class="btn primary" href="/templates/designs/">디자인 컨셉 고르기</a>
+          <a class="btn secondary" href="/templates/layouts/">레이아웃 탐색하기</a>
+          <a class="btn signal" href="/archive/">기존 아카이브 보기</a>
+        </div>
+      </article>
+
+      <aside class="hero-panel hero-stage">
+        <div class="hero-stage-card">
+          <p class="eyebrow">Composition Flow</p>
+          <div class="hero-stage-frame">
+            <div class="hero-stage-grid">
+              <div class="hero-stage-column">
+                <div>
+                  <div class="hero-stage-ribbon">Design + Layout</div>
+                  <div class="hero-stage-title">Tama<br>Templates</div>
+                </div>
+                <div class="hero-stage-footer">
+                  <div class="hero-stage-chip"></div>
+                  <div class="hero-stage-chip"></div>
+                </div>
+              </div>
+              <div class="hero-stage-sidebar">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+          <p class="mini-label">
+            정적 디자인 템플릿과 인터랙션 proof를 구분하고, 레이아웃 선택 흐름과
+            export handoff까지 한 경로 안에서 이어집니다.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workflow</p>
+          <h2>Three Moves</h2>
+          <p>선택을 빠르게 만들고, 설명은 최소화하고, 마지막에 handoff를 뽑는 흐름으로 재구성했습니다.</p>
+        </div>
+        <div class="aside">현재 단계: 구조 개편 + 조합 플로우 도입</div>
       </div>
-    </div>
-  </a>
-  <a href="tamaverse-kawaii-cyberpop.html" class="card">
-    <div class="card-preview preview-kawaii"><div class="preview-kawaii-text">CYBER-POP</div></div>
-    <div class="card-body">
-      <div class="card-version">v3.0 — Kawaii Cyber-Pop</div>
-      <div class="card-title">Tamaverse KAWAII CYBER-POP</div>
-      <div class="card-desc">네온 글로우, 글래스모피즘, 파티클 캔버스, 3D 틸트, 마그네틱 버튼. 다크 테마 + 듀얼 테마(tama-arena / monster-carnival) 지원.</div>
-      <div class="card-tags">
-        <span class="tag tag-pink">Neon Glow</span>
-        <span class="tag tag-sky">Glass-morphism</span>
-        <span class="tag tag-yellow">Dual Theme</span>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>1. Design Concepts</h3>
+          <p>Basic, PLAT 같은 정적 템플릿과 Kawaii, Basic Motion Proof 같은 인터랙션 레퍼런스를 분리해서 선택합니다.</p>
+        </article>
+        <article class="feature-card">
+          <h3>2. Layout Templates</h3>
+          <p>`tms-slide-template-lab`에서 허용된 UI만 가져와 16:9 중심의 레이아웃 탐색 보드로 재구성합니다.</p>
+        </article>
+        <article class="feature-card">
+          <h3>3. Export Handoff</h3>
+          <p>최종 선택을 JSON과 구현용 brief로 묶어 다른 LLM 기반 개발 환경으로 자연스럽게 넘길 수 있게 합니다.</p>
+        </article>
       </div>
-    </div>
-  </a>
-  <a href="tamaverse-basic-proof.html" class="card">
-    <div class="card-preview preview-proof"><div class="preview-proof-text">BASIC<br>PROOF</div></div>
-    <div class="card-body">
-      <div class="card-version">v1.1 — Structure Proof</div>
-      <div class="card-title">Basic on Kawaii Layout</div>
-      <div class="card-desc">KAWAII CYBER-POP 문서의 구조와 섹션 흐름을 유지하면서, Basic 디자인 시스템의 색/타이포/서피스 규칙으로 재스킨한 비교용 문서.</div>
-      <div class="card-tags">
-        <span class="tag tag-sky">Proof</span>
-        <span class="tag tag-yellow">Basic Style</span>
-        <span class="tag tag-navy">Same Layout</span>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Current Selection</p>
+          <h2>Composition Status</h2>
+          <p>지금 저장된 디자인 컨셉과 레이아웃 선택 상태를 바로 확인할 수 있습니다.</p>
+        </div>
       </div>
-    </div>
-  </a>
-</div>
-<footer class="footer">
-  <div class="footer-brand">TAMAVERSE <span>DESIGN</span></div>
-  <div style="font-size:.8rem;opacity:.6;">Design System Collection — 4 Published Documents</div>
-  <div class="footer-copy">&copy; 2024-2026 TAMAVERSE DESIGN</div>
-</footer>
+      <div class="stat-grid">
+        <article class="stat-card">
+          <span>선택된 디자인</span>
+          <strong id="home-design-name">아직 선택되지 않음</strong>
+        </article>
+        <article class="stat-card">
+          <span>선택된 레이아웃</span>
+          <strong id="home-layout-name">아직 선택되지 않음</strong>
+        </article>
+        <article class="stat-card">
+          <span>후보 레이아웃 수</span>
+          <strong id="home-layout-candidates">0개</strong>
+        </article>
+        <article class="stat-card">
+          <span>아카이브 분류</span>
+          <strong>Static + Motion</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Design Catalog</p>
+          <h2>Design Concepts</h2>
+          <p>정적 템플릿과 인터랙션 proof를 동일한 카드 밀도로 보여주되, 역할은 분명하게 구분합니다.</p>
+        </div>
+        <div class="aside"><a href="/templates/designs/" class="btn ghost">전체 보기</a></div>
+      </div>
+      <div class="catalog-grid">
+        <article class="template-card">
+          <div class="template-kicker"><span class="pill static">Static</span></div>
+          <div class="template-preview basic">
+            <div class="preview-copy">
+              <strong>Basic</strong>
+              <span>Bright foundation theme</span>
+            </div>
+          </div>
+          <div class="template-body">
+            <h3>Basic</h3>
+            <p>밝은 배경과 네이비 구조색 중심의 기본 정적 템플릿.</p>
+          </div>
+        </article>
+        <article class="template-card">
+          <div class="template-kicker"><span class="pill static">Static</span></div>
+          <div class="template-preview plat">
+            <div class="preview-copy">
+              <strong>PLAT</strong>
+              <span>Structured neo-brutalist</span>
+            </div>
+          </div>
+          <div class="template-body">
+            <h3>PLAT</h3>
+            <p>보더와 오프셋 그림자로 계층이 분명한 구조형 템플릿.</p>
+          </div>
+        </article>
+        <article class="template-card">
+          <div class="template-kicker"><span class="pill motion">Motion</span></div>
+          <div class="template-preview kawaii">
+            <div class="preview-copy">
+              <strong>Kawaii Cyber-Pop</strong>
+              <span>Neon + tilt + particles</span>
+            </div>
+          </div>
+          <div class="template-body">
+            <h3>Kawaii Cyber-Pop</h3>
+            <p>화려한 인터랙션 중심 웹페이지를 위한 모션 레퍼런스.</p>
+          </div>
+        </article>
+        <article class="template-card">
+          <div class="template-kicker"><span class="pill motion">Interactive Proof</span></div>
+          <div class="template-preview proof">
+            <div class="preview-copy">
+              <strong>Basic Motion Proof</strong>
+              <span>Keyboard live switching</span>
+            </div>
+          </div>
+          <div class="template-body">
+            <h3>Basic Motion Proof</h3>
+            <p>동일 레이아웃에서 Kawaii와 Basic을 실시간 전환하는 proof.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Next Action</p>
+          <h2>Start The Flow</h2>
+          <p>지금부터는 아카이브를 읽는 방식이 아니라, 조합을 만드는 방식으로 이어집니다.</p>
+        </div>
+      </div>
+      <div class="pairing-grid">
+        <article class="pairing-card">
+          <h3>디자인 먼저 고르기</h3>
+          <p>Basic, PLAT, Kawaii Cyber-Pop, Basic Motion Proof 중 하나를 선택하고 `Compose` 흐름에 저장합니다.</p>
+          <div class="button-row"><a class="btn primary" href="/templates/designs/">Designs</a></div>
+        </article>
+        <article class="pairing-card">
+          <h3>레이아웃 후보 모으기</h3>
+          <p>허용된 `template-lab` UI만 사용해 16:9 레이아웃을 둘러보고 후보 보드에 쌓습니다.</p>
+          <div class="button-row"><a class="btn secondary" href="/templates/layouts/">Layouts</a></div>
+        </article>
+        <article class="pairing-card">
+          <h3>최종 handoff 내보내기</h3>
+          <p>현재 선택을 JSON과 brief로 뽑아 다른 LLM 개발 환경으로 이어갑니다.</p>
+          <div class="button-row"><a class="btn signal" href="/compose/">Compose</a></div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script src="/assets/tama-templates-data.js"></script>
+  <script>
+    (() => {
+      const data = window.TamaTemplatesData;
+      const selectedDesign = data.getSelectedDesign();
+      const selectedLayout = data.getSelectedLayout();
+      const collection = data.getLayoutCollection();
+
+      document.getElementById("home-design-name").textContent = selectedDesign
+        ? selectedDesign.name
+        : "아직 선택되지 않음";
+      document.getElementById("home-layout-name").textContent = selectedLayout
+        ? `${selectedLayout.familyName} · ${selectedLayout.layoutNumber}/${selectedLayout.totalLayouts}`
+        : "아직 선택되지 않음";
+      document.getElementById("home-layout-candidates").textContent = `${collection.length}개`;
+    })();
+  </script>
 </body>
 </html>
