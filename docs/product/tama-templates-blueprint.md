@@ -16,8 +16,8 @@ The new product is not just a hub of design documents. It is a composition tool 
 
 These are closest to reusable visual templates for mostly static websites.
 
-- `tamaverse-basic-design-system.html`
-- `tamaverse-plat-design-system-v2.html`
+- `tamaverse-design-template-basic-foundation.html`
+- `tamaverse-design-template-plat-neo-brutalist.html`
 
 Their role is:
 
@@ -28,23 +28,23 @@ Their role is:
 
 Assumption:
 
-- The user's mention of `tamaverse-basic-design-system-v2.html` refers to the existing file `tamaverse-plat-design-system-v2.html`, because no file with the former name exists in this repository.
+- The user's mention of `tamaverse-basic-design-system-v2.html` refers to the existing file `tamaverse-design-template-plat-neo-brutalist.html`, because no file with the former name exists in this repository.
 
 ### 2. Motion / interaction references
 
 These are not just static themes. They demonstrate layout, interaction behavior, and transition language.
 
-- `tamaverse-kawaii-cyberpop.html`
-- `tamaverse-basic-proof.html`
-- `Interactive Skin.html`
+- `tamaverse-motion-reference-kawaii-cyberpop.html`
+- `tamaverse-interactive-proof-basic-kawaii-switch.html`
+- `tamaverse-interaction-lab-skin-engine.html`
 
 Important clarification:
 
-- `tamaverse-basic-proof.html` is not a standalone static design system page.
-- It is a mirror entry point for `Interactive Skin.html`.
+- `tamaverse-interactive-proof-basic-kawaii-switch.html` is not a standalone static design system page.
+- It is a mirror entry point for `tamaverse-interaction-lab-skin-engine.html`.
 - Its value is that it proves the same layout can switch between Kawaii Cyber-Pop and Basic styling through keyboard-driven live transitions.
 
-Therefore `tamaverse-basic-proof.html` should be presented as:
+Therefore `tamaverse-interactive-proof-basic-kawaii-switch.html` should be presented as:
 
 - an `interaction proof`
 - a `motion-enabled skin switching demo`

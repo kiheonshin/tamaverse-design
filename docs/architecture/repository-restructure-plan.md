@@ -21,11 +21,11 @@ That structure works for direct publishing, but it does not scale to the next pr
 | Current file | Current role | Future role |
 | --- | --- | --- |
 | `index.html` | archive hub | move to archive entry or replace with new product home |
-| `tamaverse-basic-design-system.html` | static design system | `design concept / static` |
-| `tamaverse-plat-design-system-v2.html` | static design system | `design concept / static` |
-| `tamaverse-kawaii-cyberpop.html` | motion-heavy reference | `design concept / motion` |
-| `tamaverse-basic-proof.html` | mirror wrapper | `motion proof entry` |
-| `Interactive Skin.html` | live transition demo | `interactive proof engine` |
+| `tamaverse-design-template-basic-foundation.html` | static design system | `design concept / static` |
+| `tamaverse-design-template-plat-neo-brutalist.html` | static design system | `design concept / static` |
+| `tamaverse-motion-reference-kawaii-cyberpop.html` | motion-heavy reference | `design concept / motion` |
+| `tamaverse-interactive-proof-basic-kawaii-switch.html` | mirror wrapper | `motion proof entry` |
+| `tamaverse-interaction-lab-skin-engine.html` | live transition demo | `interactive proof engine` |
 | `interactive-basic-endpoint-patches.js` | basic skin patch data | `interactive proof dependency` |
 
 ## Target repository shape
@@ -207,9 +207,9 @@ Guardrail:
 
 ## Implementation notes
 
-### `tamaverse-basic-proof.html`
+### `tamaverse-interactive-proof-basic-kawaii-switch.html`
 
-This file is currently an iframe wrapper over `Interactive Skin.html`.
+This file is currently an iframe wrapper over `tamaverse-interaction-lab-skin-engine.html`.
 
 That means the future product should treat it as:
 

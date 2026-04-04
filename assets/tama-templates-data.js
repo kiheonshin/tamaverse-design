@@ -12,20 +12,20 @@
   const designConcepts = [
     {
       id: "basic",
-      name: "Basic",
+      name: "Basic Foundation Template",
       type: "static",
       typeLabel: "Static Design Template",
       preview: "basic",
       archiveHref: "/archive/design-systems/basic/",
       summary:
-        "밝은 서피스, 네이비 구조색, 절제된 모션으로 안정적인 정적 웹페이지를 만들기 위한 기본 템플릿입니다.",
+        "밝은 서피스, 네이비 구조색, 절제된 모션으로 안정적인 정적 웹페이지를 만들기 위한 기본 파운데이션 템플릿입니다.",
       traits: ["White Surface", "Navy Structure", "Subtle Motion"],
       recommendedUse: "브랜드 소개, 정보 아카이브, 정적 허브 페이지",
       motionNotes: "hover와 전환은 얕고 명확하게만 사용"
     },
     {
       id: "plat",
-      name: "PLAT",
+      name: "PLAT Neo-Brutalist Template",
       type: "static",
       typeLabel: "Static Design Template",
       preview: "plat",
@@ -38,26 +38,26 @@
     },
     {
       id: "kawaii-cyberpop",
-      name: "Kawaii Cyber-Pop",
+      name: "Kawaii Cyber-Pop Motion Reference",
       type: "motion",
-      typeLabel: "Motion Design Reference",
+      typeLabel: "Motion Reference",
       preview: "kawaii",
       archiveHref: "/archive/motion/kawaii-cyberpop/",
       summary:
-        "네온 글로우, 입체감, 파티클, 3D 틸트가 결합된 고감도 인터랙션 레퍼런스입니다.",
+        "네온 글로우, 파티클, 3D 틸트, 과감한 트랜지션이 결합된 고감도 인터랙션 레퍼런스입니다.",
       traits: ["Neon Glow", "3D Tilt", "Expressive Motion"],
       recommendedUse: "화려한 인터랙션 중심 웹페이지, 이벤트성 경험",
       motionNotes: "시각 스타일과 인터랙션 설계가 함께 고려되어야 함"
     },
     {
       id: "basic-motion-proof",
-      name: "Basic Motion Proof",
+      name: "Basic x Kawaii Live Switch Proof",
       type: "motion",
       typeLabel: "Interactive Proof",
       preview: "proof",
       archiveHref: "/archive/motion/basic-proof/",
       summary:
-        "Kawaii Cyber-Pop과 동일한 레이아웃 위에 Basic 디자인을 입히고, 키보드로 두 상태를 실시간 전환하는 proof입니다.",
+        "Kawaii Cyber-Pop과 동일한 레이아웃 위에 Basic 디자인을 입히고, 키보드 인터랙션으로 두 상태를 실시간 전환하는 proof입니다.",
       traits: ["Shared Layout", "Keyboard Switching", "Transition Proof"],
       recommendedUse: "동일 레이아웃에서 스타일/모션 전환을 검증해야 하는 프로젝트",
       motionNotes: "좌우 화살표로 10단계 스킨 전환을 확인"
