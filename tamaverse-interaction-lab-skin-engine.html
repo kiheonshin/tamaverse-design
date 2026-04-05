@@ -2866,7 +2866,7 @@ body[data-skin="basic"] .tm-reveal {
   let mobileTouchLongPressTimer = 0;
   const MOBILE_TOUCH_SPEED = 1.1;
   const MOBILE_TAP_THRESHOLD = 12;
-  const MOBILE_LONG_PRESS_MS = 280;
+  const MOBILE_LONG_PRESS_MS = 320;
 
   function setProgressValue(nextProgress) {
     progress = Math.max(0, Math.min(1, nextProgress));
@@ -2976,14 +2976,14 @@ body[data-skin="basic"] .tm-reveal {
       x: touch.clientX,
       y: touch.clientY,
       moved: false,
-      triggered: false,
+      longPressReady: false,
+      startedAt: performance.now(),
     };
 
     clearMobileLongPressTimer();
     mobileTouchLongPressTimer = window.setTimeout(() => {
-      if (!mobileTouchTrack || mobileTouchTrack.moved || mobileTouchTrack.triggered) return;
-      mobileTouchTrack.triggered = true;
-      triggerMobileTapSweep();
+      if (!mobileTouchTrack || mobileTouchTrack.moved) return;
+      mobileTouchTrack.longPressReady = true;
     }, MOBILE_LONG_PRESS_MS);
   }, { passive: true, capture: true });
 
@@ -3000,8 +3000,14 @@ body[data-skin="basic"] .tm-reveal {
 
   window.addEventListener('touchend', () => {
     if (!mobileTouchTrack) return;
+
+    const shouldTrigger = mobileTouchTrack.longPressReady && !mobileTouchTrack.moved;
     clearMobileLongPressTimer();
     mobileTouchTrack = null;
+
+    if (shouldTrigger) {
+      triggerMobileTapSweep();
+    }
   }, { passive: true, capture: true });
 
   window.addEventListener('touchcancel', () => {
