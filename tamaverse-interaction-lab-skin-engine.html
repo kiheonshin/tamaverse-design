@@ -1863,7 +1863,6 @@ document.addEventListener('DOMContentLoaded', () => {
   align-items: center;
   gap: 14px;
   padding: 10px 22px;
-  flex-wrap: wrap;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1902,15 +1901,29 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 .skin-hud-hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
-  width: 100%;
   justify-content: center;
-  margin-top: 2px;
+  min-width: 220px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   font-size: 0.68rem;
   color: inherit;
   opacity: 0.88;
   text-align: center;
+  pointer-events: none;
+}
+.skin-hud.basic-mode .skin-hud-hint {
+  background: rgba(255,255,255,0.92);
+  border-color: rgba(20,48,90,0.12);
 }
 /* ── Smooth transitions for skin changes ── */
 body, .tm-env-bg, .tm-navbar, .tm-sidebar, .tm-surface, .tm-footer,
