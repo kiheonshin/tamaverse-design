@@ -4,151 +4,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Tamaverse Design Archive</title>
-  <meta name="description" content="기존 Tamaverse 디자인 문서를 Static Design Systems, Motion References, Labs로 재정리한 아카이브입니다.">
+  <title>Tama Templates · Archive</title>
+  <meta name="description" content="Tama Templates의 원본 템플릿과 독립 레퍼런스를 같은 디자인 언어 안에서 탐색하는 secondary browse surface입니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/tama-templates.css">
 </head>
 <body>
-  <div class="shell">
+  <div class="shell shell--dense">
     <nav class="site-nav" aria-label="Primary">
       <div class="brand-lockup">
         <div class="brand-mark">AR</div>
         <div class="brand-copy">
-          <strong>Design Archive</strong>
-          <span>Static systems, motion references, labs</span>
+          <strong>Tama Templates</strong>
+          <span>Secondary browse surface</span>
         </div>
       </div>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/templates/designs/">Designs</a>
-        <a href="/templates/layouts/">Layouts</a>
-        <a href="/compose/">Compose</a>
+        <a href="/">Compose</a>
         <a href="/archive/" class="is-active">Archive</a>
       </div>
     </nav>
 
-    <section class="hero-grid">
-      <article class="hero-panel">
-        <p class="eyebrow">Tamaverse Design Archive</p>
-        <h1 class="headline">Preserve The Sources<span>Clarify Their Roles</span></h1>
-        <p class="lede">
-          기존 문서들은 그대로 보존하되, 앞으로의 제품 구조에 맞춰 Static Design Systems,
-          Motion References, Labs 세 층위로 다시 읽히도록 분류했습니다.
-        </p>
-      </article>
-      <aside class="hero-panel">
-        <p class="eyebrow">Important Distinction</p>
-        <p class="lede" style="margin-top:0">
-          `tamaverse-interactive-proof-basic-kawaii-switch.html` 는 일반적인 디자인 시스템 페이지가 아니라,
-          `Interactive Skin Engine` 기반의 키보드 전환 proof entry 입니다. 따라서 archive와
-          templates 모두에서 `Interactive Proof` 로 분리해 안내합니다.
-        </p>
+    <section class="compose-header-v2">
+      <div class="compose-header-v2__title">
+        <p class="eyebrow">Secondary Axis</p>
+        <h1 class="headline headline--compact">Archive<span>Presets · References</span></h1>
+        <p class="compose-header__scenario">원본 템플릿과 독립 레퍼런스를 빠르게 탐색하고 필요한 페이지로 바로 이동</p>
+      </div>
+      <aside class="step3-summary">
+        <div>
+          <p class="eyebrow">Browse</p>
+          <h2>원본 페이지로 이동</h2>
+        </div>
+        <div class="step3-summary__chips">
+          <div class="export-chip">
+            <span>Static</span>
+            <strong>2</strong>
+          </div>
+          <div class="export-chip">
+            <span>Motion / Lab</span>
+            <strong>3</strong>
+          </div>
+        </div>
+        <a class="btn ghost" href="/">Compose로 돌아가기</a>
       </aside>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Group 1</p>
-          <h2>Static Design Systems</h2>
-          <p>정적인 웹페이지에 적용하기 위한 디자인 컨셉 중심의 문서들입니다.</p>
-        </div>
-      </div>
-      <div class="archive-grid">
-        <article class="archive-card">
-          <h3>Basic Foundation Template <span class="pill static">Static</span></h3>
-          <p>밝은 서피스, 네이비 구조색, 절제된 움직임을 중심으로 한 정적 웹페이지용 파운데이션 템플릿.</p>
-          <div class="meta">
-            <span class="trait">White Surface</span>
-            <span class="trait">Navy Structure</span>
-            <span class="trait">Foundation Theme</span>
+    <main class="compose-stack-v3">
+      <section class="step-surface">
+        <header class="step-surface__head">
+          <div>
+            <p class="eyebrow">Static Templates</p>
+            <h2>기본 템플릿</h2>
           </div>
-          <div class="button-row">
-            <a class="btn primary" href="/archive/design-systems/basic/">아카이브 보기</a>
-            <a class="btn ghost" href="/tamaverse-design-template-basic-foundation.html">원본 열기</a>
-          </div>
-        </article>
-        <article class="archive-card">
-          <h3>PLAT Neo-Brutalist Template <span class="pill static">Static</span></h3>
-          <p>강한 보더와 오프셋 그림자로 계층을 만드는 네오-브루탈리스트 정적 템플릿.</p>
-          <div class="meta">
-            <span class="trait">MD3 Tokens</span>
-            <span class="trait">Offset Shadow</span>
-            <span class="trait">Structured Cards</span>
-          </div>
-          <div class="button-row">
-            <a class="btn primary" href="/archive/design-systems/plat/">아카이브 보기</a>
-            <a class="btn ghost" href="/tamaverse-design-template-plat-neo-brutalist.html">원본 열기</a>
-          </div>
-        </article>
-      </div>
-    </section>
+          <p class="step-surface__meta">original pages + detail views</p>
+        </header>
+        <div class="reference-link-grid">
+          <article class="preview-card is-selected">
+            <div class="preview-card__media">
+              <img src="/assets/og-basic.png" alt="Basic Foundation Template">
+            </div>
+            <div class="preview-card__body">
+              <div class="preview-card__topline">
+                <span class="pill static">Static</span>
+                <span class="preview-card__signal">브랜드 소개 / 정보 허브</span>
+              </div>
+              <h3>Basic Foundation Template</h3>
+              <div class="preview-card__tags">
+                <span class="trait">Subtle Motion</span>
+                <span class="trait">White Surface</span>
+              </div>
+            </div>
+            <div class="preview-card__footer button-row">
+              <a class="btn primary" href="/tamaverse-design-template-basic-foundation.html">원본 열기</a>
+              <a class="btn ghost" href="/archive/design-systems/basic/">detail</a>
+            </div>
+          </article>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Group 2</p>
-          <h2>Motion References</h2>
-          <p>레이아웃, 인터랙션, 트랜지션까지 함께 읽어야 하는 문서들입니다.</p>
+          <article class="preview-card is-selected">
+            <div class="preview-card__media">
+              <img src="/assets/og-plat.png" alt="PLAT Neo-Brutalist Template">
+            </div>
+            <div class="preview-card__body">
+              <div class="preview-card__topline">
+                <span class="pill static">Static</span>
+                <span class="preview-card__signal">서비스 소개 / 구조형 랜딩</span>
+              </div>
+              <h3>PLAT Neo-Brutalist Template</h3>
+              <div class="preview-card__tags">
+                <span class="trait">Structured Cards</span>
+                <span class="trait">Offset Shadow</span>
+              </div>
+            </div>
+            <div class="preview-card__footer button-row">
+              <a class="btn primary" href="/tamaverse-design-template-plat-neo-brutalist.html">원본 열기</a>
+              <a class="btn ghost" href="/archive/design-systems/plat/">detail</a>
+            </div>
+          </article>
         </div>
-      </div>
-      <div class="archive-grid">
-        <article class="archive-card">
-          <h3>Kawaii Cyber-Pop Motion Reference <span class="pill motion">Motion</span></h3>
-          <p>네온 글로우와 3D 틸트, 파티클, 강한 트랜지션이 결합된 화려한 인터랙션 레퍼런스.</p>
-          <div class="meta">
-            <span class="trait">Neon Glow</span>
-            <span class="trait">3D Tilt</span>
-            <span class="trait">Particles</span>
-          </div>
-          <div class="button-row">
-            <a class="btn primary" href="/archive/motion/kawaii-cyberpop/">아카이브 보기</a>
-            <a class="btn ghost" href="/tamaverse-motion-reference-kawaii-cyberpop.html">원본 열기</a>
-          </div>
-        </article>
-        <article class="archive-card">
-          <h3>Basic x Kawaii Live Switch Proof <span class="pill motion">Interactive Proof</span></h3>
-          <p>동일 레이아웃에 Basic 디자인을 입힌 뒤, 좌우 화살표 키로 Kawaii와 실시간 전환되는 interactive proof entry.</p>
-          <div class="meta">
-            <span class="trait">Shared Layout</span>
-            <span class="trait">Arrow Keys</span>
-            <span class="trait">Skin Switching</span>
-          </div>
-          <div class="button-row">
-            <a class="btn primary" href="/archive/motion/basic-proof/">아카이브 보기</a>
-            <a class="btn ghost" href="/tamaverse-interactive-proof-basic-kawaii-switch.html">원본 열기</a>
-          </div>
-        </article>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Group 3</p>
-          <h2>Labs</h2>
-          <p>실험과 구현 확인을 위한 원본 엔진 레벨 문서입니다.</p>
+      <section class="step-surface">
+        <header class="step-surface__head">
+          <div>
+            <p class="eyebrow">Motion / Proof / Lab</p>
+            <h2>모션 레퍼런스와 랩</h2>
+          </div>
+          <p class="step-surface__meta">standalone destinations preserved</p>
+        </header>
+        <div class="reference-link-grid">
+          <article class="preview-card is-selected">
+            <div class="preview-card__media">
+              <img src="/assets/og-kawaii-v2.png" alt="Kawaii Motion Reference">
+            </div>
+            <div class="preview-card__body">
+              <div class="preview-card__topline">
+                <span class="pill motion">Motion</span>
+                <span class="preview-card__signal">모션 중심 인터랙션</span>
+              </div>
+              <h3>Kawaii Motion Reference</h3>
+              <div class="preview-card__tags">
+                <span class="trait">3D Tilt</span>
+                <span class="trait">Expressive Motion</span>
+              </div>
+            </div>
+            <div class="preview-card__footer button-row">
+              <a class="btn primary" href="/tamaverse-motion-reference-kawaii-cyberpop.html">원본 열기</a>
+              <a class="btn ghost" href="/archive/motion/kawaii-cyberpop/">detail</a>
+            </div>
+          </article>
+
+          <article class="preview-card is-selected">
+            <div class="preview-card__media">
+              <img src="/assets/og-kawaii.png" alt="Basic x Kawaii Live Switch Proof">
+            </div>
+            <div class="preview-card__body">
+              <div class="preview-card__topline">
+                <span class="pill motion">Proof</span>
+                <span class="preview-card__signal">스타일 전환 proof</span>
+              </div>
+              <h3>Basic x Kawaii Live Switch Proof</h3>
+              <div class="preview-card__tags">
+                <span class="trait">Keyboard Switch</span>
+                <span class="trait">Transition Proof</span>
+              </div>
+            </div>
+            <div class="preview-card__footer button-row">
+              <a class="btn primary" href="/tamaverse-interactive-proof-basic-kawaii-switch.html">원본 열기</a>
+              <a class="btn ghost" href="/archive/motion/basic-proof/">detail</a>
+            </div>
+          </article>
+
+          <article class="preview-card is-selected">
+            <div class="preview-card__media">
+              <img src="/assets/og-hub.png" alt="Interactive Skin Engine">
+            </div>
+            <div class="preview-card__body">
+              <div class="preview-card__topline">
+                <span class="pill signal">Lab</span>
+                <span class="preview-card__signal">engine reference</span>
+              </div>
+              <h3>Interactive Skin Engine</h3>
+              <div class="preview-card__tags">
+                <span class="trait">Interactive Engine</span>
+                <span class="trait">10-Step Transition</span>
+              </div>
+            </div>
+            <div class="preview-card__footer button-row">
+              <a class="btn primary" href="/tamaverse-interaction-lab-skin-engine.html">원본 열기</a>
+              <a class="btn ghost" href="/archive/labs/interactive-skin/">detail</a>
+            </div>
+          </article>
         </div>
-      </div>
-      <div class="archive-grid">
-        <article class="archive-card">
-          <h3>Interactive Skin Engine <span class="pill signal">Lab</span></h3>
-          <p>`Basic x Kawaii Live Switch Proof` 뒤에서 실제로 동작하는 인터랙션 엔진입니다. 좌우 화살표로 10단계 전환을 확인할 수 있습니다.</p>
-          <div class="meta">
-            <span class="trait">Interactive Engine</span>
-            <span class="trait">10-Step Transition</span>
-            <span class="trait">Patch-Based Skinning</span>
-          </div>
-          <div class="button-row">
-            <a class="btn primary" href="/archive/labs/interactive-skin/">아카이브 보기</a>
-            <a class="btn ghost" href="/tamaverse-interaction-lab-skin-engine.html">원본 열기</a>
-          </div>
-        </article>
-      </div>
-    </section>
+      </section>
+    </main>
   </div>
 </body>
 </html>

@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="description" content="Tama Templates는 디자인 컨셉과 레이아웃 템플릿을 조합해 구현용 handoff를 만드는 Tamaverse의 새 작업 허브입니다.">
-  <meta name="keywords" content="Tama Templates, Tamaverse, Design Templates, Layout Templates, Export Handoff">
+  <meta name="description" content="Tama Templates는 스타일과 레이아웃을 한 화면에서 확인하고 생성 범위를 정한 뒤 구현 시작 패키지로 내보내는 compose-first surface입니다.">
+  <meta name="keywords" content="Tama Templates, Compose, Layout, Style, Export, Archive">
   <meta name="author" content="Tamaverse">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tamaverse-design.vercel.app/">
   <meta property="og:title" content="Tama Templates">
-  <meta property="og:description" content="디자인 컨셉과 레이아웃 템플릿을 조합해 구현 handoff를 만드는 작업 허브">
+  <meta property="og:description" content="Compose-first surface with dense preview cards, page scope selection, and export." />
   <meta property="og:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tama Templates">
-  <meta name="twitter:description" content="Layout x Design Concept x Export Handoff">
+  <meta name="twitter:description" content="Compose-first surface with dense preview cards, page scope selection, and export." />
   <meta name="twitter:image" content="https://tamaverse-design.vercel.app/assets/og-hub.png">
   <title>Tama Templates</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,231 +23,633 @@
   <link rel="stylesheet" href="/assets/tama-templates.css">
 </head>
 <body>
-  <div class="shell">
+  <div class="shell shell--dense">
     <nav class="site-nav" aria-label="Primary">
       <div class="brand-lockup">
         <div class="brand-mark">TT</div>
         <div class="brand-copy">
           <strong>Tama Templates</strong>
-          <span>Layout x Design Concept x Export</span>
+          <span>Compose-first minimal surface</span>
         </div>
       </div>
       <div class="nav-links">
-        <a href="/" class="is-active">Home</a>
-        <a href="/templates/designs/">Designs</a>
-        <a href="/templates/layouts/">Layouts</a>
-        <a href="/compose/">Compose</a>
+        <a href="/" class="is-active">Compose</a>
         <a href="/archive/">Archive</a>
       </div>
     </nav>
 
-    <section class="hero-grid">
-      <article class="hero-panel">
-        <p class="eyebrow">Tama Templates · Main Product Surface</p>
-        <h1 class="headline">Pick A Layout<span>Pick A Design</span></h1>
-        <p class="lede">
-          이제 루트 경험은 아카이브 탐색보다 조합 작업에 초점을 맞춥니다. 먼저
-          Tamaverse의 디자인 컨셉을 고르고, 그다음 16:9 레이아웃 템플릿을 선택한 뒤,
-          다른 개발 환경에서 바로 이어갈 수 있는 handoff bundle로 내보낼 수 있습니다.
-        </p>
-        <div class="button-row">
-          <a class="btn primary" href="/templates/designs/">디자인 컨셉 고르기</a>
-          <a class="btn secondary" href="/templates/layouts/">레이아웃 탐색하기</a>
-          <a class="btn signal" href="/archive/">기존 아카이브 보기</a>
+    <section class="compose-header-v3">
+      <div class="compose-header-v3__title">
+        <p class="eyebrow">Primary Axis</p>
+        <h1 class="headline headline--compact">Compose<span>Step 1 · Step 2 · Step 3</span></h1>
+        <p class="compose-header__scenario">레이아웃 선택 → 스타일 선택 → 생성 범위 확인 후 내보내기</p>
+      </div>
+      <aside class="step3-summary" aria-labelledby="step3-title">
+        <div>
+          <p class="eyebrow">Step 3</p>
+          <h2 id="step3-title">디자인 생성</h2>
         </div>
-      </article>
-
-      <aside class="hero-panel hero-stage">
-        <div class="hero-stage-card">
-          <p class="eyebrow">Composition Flow</p>
-          <div class="hero-stage-frame">
-            <div class="hero-stage-grid">
-              <div class="hero-stage-column">
-                <div>
-                  <div class="hero-stage-ribbon">Design + Layout</div>
-                  <div class="hero-stage-title">Tama<br>Templates</div>
-                </div>
-                <div class="hero-stage-footer">
-                  <div class="hero-stage-chip"></div>
-                  <div class="hero-stage-chip"></div>
-                </div>
-              </div>
-              <div class="hero-stage-sidebar">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
+        <div class="step3-summary__chips">
+          <div class="export-chip">
+            <span>Style</span>
+            <strong id="export-style-name">—</strong>
           </div>
-          <p class="mini-label">
-            정적 디자인 템플릿과 인터랙션 proof를 구분하고, 레이아웃 선택 흐름과
-            export handoff까지 한 경로 안에서 이어집니다.
-          </p>
+          <div class="export-chip">
+            <span>Layout</span>
+            <strong id="export-layout-name">—</strong>
+          </div>
+          <div class="export-chip">
+            <span>Scope</span>
+            <strong id="export-scope-name">Family</strong>
+          </div>
         </div>
+        <button class="btn signal" type="button" id="open-export-modal">디자인 보기</button>
       </aside>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Workflow</p>
-          <h2>Three Moves</h2>
-          <p>선택을 빠르게 만들고, 설명은 최소화하고, 마지막에 handoff를 뽑는 흐름으로 재구성했습니다.</p>
-        </div>
-        <div class="aside">현재 단계: 구조 개편 + 조합 플로우 도입</div>
-      </div>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>1. Design Concepts</h3>
-          <p>Basic Foundation, PLAT Neo-Brutalist 같은 정적 템플릿과 Kawaii Motion Reference, Basic x Kawaii Live Switch Proof 같은 인터랙션 레퍼런스를 분리해서 선택합니다.</p>
-        </article>
-        <article class="feature-card">
-          <h3>2. Layout Templates</h3>
-          <p>`tms-slide-template-lab`에서 허용된 UI만 가져와 16:9 중심의 레이아웃 탐색 보드로 재구성합니다.</p>
-        </article>
-        <article class="feature-card">
-          <h3>3. Export Handoff</h3>
-          <p>최종 선택을 JSON과 구현용 brief로 묶어 다른 LLM 기반 개발 환경으로 자연스럽게 넘길 수 있게 합니다.</p>
-        </article>
-      </div>
-    </section>
+    <main class="compose-stack-v4">
+      <section class="step-surface step-surface--layout" id="step-1">
+        <header class="step-surface__head">
+          <div>
+            <p class="eyebrow">선택 1</p>
+            <h2>레이아웃 확인</h2>
+          </div>
+          <p class="step-surface__meta" id="layout-meta">패밀리 선택 후 필요하면 특정 페이지까지 좁힐 수 있습니다.</p>
+        </header>
+        <div class="compose-rail-wrap"><div class="compose-rail" id="layout-rail"></div></div>
+      </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Current Selection</p>
-          <h2>Composition Status</h2>
-          <p>지금 저장된 디자인 컨셉과 레이아웃 선택 상태를 바로 확인할 수 있습니다.</p>
-        </div>
-      </div>
-      <div class="stat-grid">
-        <article class="stat-card">
-          <span>선택된 디자인</span>
-          <strong id="home-design-name">아직 선택되지 않음</strong>
-        </article>
-        <article class="stat-card">
-          <span>선택된 레이아웃</span>
-          <strong id="home-layout-name">아직 선택되지 않음</strong>
-        </article>
-        <article class="stat-card">
-          <span>후보 레이아웃 수</span>
-          <strong id="home-layout-candidates">0개</strong>
-        </article>
-        <article class="stat-card">
-          <span>아카이브 분류</span>
-          <strong>Static + Motion</strong>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Design Catalog</p>
-          <h2>Design Concepts</h2>
-          <p>정적 템플릿과 인터랙션 proof를 동일한 카드 밀도로 보여주되, 역할은 분명하게 구분합니다.</p>
-        </div>
-        <div class="aside"><a href="/templates/designs/" class="btn ghost">전체 보기</a></div>
-      </div>
-      <div class="catalog-grid">
-        <article class="template-card">
-          <div class="template-kicker"><span class="pill static">Static</span></div>
-          <div class="template-preview basic">
-            <div class="preview-copy">
-              <strong>Basic Foundation</strong>
-              <span>Bright static foundation</span>
-            </div>
+      <section class="step-surface step-surface--style" id="step-2">
+        <header class="step-surface__head">
+          <div>
+            <p class="eyebrow">선택 2</p>
+            <h2>스타일</h2>
           </div>
-          <div class="template-body">
-            <h3>Basic Foundation Template</h3>
-            <p>밝은 배경과 네이비 구조색 중심의 기본 정적 디자인 템플릿.</p>
-          </div>
-        </article>
-        <article class="template-card">
-          <div class="template-kicker"><span class="pill static">Static</span></div>
-          <div class="template-preview plat">
-            <div class="preview-copy">
-              <strong>PLAT Neo-Brutalist</strong>
-              <span>Structured static template</span>
-            </div>
-          </div>
-          <div class="template-body">
-            <h3>PLAT Neo-Brutalist Template</h3>
-            <p>보더와 오프셋 그림자로 계층이 분명한 구조형 정적 템플릿.</p>
-          </div>
-        </article>
-        <article class="template-card">
-          <div class="template-kicker"><span class="pill motion">Motion</span></div>
-          <div class="template-preview kawaii">
-            <div class="preview-copy">
-              <strong>Kawaii Motion Ref</strong>
-              <span>Neon + tilt + transitions</span>
-            </div>
-          </div>
-          <div class="template-body">
-            <h3>Kawaii Cyber-Pop Motion Reference</h3>
-            <p>화려한 인터랙션과 트랜지션 중심 웹페이지를 위한 모션 레퍼런스.</p>
-          </div>
-        </article>
-        <article class="template-card">
-          <div class="template-kicker"><span class="pill motion">Interactive Proof</span></div>
-          <div class="template-preview proof">
-            <div class="preview-copy">
-              <strong>Basic x Kawaii Proof</strong>
-              <span>Keyboard live switching</span>
-            </div>
-          </div>
-          <div class="template-body">
-            <h3>Basic x Kawaii Live Switch Proof</h3>
-            <p>동일 레이아웃에서 Kawaii와 Basic을 키보드 인터랙션으로 실시간 전환하는 proof.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Next Action</p>
-          <h2>Start The Flow</h2>
-          <p>지금부터는 아카이브를 읽는 방식이 아니라, 조합을 만드는 방식으로 이어집니다.</p>
-        </div>
-      </div>
-      <div class="pairing-grid">
-        <article class="pairing-card">
-          <h3>디자인 먼저 고르기</h3>
-          <p>Basic Foundation, PLAT Neo-Brutalist, Kawaii Motion Reference, Basic x Kawaii Live Switch Proof 중 하나를 선택하고 `Compose` 흐름에 저장합니다.</p>
-          <div class="button-row"><a class="btn primary" href="/templates/designs/">Designs</a></div>
-        </article>
-        <article class="pairing-card">
-          <h3>레이아웃 후보 모으기</h3>
-          <p>허용된 `template-lab` UI만 사용해 16:9 레이아웃을 둘러보고 후보 보드에 쌓습니다.</p>
-          <div class="button-row"><a class="btn secondary" href="/templates/layouts/">Layouts</a></div>
-        </article>
-        <article class="pairing-card">
-          <h3>최종 handoff 내보내기</h3>
-          <p>현재 선택을 JSON과 brief로 뽑아 다른 LLM 개발 환경으로 이어갑니다.</p>
-          <div class="button-row"><a class="btn signal" href="/compose/">Compose</a></div>
-        </article>
-      </div>
-    </section>
+          <p class="step-surface__meta">현재 선택한 레이아웃에 적용할 스타일을 정합니다.</p>
+        </header>
+        <div class="compose-rail-wrap"><div class="compose-rail" id="style-rail"></div></div>
+      </section>
+    </main>
   </div>
+
+  <dialog class="preview-modal preview-modal--wide" id="style-preview-modal">
+    <div class="preview-modal__surface">
+      <header class="preview-modal__head">
+        <div>
+          <p class="eyebrow">Step 2</p>
+          <h2 id="style-preview-title">스타일 미리보기</h2>
+        </div>
+        <button class="btn ghost" type="button" id="close-style-preview">닫기</button>
+      </header>
+      <div class="preview-modal__body preview-modal__body--iframe">
+        <iframe id="style-preview-frame" title="Style Preview"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="preview-modal preview-modal--wide" id="layout-preview-modal">
+    <div class="preview-modal__surface">
+      <header class="preview-modal__head">
+        <div>
+          <p class="eyebrow">Step 1</p>
+          <h2 id="layout-preview-title">레이아웃 미리보기</h2>
+        </div>
+        <button class="btn ghost" type="button" id="close-layout-preview">닫기</button>
+      </header>
+      <div class="preview-modal__body preview-modal__body--image">
+        <img id="layout-preview-image" alt="Layout Preview">
+      </div>
+      <div class="preview-modal__footer">
+        <div class="preview-modal__counter" id="layout-preview-counter">1 / 1</div>
+        <div class="button-row preview-modal__controls">
+          <button class="btn ghost" type="button" id="layout-preview-prev">이전</button>
+          <button class="btn ghost" type="button" id="layout-preview-next">다음</button>
+          <button class="btn secondary" type="button" id="layout-preview-family">전체 패밀리</button>
+          <button class="btn primary" type="button" id="layout-preview-select">이 페이지 선택</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="export-modal" id="export-modal">
+    <div class="export-modal__surface">
+      <header class="export-modal__head">
+        <div>
+          <p class="eyebrow">Step 3</p>
+          <h2>디자인 생성 · 내보내기</h2>
+        </div>
+        <button class="btn ghost" type="button" id="close-export-modal">닫기</button>
+      </header>
+
+      <div class="scope-switch" role="tablist" aria-label="Export scope">
+        <button class="scope-chip" type="button" id="scope-family">패밀리 전체 생성</button>
+        <button class="scope-chip" type="button" id="scope-page">선택한 페이지 생성</button>
+      </div>
+
+      <div class="export-result-stage">
+        <div class="export-result-stage__preview">
+          <iframe id="export-sim-frame" title="Composed Result"></iframe>
+        </div>
+      </div>
+
+      <div class="export-modal__grid">
+        <section class="panel panel--subtle">
+          <h3>선택한 스타일</h3>
+          <p id="export-style-detail">아직 선택되지 않았습니다.</p>
+        </section>
+        <section class="panel panel--subtle">
+          <h3>레이아웃 범위</h3>
+          <p id="export-layout-detail">아직 선택되지 않았습니다.</p>
+        </section>
+        <section class="panel panel--subtle export-modal__note">
+          <h3>생성 메모</h3>
+          <p id="export-note">스타일과 레이아웃을 모두 선택하면 생성 메모가 생성됩니다.</p>
+        </section>
+      </div>
+
+      <div class="button-row export-modal__actions">
+        <button class="btn signal" id="download-bundle" type="button">디자인 내보내기</button>
+        <button class="btn secondary" id="download-composition" type="button">composition.json</button>
+        <button class="btn secondary" id="download-design" type="button">design-template.json</button>
+        <button class="btn secondary" id="download-layout" type="button">layout-template.json</button>
+        <button class="btn secondary" id="download-brief" type="button">implementation-brief.md</button>
+      </div>
+
+      <div class="summary-preview"><pre id="brief-preview">선택을 마치면 brief가 여기에 표시됩니다.</pre></div>
+    </div>
+  </dialog>
 
   <script src="/assets/tama-templates-data.js"></script>
   <script>
     (() => {
       const data = window.TamaTemplatesData;
-      const selectedDesign = data.getSelectedDesign();
-      const selectedLayout = data.getSelectedLayout();
-      const collection = data.getLayoutCollection();
+      const styleRail = document.getElementById("style-rail");
+      const layoutRail = document.getElementById("layout-rail");
+      const layoutMeta = document.getElementById("layout-meta");
+      const exportStyleName = document.getElementById("export-style-name");
+      const exportLayoutName = document.getElementById("export-layout-name");
+      const exportScopeName = document.getElementById("export-scope-name");
+      const exportStyleDetail = document.getElementById("export-style-detail");
+      const exportLayoutDetail = document.getElementById("export-layout-detail");
+      const exportNote = document.getElementById("export-note");
+      const briefPreview = document.getElementById("brief-preview");
+      const exportSimFrame = document.getElementById("export-sim-frame");
+      const openExportModalButton = document.getElementById("open-export-modal");
+      const exportModal = document.getElementById("export-modal");
+      const closeExportModalButton = document.getElementById("close-export-modal");
+      const downloadBundleButton = document.getElementById("download-bundle");
+      const downloadCompositionButton = document.getElementById("download-composition");
+      const downloadDesignButton = document.getElementById("download-design");
+      const downloadLayoutButton = document.getElementById("download-layout");
+      const downloadBriefButton = document.getElementById("download-brief");
+      const scopeFamilyButton = document.getElementById("scope-family");
+      const scopePageButton = document.getElementById("scope-page");
+      const stylePreviewModal = document.getElementById("style-preview-modal");
+      const stylePreviewTitle = document.getElementById("style-preview-title");
+      const stylePreviewFrame = document.getElementById("style-preview-frame");
+      const closeStylePreviewButton = document.getElementById("close-style-preview");
+      const layoutPreviewModal = document.getElementById("layout-preview-modal");
+      const layoutPreviewTitle = document.getElementById("layout-preview-title");
+      const layoutPreviewImage = document.getElementById("layout-preview-image");
+      const layoutPreviewCounter = document.getElementById("layout-preview-counter");
+      const layoutPreviewPrev = document.getElementById("layout-preview-prev");
+      const layoutPreviewNext = document.getElementById("layout-preview-next");
+      const layoutPreviewSelect = document.getElementById("layout-preview-select");
+      const layoutPreviewFamily = document.getElementById("layout-preview-family");
+      const closeLayoutPreviewButton = document.getElementById("close-layout-preview");
 
-      document.getElementById("home-design-name").textContent = selectedDesign
-        ? selectedDesign.name
-        : "아직 선택되지 않음";
-      document.getElementById("home-layout-name").textContent = selectedLayout
-        ? `${selectedLayout.familyName} · ${selectedLayout.layoutNumber}/${selectedLayout.totalLayouts}`
-        : "아직 선택되지 않음";
-      document.getElementById("home-layout-candidates").textContent = `${collection.length}개`;
+      const savedSelection = data.getSelectedLayoutSelection();
+      const state = {
+        selectedDesignId: data.getSelectedDesign()?.id || null,
+        selectedFamilySlug: savedSelection?.familySlug || data.layoutFamilies[0].slug,
+        selectedPageId: savedSelection?.selectedPageId || null,
+        exportScope: savedSelection?.exportScope || "family",
+        previewIndexByFamily: Object.fromEntries(data.layoutFamilies.map((family) => [family.slug, 0])),
+        layoutPreviewFamilySlug: savedSelection?.familySlug || data.layoutFamilies[0].slug,
+      };
+
+      if (savedSelection?.selectedPageId) {
+        const selectedPage = data.getLayoutById(savedSelection.selectedPageId);
+        if (selectedPage) {
+          state.previewIndexByFamily[selectedPage.familySlug] = selectedPage.layoutIndex;
+        }
+      }
+
+      function getSelectedDesign() {
+        return data.getDesignById(state.selectedDesignId);
+      }
+
+      function getFamilyBySlug(slug) {
+        return data.getLayoutFamilyBySlug(slug);
+      }
+
+      function getPreviewLayout(slug = state.layoutPreviewFamilySlug) {
+        const family = getFamilyBySlug(slug);
+        const previewIndex = state.previewIndexByFamily[slug] ?? 0;
+        return family.layouts[Math.max(0, Math.min(previewIndex, family.layouts.length - 1))];
+      }
+
+      function getSelectedPage() {
+        return state.selectedPageId ? data.getLayoutById(state.selectedPageId) : null;
+      }
+
+      function getSelectedFamily() {
+        return getFamilyBySlug(state.selectedFamilySlug);
+      }
+
+      function getCompatibilityNote(design, family, selectedPage, scope) {
+        if (!design || !family) {
+          return "스타일과 레이아웃을 모두 선택하면 생성 메모가 생성됩니다.";
+        }
+        const scopeCopy = scope === "page" && selectedPage
+          ? `${selectedPage.pageTitle} 단일 생성`
+          : `${family.name} 전체 페이지 생성`;
+        if (design.type === "motion") {
+          return `${scopeCopy} · 모션과 전환 로직까지 함께 설계해야 합니다.`;
+        }
+        return `${scopeCopy} · 정적 구현에 적합한 조합입니다.`;
+      }
+
+      function buildBrief(design, family, selectedPage, scope) {
+        if (!design || !family) {
+          return "선택을 마치면 implementation brief가 생성됩니다.";
+        }
+        return [
+          "# Tama Templates Brief",
+          "",
+          `- Style: ${design.name}`,
+          `- Layout Family: ${family.name}`,
+          `- Export Scope: ${scope}`,
+          selectedPage ? `- Selected Page: ${selectedPage.pageTitle}` : "- Selected Page: none (family generation)",
+          `- Structure: ${family.structure}`,
+          `- Density: ${family.density}`,
+          `- Note: ${getCompatibilityNote(design, family, selectedPage, scope)}`,
+        ].join("\n");
+      }
+
+      function buildCompositionPayload(design, family, selectedPage, scope) {
+        return data.buildCompositionPayload({
+          designConcept: design,
+          layoutFamily: family,
+          selectedPage,
+          exportScope: scope,
+          candidateLayouts: selectedPage ? [selectedPage] : family.layouts,
+          compatibilityNote: getCompatibilityNote(design, family, selectedPage, scope),
+        });
+      }
+
+      function buildSimulationMarkup(design, family, selectedPage, scope) {
+        if (!design || !family) {
+          return '<!DOCTYPE html><html><body style="margin:0;display:grid;place-items:center;height:100vh;font-family:sans-serif;background:#f7f5ef;color:#666">스타일과 레이아웃을 모두 선택하세요.</body></html>';
+        }
+        const styleThumb = `${window.location.origin}${design.thumbnailSrc}`;
+        const pages = scope === "page" && selectedPage ? [selectedPage] : family.layouts.slice(0, 4);
+        const pageCards = pages.map((page) => `
+          <article class="page-card">
+            <img src="${page.url}" alt="${page.pageTitle}" />
+            <div class="page-card__copy">
+              <strong>${page.pageTitle}</strong>
+              <span>${page.layoutNumber}/${page.totalLayouts}</span>
+            </div>
+          </article>
+        `).join("");
+        return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body { margin:0; font-family:'Plus Jakarta Sans', sans-serif; background:#f5f2eb; color:#111; }
+    .frame { display:grid; gap:18px; padding:20px; min-height:100vh; }
+    .hero { display:grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr); gap:18px; }
+    .panel { border:1px solid rgba(17,17,17,0.08); border-radius:22px; background:rgba(255,255,255,0.88); overflow:hidden; }
+    .media { position:relative; aspect-ratio:16/9; background:#ece8de; }
+    .media img { width:100%; height:100%; object-fit:cover; display:block; }
+    .body { padding:16px; display:grid; gap:8px; }
+    .eyebrow { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#666; }
+    h1,h2,p { margin:0; }
+    h1 { font-size:30px; letter-spacing:-0.06em; }
+    h2 { font-size:16px; letter-spacing:-0.04em; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { padding:6px 10px; border-radius:999px; background:rgba(17,17,17,0.06); font-size:12px; }
+    .pages { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; }
+    .page-card { border:1px solid rgba(17,17,17,0.08); border-radius:18px; overflow:hidden; background:rgba(255,255,255,0.88); }
+    .page-card img { width:100%; aspect-ratio:16/9; object-fit:contain; display:block; background:#fff; }
+    .page-card__copy { padding:12px; display:grid; gap:4px; }
+    .page-card__copy strong { font-size:14px; }
+    .page-card__copy span { color:#666; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="hero">
+      <section class="panel">
+        <div class="media"><img src="${styleThumb}" alt="${design.name}" /></div>
+        <div class="body">
+          <div class="eyebrow">Style</div>
+          <h1>${design.name}</h1>
+          <div class="tags"><span class="tag">${design.typeLabel}</span><span class="tag">${design.utilityLabel}</span><span class="tag">${design.featureLabel}</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="body">
+          <div class="eyebrow">Generation Scope</div>
+          <h2>${scope === "page" && selectedPage ? selectedPage.pageTitle : family.name}</h2>
+          <p>${getCompatibilityNote(design, family, selectedPage, scope)}</p>
+          <div class="tags"><span class="tag">${scope}</span><span class="tag">${family.structure}</span><span class="tag">${family.density}</span></div>
+        </div>
+      </section>
+    </div>
+    <section class="pages">${pageCards}</section>
+  </div>
+</body>
+</html>`;
+      }
+
+      function downloadFile(filename, content, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+      function downloadBundle() {
+        const design = getSelectedDesign();
+        const family = getSelectedFamily();
+        const selectedPage = getSelectedPage();
+        const scope = state.exportScope;
+        downloadFile("composition.json", JSON.stringify(buildCompositionPayload(design, family, selectedPage, scope), null, 2), "application/json");
+        downloadFile("design-template.json", JSON.stringify(data.buildDesignPayload(design), null, 2), "application/json");
+        downloadFile("layout-template.json", JSON.stringify(data.buildLayoutGenerationPayload(family, {
+          selectedPageId: selectedPage?.id || null,
+          exportScope: scope
+        }), null, 2), "application/json");
+        downloadFile("implementation-brief.md", buildBrief(design, family, selectedPage, scope), "text/markdown");
+      }
+
+      function setExportEnabled(enabled) {
+        [downloadBundleButton, downloadCompositionButton, downloadDesignButton, downloadLayoutButton, downloadBriefButton, openExportModalButton].forEach((button) => {
+          button.disabled = !enabled;
+        });
+      }
+
+      function updateScopeButtons() {
+        const pageAvailable = !!getSelectedPage();
+        scopeFamilyButton.classList.toggle("is-active", state.exportScope === "family");
+        scopePageButton.classList.toggle("is-active", state.exportScope === "page");
+        scopePageButton.disabled = !pageAvailable;
+      }
+
+      function openStylePreview(concept) {
+        stylePreviewTitle.textContent = concept.name;
+        stylePreviewFrame.src = concept.directHref;
+        stylePreviewModal.showModal();
+      }
+
+      function updateLayoutPreviewModal() {
+        const family = getFamilyBySlug(state.layoutPreviewFamilySlug);
+        const layout = getPreviewLayout(family.slug);
+        layoutPreviewTitle.textContent = family.name;
+        layoutPreviewImage.src = layout.url;
+        layoutPreviewImage.alt = `${family.name} ${layout.layoutNumber}`;
+        layoutPreviewCounter.textContent = `${layout.layoutNumber} / ${layout.totalLayouts}`;
+        layoutPreviewSelect.textContent = state.selectedPageId === layout.id ? "선택된 페이지" : "이 페이지 선택";
+        layoutPreviewSelect.disabled = state.selectedPageId === layout.id;
+        layoutPreviewFamily.textContent = state.selectedFamilySlug === family.slug && state.exportScope === "family" ? "전체 패밀리 선택됨" : "전체 패밀리";
+        layoutPreviewFamily.disabled = state.selectedFamilySlug === family.slug && state.exportScope === "family";
+      }
+
+      function openLayoutPreview(slug) {
+        state.layoutPreviewFamilySlug = slug;
+        updateLayoutPreviewModal();
+        layoutPreviewModal.showModal();
+      }
+
+      function shiftLayoutPreview(step) {
+        const family = getFamilyBySlug(state.layoutPreviewFamilySlug);
+        const currentIndex = state.previewIndexByFamily[family.slug] ?? 0;
+        const nextIndex = (currentIndex + step + family.layouts.length) % family.layouts.length;
+        state.previewIndexByFamily[family.slug] = nextIndex;
+        updateLayoutPreviewModal();
+        renderLayoutRail();
+      }
+
+      function selectFamily(slug) {
+        state.selectedFamilySlug = slug;
+        state.selectedPageId = null;
+        state.exportScope = "family";
+        data.setSelectedLayoutSelection({ familySlug: slug, selectedPageId: null, exportScope: "family" });
+      }
+
+      function selectPage(layout) {
+        state.selectedFamilySlug = layout.familySlug;
+        state.selectedPageId = layout.id;
+        state.exportScope = "page";
+        data.setSelectedLayoutSelection({ familySlug: layout.familySlug, selectedPageId: layout.id, exportScope: "page" });
+      }
+
+      function renderStyleRail() {
+        styleRail.innerHTML = data.designConcepts.map((concept) => {
+          const isSelected = state.selectedDesignId === concept.id;
+          return `
+            <article class="preview-card ${isSelected ? "is-selected" : ""}" data-design-id="${concept.id}">
+              <div class="preview-card__media">
+                <img src="${concept.thumbnailSrc}" alt="${concept.name}">
+              </div>
+              <div class="preview-card__body">
+                <div class="preview-card__topline">
+                  <span class="pill ${concept.type}">${concept.typeLabel}</span>
+                  <span class="preview-card__signal">${concept.utilityLabel}</span>
+                </div>
+                <h3>${concept.name}</h3>
+                <div class="preview-card__tags">
+                  <span class="trait">${concept.featureLabel}</span>
+                  ${concept.traits.slice(0, 2).map((trait) => `<span class="trait">${trait}</span>`).join("")}
+                </div>
+              </div>
+              <div class="preview-card__footer">
+                <button class="btn secondary ${isSelected ? "is-visible" : "is-hidden-action"}" type="button" data-preview-style="${concept.id}">미리보기</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function renderLayoutRail() {
+        const selectedFamily = getSelectedFamily();
+        const selectedPage = getSelectedPage();
+        layoutMeta.textContent = selectedPage
+          ? `${selectedFamily.name} · ${selectedPage.pageTitle}`
+          : `${selectedFamily.name} · 전체 패밀리 생성`;
+
+        layoutRail.innerHTML = data.layoutFamilies.map((family) => {
+          const previewLayout = getPreviewLayout(family.slug);
+          const isSelected = selectedFamily && selectedFamily.slug === family.slug;
+          const scopeCopy = selectedPage && selectedPage.familySlug === family.slug
+            ? selectedPage.pageTitle
+            : "전체 패밀리";
+          return `
+            <article class="preview-card ${isSelected ? "is-selected" : ""}" data-layout-family="${family.slug}">
+              <div class="preview-card__media preview-card__media--layout">
+                <img src="${previewLayout.url}" alt="${family.name}">
+              </div>
+              <div class="preview-card__body">
+                <div class="preview-card__topline">
+                  <span class="pill static">${previewLayout.layoutNumber}/${previewLayout.totalLayouts}</span>
+                  <span class="preview-card__signal">${family.structure}</span>
+                </div>
+                <h3>${family.name}</h3>
+                <div class="preview-card__tags">
+                  <span class="trait">${scopeCopy}</span>
+                  <span class="trait">${family.density}</span>
+                </div>
+              </div>
+              <div class="preview-card__footer">
+                <button class="btn secondary ${isSelected ? "is-visible" : "is-hidden-action"}" type="button" data-preview-layout="${family.slug}">미리보기</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function renderStepThree() {
+        const design = getSelectedDesign();
+        const family = getSelectedFamily();
+        const selectedPage = getSelectedPage();
+        const scope = state.exportScope;
+        exportStyleName.textContent = design ? design.name : "—";
+        exportLayoutName.textContent = family ? family.name : "—";
+        exportScopeName.textContent = scope === "page" && selectedPage ? selectedPage.pageTitle : "Family";
+        exportStyleDetail.textContent = design ? `${design.name} · ${design.typeLabel}` : "아직 선택되지 않았습니다.";
+        exportLayoutDetail.textContent = family
+          ? scope === "page" && selectedPage
+            ? `${family.name} · ${selectedPage.pageTitle}`
+            : `${family.name} 전체 페이지`
+          : "아직 선택되지 않았습니다.";
+        exportNote.textContent = getCompatibilityNote(design, family, selectedPage, scope);
+        briefPreview.textContent = buildBrief(design, family, selectedPage, scope);
+        exportSimFrame.srcdoc = buildSimulationMarkup(design, family, selectedPage, scope);
+        updateScopeButtons();
+        setExportEnabled(!!design && !!family);
+      }
+
+      function sync() {
+        renderStyleRail();
+        renderLayoutRail();
+        renderStepThree();
+      }
+
+      styleRail.addEventListener("click", (event) => {
+        const previewButton = event.target.closest("[data-preview-style]");
+        if (previewButton) {
+          const concept = data.getDesignById(previewButton.dataset.previewStyle);
+          openStylePreview(concept);
+          return;
+        }
+        const card = event.target.closest("[data-design-id]");
+        if (!card) return;
+        state.selectedDesignId = card.dataset.designId;
+        data.setSelectedDesign(state.selectedDesignId);
+        sync();
+      });
+
+      layoutRail.addEventListener("click", (event) => {
+        const previewButton = event.target.closest("[data-preview-layout]");
+        if (previewButton) {
+          openLayoutPreview(previewButton.dataset.previewLayout);
+          return;
+        }
+        const card = event.target.closest("[data-layout-family]");
+        if (!card) return;
+        selectFamily(card.dataset.layoutFamily);
+        sync();
+      });
+
+      openExportModalButton.addEventListener("click", () => exportModal.showModal());
+      closeExportModalButton.addEventListener("click", () => exportModal.close());
+      exportModal.addEventListener("click", (event) => {
+        if (event.target === exportModal) exportModal.close();
+      });
+      downloadBundleButton.addEventListener("click", downloadBundle);
+      scopeFamilyButton.addEventListener("click", () => {
+        const family = getSelectedFamily();
+        if (!family) return;
+        state.exportScope = "family";
+        state.selectedPageId = null;
+        data.setSelectedLayoutSelection({ familySlug: family.slug, selectedPageId: null, exportScope: "family" });
+        sync();
+      });
+      scopePageButton.addEventListener("click", () => {
+        const page = getSelectedPage();
+        if (!page) return;
+        state.exportScope = "page";
+        data.setSelectedLayoutSelection({ familySlug: page.familySlug, selectedPageId: page.id, exportScope: "page" });
+        sync();
+      });
+
+      closeStylePreviewButton.addEventListener("click", () => {
+        stylePreviewModal.close();
+        stylePreviewFrame.src = "";
+      });
+      stylePreviewModal.addEventListener("click", (event) => {
+        if (event.target === stylePreviewModal) {
+          stylePreviewModal.close();
+          stylePreviewFrame.src = "";
+        }
+      });
+
+      closeLayoutPreviewButton.addEventListener("click", () => layoutPreviewModal.close());
+      layoutPreviewModal.addEventListener("click", (event) => {
+        if (event.target === layoutPreviewModal) layoutPreviewModal.close();
+      });
+      layoutPreviewPrev.addEventListener("click", () => shiftLayoutPreview(-1));
+      layoutPreviewNext.addEventListener("click", () => shiftLayoutPreview(1));
+      layoutPreviewFamily.addEventListener("click", () => {
+        const family = getFamilyBySlug(state.layoutPreviewFamilySlug);
+        selectFamily(family.slug);
+        layoutPreviewModal.close();
+        sync();
+      });
+      layoutPreviewSelect.addEventListener("click", () => {
+        const layout = getPreviewLayout(state.layoutPreviewFamilySlug);
+        selectPage(layout);
+        layoutPreviewModal.close();
+        sync();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!layoutPreviewModal.open) return;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          shiftLayoutPreview(-1);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          shiftLayoutPreview(1);
+        }
+      });
+
+      downloadCompositionButton.addEventListener("click", () => {
+        downloadFile("composition.json", JSON.stringify(buildCompositionPayload(getSelectedDesign(), getSelectedFamily(), getSelectedPage(), state.exportScope), null, 2), "application/json");
+      });
+      downloadDesignButton.addEventListener("click", () => {
+        downloadFile("design-template.json", JSON.stringify(data.buildDesignPayload(getSelectedDesign()), null, 2), "application/json");
+      });
+      downloadLayoutButton.addEventListener("click", () => {
+        downloadFile("layout-template.json", JSON.stringify(data.buildLayoutGenerationPayload(getSelectedFamily(), {
+          selectedPageId: getSelectedPage()?.id || null,
+          exportScope: state.exportScope
+        }), null, 2), "application/json");
+      });
+      downloadBriefButton.addEventListener("click", () => {
+        downloadFile("implementation-brief.md", buildBrief(getSelectedDesign(), getSelectedFamily(), getSelectedPage(), state.exportScope), "text/markdown");
+      });
+
+      sync();
     })();
   </script>
 </body>
