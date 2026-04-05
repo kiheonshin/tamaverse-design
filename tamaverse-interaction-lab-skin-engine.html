@@ -1863,6 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
   align-items: center;
   gap: 14px;
   padding: 10px 22px;
+  flex-wrap: wrap;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1898,6 +1899,18 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 .skin-hud.basic-mode .skin-hud-fill {
   background: linear-gradient(90deg, #33C1FF, #FFE500);
+}
+
+.skin-hud-hint {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin-top: 2px;
+  font-size: 0.68rem;
+  color: inherit;
+  opacity: 0.88;
+  text-align: center;
 }
 /* ── Smooth transitions for skin changes ── */
 body, .tm-env-bg, .tm-navbar, .tm-sidebar, .tm-surface, .tm-footer,
@@ -2362,6 +2375,7 @@ body[data-skin="basic"] .tm-reveal {
   </div>
   <span style="font-size:0.65rem;white-space:nowrap;">KAWAII</span>
   <span id="skinPercent" style="min-width:32px;text-align:right;">0%</span>
+  <span id="skinHint" class="skin-hud-hint">키보드의 방향키를 눌러보세요.</span>
 </div>
 
 <script src="interactive-basic-endpoint-patches.js"></script>
@@ -2391,6 +2405,7 @@ body[data-skin="basic"] .tm-reveal {
   const hudFill = document.getElementById('skinHudFill');
   const hudPercent = document.getElementById('skinPercent');
   const skinHud = document.getElementById('skinHud');
+  const skinHint = document.getElementById('skinHint');
 
   const managedVars = [
     '--color-bg',
@@ -2895,6 +2910,12 @@ body[data-skin="basic"] .tm-reveal {
     return event.touches.length === 1 && !isTouchControlTarget(event.target);
   }
 
+  function updateInteractionHint() {
+    if (!skinHint) return;
+    const isMobile = window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(hover: none)').matches;
+    skinHint.textContent = isMobile ? '화면을 길게 터치해보세요.' : '키보드의 방향키를 눌러보세요.';
+  }
+
   function goToStep(newStep) {
     stopMobileTouchAnimation();
     setProgressValue(Math.max(0, Math.min(STEPS, newStep)) / STEPS);
@@ -2988,6 +3009,9 @@ body[data-skin="basic"] .tm-reveal {
   }, { capture: true });
 
   // ── Initialize at basic state ──
+  updateInteractionHint();
+  window.matchMedia('(pointer: coarse)').addEventListener?.('change', updateInteractionHint);
+  window.matchMedia('(hover: none)').addEventListener?.('change', updateInteractionHint);
   goToStep(0);
 
   // ── Expose test API for debugging ──
