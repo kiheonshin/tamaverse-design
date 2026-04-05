@@ -3,31 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamaverse Basic x Kawaii Live Switch Proof</title>
+<title>TAMAVERSE KAWAII CYBER-POP</title>
 <style>
 html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background: #0d001a;
+  color: #ffffff;
+  font-family: "Poppins", "M PLUS Rounded 1c", sans-serif;
 }
 
-iframe {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  border: 0;
-  background: transparent;
+.proof-loader {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  opacity: 0.72;
 }
 </style>
 </head>
 <body>
-<iframe
-  src="./tamaverse-interaction-lab-skin-engine.html"
-  title="Tamaverse Basic x Kawaii Live Switch Proof"
-  loading="eager"
-  referrerpolicy="same-origin"
-></iframe>
+<div class="proof-loader">Loading TAMAVERSE KAWAII CYBER-POP…</div>
+<script>
+(async () => {
+  const response = await fetch('./tamaverse-interaction-lab-skin-engine.html', { credentials: 'same-origin' });
+  let html = await response.text();
+
+  html = html.replace(
+    /<title>.*?<\/title>/,
+    '<title>TAMAVERSE KAWAII CYBER-POP</title>'
+  );
+  html = html.replace(
+    /data-text="BASIC x KAWAII"[^>]*>BASIC x KAWAII<\/h1>\s*<h1 class="tm-title tm-glitch-text" data-text="LIVE SWITCH"[^>]*>LIVE SWITCH<\/h1>/,
+    'data-text="TAMAVERSE" style="display: block; margin: 0; line-height: 1.1;">TAMAVERSE</h1>\n                    <h1 class="tm-title tm-glitch-text" data-text="KAWAII CYBER-POP" style="display: block; margin: 0; line-height: 1.1;">KAWAII CYBER-POP</h1>'
+  );
+  html = html.replace(
+    /data-text="BASIC x KAWAII"[^>]*>BASIC x KAWAII<\/h1>\s*<h1 class="tm-title tm-glitch-text" data-text="LIVE"[^>]*>LIVE<\/h1>\s*<h1 class="tm-title tm-glitch-text" data-text="SWITCH"[^>]*>SWITCH<\/h1>/,
+    'data-text="TAMAVERSE" style="display: block; margin: 0; line-height: 1.1;">TAMAVERSE</h1>\n                    <h1 class="tm-title tm-glitch-text" data-text="KAWAII" style="display: block; margin: 0; line-height: 1;">KAWAII</h1>\n                    <h1 class="tm-title tm-glitch-text" data-text="CYBER-POP" style="display: block; margin: 0; line-height: 1;">CYBER-POP</h1>'
+  );
+  html = html.replace(
+    'BASIC <span style="color: var(--color-primary); text-shadow: 0 0 15px var(--color-primary);">x</span> <span style="color: var(--color-secondary); text-shadow: 0 0 15px var(--color-secondary);">KAWAII LIVE SWITCH</span>',
+    'TAMAVERSE <span style="color: var(--color-primary); text-shadow: 0 0 15px var(--color-primary);">KAWAII</span> <span style="color: var(--color-secondary); text-shadow: 0 0 15px var(--color-secondary);">CYBER-POP</span>'
+  );
+  html = html.replace(
+    'Open Source 2026 BASIC x KAWAII LIVE SWITCH',
+    'Open Source 2026 TAMAVERSE KAWAII CYBER-POP'
+  );
+
+  document.open();
+  document.write(html);
+  document.close();
+})();
+</script>
 </body>
 </html>
