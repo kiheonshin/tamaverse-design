@@ -129,7 +129,6 @@ body {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-family-heading); font-weight: 900; margin-bottom: var(--sp-4); line-height: 1.2; margin-top: var(--sp-6); }
 h1:first-child, h2:first-child { margin-top: 0; }
@@ -2836,8 +2835,10 @@ body[data-skin="basic"] .tm-reveal {
   let mobileTouchTrack = null;
   let mobileTouchAnimId = 0;
   let mobileTouchLastTs = 0;
+  let mobileTouchLongPressTimer = 0;
   const MOBILE_TOUCH_SPEED = 1.1;
   const MOBILE_TAP_THRESHOLD = 12;
+  const MOBILE_LONG_PRESS_MS = 280;
 
   function setProgressValue(nextProgress) {
     progress = Math.max(0, Math.min(1, nextProgress));
@@ -2850,6 +2851,12 @@ body[data-skin="basic"] .tm-reveal {
     cancelAnimationFrame(mobileTouchAnimId);
     mobileTouchAnimId = 0;
     mobileTouchLastTs = 0;
+  }
+
+  function clearMobileLongPressTimer() {
+    if (!mobileTouchLongPressTimer) return;
+    clearTimeout(mobileTouchLongPressTimer);
+    mobileTouchLongPressTimer = 0;
   }
 
   function animateMobileDirection(direction) {
@@ -2926,41 +2933,45 @@ body[data-skin="basic"] .tm-reveal {
   window.addEventListener('touchstart', (e) => {
     if (!shouldCaptureTouchGesture(e)) {
       mobileTouchTrack = null;
+      clearMobileLongPressTimer();
       return;
     }
 
-    e.preventDefault();
     const touch = e.touches[0];
     mobileTouchTrack = {
       x: touch.clientX,
       y: touch.clientY,
       moved: false,
+      triggered: false,
     };
-  }, { passive: false, capture: true });
+
+    clearMobileLongPressTimer();
+    mobileTouchLongPressTimer = window.setTimeout(() => {
+      if (!mobileTouchTrack || mobileTouchTrack.moved || mobileTouchTrack.triggered) return;
+      mobileTouchTrack.triggered = true;
+      triggerMobileTapSweep();
+    }, MOBILE_LONG_PRESS_MS);
+  }, { passive: true, capture: true });
 
   window.addEventListener('touchmove', (e) => {
     if (!mobileTouchTrack || !shouldCaptureTouchGesture(e)) return;
 
-    e.preventDefault();
     const touch = e.touches[0];
     const movedDistance = Math.hypot(touch.clientX - mobileTouchTrack.x, touch.clientY - mobileTouchTrack.y);
     if (movedDistance > MOBILE_TAP_THRESHOLD) {
       mobileTouchTrack.moved = true;
+      clearMobileLongPressTimer();
     }
-  }, { passive: false, capture: true });
+  }, { passive: true, capture: true });
 
-  window.addEventListener('touchend', (e) => {
+  window.addEventListener('touchend', () => {
     if (!mobileTouchTrack) return;
-
-    e.preventDefault();
-    const shouldTrigger = !mobileTouchTrack.moved;
+    clearMobileLongPressTimer();
     mobileTouchTrack = null;
-    if (!shouldTrigger) return;
-
-    triggerMobileTapSweep();
-  }, { passive: false, capture: true });
+  }, { passive: true, capture: true });
 
   window.addEventListener('touchcancel', () => {
+    clearMobileLongPressTimer();
     mobileTouchTrack = null;
   }, { passive: true, capture: true });
 
