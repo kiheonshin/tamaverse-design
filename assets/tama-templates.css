@@ -1608,26 +1608,38 @@ pre {
 }
 
 @media (max-width: 760px) {
-  .compose-rail {
-    grid-auto-columns: minmax(260px, 88vw);
+  .compose-header-v2 {
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.82);
+    box-shadow: var(--shadow);
+    overflow: hidden;
   }
 
   .compose-header-v2__title,
-  .step3-summary,
-  .step-surface,
-  .preview-card,
-  .preview-modal__surface,
-  .export-modal__surface {
+  .compose-header-v2 .step3-summary {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
     padding: 14px;
   }
 
-  .step-surface__head,
-  .preview-card__topline,
-  .preview-modal__head,
-  .export-modal__head,
-  .preview-modal__footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .compose-header-v2 .step3-summary {
+    border-top: 1px solid var(--line);
+  }
+
+  .compose-header-v2 .headline {
+    font-size: 1.8rem;
+  }
+
+  .step-surface {
+    border-radius: var(--radius-md);
+  }
+
+  .reference-link-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1926,14 +1938,76 @@ pre {
 }
 
 @media (max-width: 760px) {
-  .compose-rail { grid-auto-columns: minmax(260px, 88vw); }
+  /* — Nav: pill → flat bar — */
+  .site-nav {
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    flex-wrap: wrap;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 0.68rem;
+  }
+
+  .brand-copy strong { font-size: 0.84rem; }
+  .brand-copy span { font-size: 0.66rem; }
+
+  .nav-links a {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 0.78rem;
+  }
+
+  /* — Header: merged flat card — */
+  .compose-header-v3 {
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.82);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
   .compose-header-v3__title,
-  .step3-summary,
+  .compose-header-v3 .step3-summary {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 14px;
+  }
+
+  .compose-header-v3 .step3-summary {
+    border-top: 1px solid var(--line);
+  }
+
+  .compose-header-v3 .headline {
+    font-size: 1.8rem;
+  }
+
+  /* — Content cards — */
   .step-surface,
   .preview-card,
+  .layout-focus-card {
+    border-radius: var(--radius-md);
+    padding: 14px;
+  }
+
   .preview-modal__surface,
-  .export-modal__surface,
-  .layout-focus-card { padding: 14px; }
+  .export-modal__surface {
+    border-radius: var(--radius-md);
+    padding: 14px;
+  }
+
+  .preview-card__media {
+    border-radius: 10px;
+  }
+
+  .compose-rail { grid-auto-columns: minmax(260px, 88vw); }
+
   .step-surface__head,
   .preview-card__topline,
   .preview-modal__head,
@@ -1964,4 +2038,92 @@ pre {
   border-color: var(--accent);
   color: var(--accent);
   background: rgba(31,79,255,0.08);
+}
+
+/* --- Inline scope toggle in Step 3 summary --- */
+
+.scope-inline {
+  display: flex;
+  gap: 4px;
+}
+
+.scope-inline__btn {
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.scope-inline__btn.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(31,79,255,0.08);
+}
+
+.scope-inline__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.export-chip--scope {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* --- Compatibility note in Step 3 --- */
+
+.step3-summary__note {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(17,17,17,0.03);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* --- Motion pill visual differentiation --- */
+
+.pill.motion {
+  background: var(--pill-motion);
+  color: var(--accent);
+  border: 1px solid rgba(31,79,255,0.18);
+}
+
+.pill.motion::before {
+  content: "\25C6 ";
+  font-size: 0.6em;
+  vertical-align: middle;
+}
+
+/* --- Toast notification --- */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  translate: -50% 12px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease, translate 260ms ease;
+  z-index: 9999;
+}
+
+.toast--visible {
+  opacity: 1;
+  translate: -50% 0;
 }

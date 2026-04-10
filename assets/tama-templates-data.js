@@ -81,17 +81,17 @@
   ];
 
   const layoutFamilySpecs = [
-    { slug: "tms-portfolio", name: "TMS Portfolio", count: 11, summary: "프로젝트 내러티브와 주요 성과를 시간 축으로 정리하는 포트폴리오형 레이아웃", structure: "Intro + Milestones + Evidence", density: "Medium", tags: ["Portfolio", "Narrative", "Milestones"] },
-    { slug: "tms-marketing", name: "TMS Marketing", count: 12, summary: "캠페인 메시지, 채널, 전환 포인트를 빠르게 배열하는 마케팅 페이지 구조", structure: "Hero + Channels + CTA", density: "High", tags: ["Marketing", "Campaign", "CTA"] },
-    { slug: "tms-brand-guidelines", name: "TMS Brand Guidelines", count: 10, summary: "브랜드 원칙, 시각 요소, 적용 규칙을 계층적으로 보여주는 가이드 구조", structure: "Principles + Rules + Samples", density: "High", tags: ["Guidelines", "System", "Reference"] },
-    { slug: "tms-pitch", name: "TMS Pitch", count: 10, summary: "문제 정의에서 제안과 요청까지 빠르게 연결하는 설득형 피치 구조", structure: "Problem + Solution + Ask", density: "Medium", tags: ["Pitch", "Narrative", "Decision"] },
-    { slug: "tms-finance", name: "TMS Finance", count: 11, summary: "수치, 전망, 근거를 명확하게 분리해 보여주는 재무 중심 구조", structure: "Metrics + Forecast + Notes", density: "High", tags: ["Finance", "Metrics", "Forecast"] },
-    { slug: "tms-portfolio-copy", name: "TMS Creative", count: 8, summary: "시각 결과물과 짧은 설명을 가볍게 보여주는 크리에이티브 쇼케이스 구조", structure: "Gallery + Caption + Highlights", density: "Low", tags: ["Creative", "Gallery", "Showcase"] },
-    { slug: "tms-social", name: "TMS Social", count: 9, summary: "플랫폼별 변형과 캠페인 단위를 빠르게 비교하는 소셜 콘텐츠 구조", structure: "Campaign + Platform Tiles", density: "Medium", tags: ["Social", "Campaign", "Tiles"] },
-    { slug: "tms-strategy", name: "TMS Strategy", count: 8, summary: "의사결정 프레임과 실행 흐름을 도식처럼 읽히게 하는 전략 구조", structure: "Frame + Roadmap + Choices", density: "Medium", tags: ["Strategy", "Framework", "Roadmap"] },
-    { slug: "tms-planning", name: "TMS Planning", count: 9, summary: "타임라인과 마일스톤, 우선순위를 분명히 드러내는 계획형 구조", structure: "Timeline + Milestones + Tasks", density: "Medium", tags: ["Planning", "Timeline", "Milestones"] },
-    { slug: "tms-core", name: "TMS Core", count: 11, summary: "여러 목적에 재사용하기 쉬운 범용형 슬라이드 구조 모음", structure: "Modular Core Sections", density: "Medium", tags: ["Core", "Modular", "Reusable"] },
-    { slug: "tms-case-study", name: "TMS Case Study", count: 10, summary: "문제, 접근, 결과를 선명하게 나눠 보여주는 케이스 스터디 구조", structure: "Challenge + Approach + Result", density: "Medium", tags: ["Case Study", "Narrative", "Results"] }
+    { slug: "tms-portfolio", name: "Tama Portfolio", count: 11, summary: "프로젝트 성과를 시간 축으로 정리", structure: "Intro + Milestones + Evidence", density: "Medium", tags: ["Portfolio", "Narrative", "Milestones"] },
+    { slug: "tms-marketing", name: "Tama Marketing", count: 12, summary: "캠페인과 전환 포인트를 빠르게 배열", structure: "Hero + Channels + CTA", density: "High", tags: ["Marketing", "Campaign", "CTA"] },
+    { slug: "tms-brand-guidelines", name: "Tama Brand Guide", count: 10, summary: "브랜드 원칙과 적용 규칙을 계층적으로 정리", structure: "Principles + Rules + Samples", density: "High", tags: ["Guidelines", "System", "Reference"] },
+    { slug: "tms-pitch", name: "Tama Pitch", count: 10, summary: "문제에서 제안까지 빠르게 연결하는 설득형 구조", structure: "Problem + Solution + Ask", density: "Medium", tags: ["Pitch", "Narrative", "Decision"] },
+    { slug: "tms-finance", name: "Tama Finance", count: 11, summary: "수치와 전망을 명확하게 분리해 표시", structure: "Metrics + Forecast + Notes", density: "High", tags: ["Finance", "Metrics", "Forecast"] },
+    { slug: "tms-portfolio-copy", name: "Tama Creative", count: 8, summary: "시각 결과물을 가볍게 보여주는 쇼케이스", structure: "Gallery + Caption + Highlights", density: "Low", tags: ["Creative", "Gallery", "Showcase"] },
+    { slug: "tms-social", name: "Tama Social", count: 9, summary: "플랫폼별 변형을 빠르게 비교", structure: "Campaign + Platform Tiles", density: "Medium", tags: ["Social", "Campaign", "Tiles"] },
+    { slug: "tms-strategy", name: "Tama Strategy", count: 8, summary: "의사결정 프레임과 실행 흐름을 도식화", structure: "Frame + Roadmap + Choices", density: "Medium", tags: ["Strategy", "Framework", "Roadmap"] },
+    { slug: "tms-planning", name: "Tama Planning", count: 9, summary: "타임라인과 마일스톤을 분명하게 배치", structure: "Timeline + Milestones + Tasks", density: "Medium", tags: ["Planning", "Timeline", "Milestones"] },
+    { slug: "tms-core", name: "Tama Core", count: 11, summary: "여러 목적에 재사용하기 쉬운 범용 구조", structure: "Modular Core Sections", density: "Medium", tags: ["Core", "Modular", "Reusable"] },
+    { slug: "tms-case-study", name: "Tama Case Study", count: 10, summary: "문제, 접근, 결과를 선명하게 분리", structure: "Challenge + Approach + Result", density: "Medium", tags: ["Case Study", "Narrative", "Results"] }
   ];
 
   const layoutFamilies = layoutFamilySpecs.map((family, familyIndex) => ({

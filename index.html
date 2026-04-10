@@ -26,10 +26,10 @@
   <div class="shell shell--dense">
     <nav class="site-nav" aria-label="Primary">
       <div class="brand-lockup">
-        <div class="brand-mark">TT</div>
+        <div class="brand-mark">TD</div>
         <div class="brand-copy">
-          <strong>Tama Templates</strong>
-          <span>Compose-first minimal surface</span>
+          <strong>Tama Design</strong>
+          <span>Compose</span>
         </div>
       </div>
       <div class="nav-links">
@@ -40,14 +40,14 @@
 
     <section class="compose-header-v3">
       <div class="compose-header-v3__title">
-        <p class="eyebrow">Primary Axis</p>
-        <h1 class="headline headline--compact">Compose<span>Step 1 · Step 2 · Step 3</span></h1>
-        <p class="compose-header__scenario">레이아웃 선택 → 스타일 선택 → 생성 범위 확인 후 내보내기</p>
+        <p class="eyebrow">Tama Design</p>
+        <h1 class="headline headline--compact">Compose</h1>
+        <p class="compose-header__scenario">레이아웃과 스타일을 조합하고 구현 패키지로 내보내기</p>
       </div>
       <aside class="step3-summary" aria-labelledby="step3-title">
         <div>
-          <p class="eyebrow">Step 3</p>
-          <h2 id="step3-title">디자인 생성</h2>
+          <p class="eyebrow">Export</p>
+          <h2 id="step3-title">내보내기</h2>
         </div>
         <div class="step3-summary__chips">
           <div class="export-chip">
@@ -58,12 +58,16 @@
             <span>Layout</span>
             <strong id="export-layout-name">—</strong>
           </div>
-          <div class="export-chip">
+          <div class="export-chip export-chip--scope">
             <span>Scope</span>
-            <strong id="export-scope-name">Family</strong>
+            <div class="scope-inline" role="radiogroup" aria-label="생성 범위">
+              <button class="scope-inline__btn is-active" type="button" id="inline-scope-family">Family</button>
+              <button class="scope-inline__btn" type="button" id="inline-scope-page" disabled>Page</button>
+            </div>
           </div>
         </div>
-        <button class="btn signal" type="button" id="open-export-modal">디자인 보기</button>
+        <p class="step3-summary__note" id="inline-compat-note" aria-live="polite">스타일과 레이아웃을 선택하면 호환성 정보가 표시됩니다.</p>
+        <button class="btn signal" type="button" id="open-export-modal">내보내기</button>
       </aside>
     </section>
 
@@ -71,10 +75,10 @@
       <section class="step-surface step-surface--layout" id="step-1">
         <header class="step-surface__head">
           <div>
-            <p class="eyebrow">선택 1</p>
-            <h2>레이아웃 확인</h2>
+            <p class="eyebrow">Layout</p>
+            <h2>레이아웃</h2>
           </div>
-          <p class="step-surface__meta" id="layout-meta">패밀리 선택 후 필요하면 특정 페이지까지 좁힐 수 있습니다.</p>
+          <p class="step-surface__meta" id="layout-meta">패밀리를 선택하고, 필요하면 페이지 단위로 좁히기</p>
         </header>
         <div class="compose-rail-wrap"><div class="compose-rail" id="layout-rail"></div></div>
       </section>
@@ -82,10 +86,10 @@
       <section class="step-surface step-surface--style" id="step-2">
         <header class="step-surface__head">
           <div>
-            <p class="eyebrow">선택 2</p>
+            <p class="eyebrow">Style</p>
             <h2>스타일</h2>
           </div>
-          <p class="step-surface__meta">현재 선택한 레이아웃에 적용할 스타일을 정합니다.</p>
+          <p class="step-surface__meta">레이아웃에 적용할 디자인 컨셉 선택</p>
         </header>
         <div class="compose-rail-wrap"><div class="compose-rail" id="style-rail"></div></div>
       </section>
@@ -96,7 +100,7 @@
     <div class="preview-modal__surface">
       <header class="preview-modal__head">
         <div>
-          <p class="eyebrow">Step 2</p>
+          <p class="eyebrow">Style</p>
           <h2 id="style-preview-title">스타일 미리보기</h2>
         </div>
         <button class="btn ghost" type="button" id="close-style-preview">닫기</button>
@@ -111,7 +115,7 @@
     <div class="preview-modal__surface">
       <header class="preview-modal__head">
         <div>
-          <p class="eyebrow">Step 1</p>
+          <p class="eyebrow">Layout</p>
           <h2 id="layout-preview-title">레이아웃 미리보기</h2>
         </div>
         <button class="btn ghost" type="button" id="close-layout-preview">닫기</button>
@@ -135,8 +139,8 @@
     <div class="export-modal__surface">
       <header class="export-modal__head">
         <div>
-          <p class="eyebrow">Step 3</p>
-          <h2>디자인 생성 · 내보내기</h2>
+          <p class="eyebrow">Export</p>
+          <h2>구현 패키지 내보내기</h2>
         </div>
         <button class="btn ghost" type="button" id="close-export-modal">닫기</button>
       </header>
@@ -154,16 +158,16 @@
 
       <div class="export-modal__grid">
         <section class="panel panel--subtle">
-          <h3>선택한 스타일</h3>
-          <p id="export-style-detail">아직 선택되지 않았습니다.</p>
+          <h3>스타일</h3>
+          <p id="export-style-detail">미선택</p>
         </section>
         <section class="panel panel--subtle">
-          <h3>레이아웃 범위</h3>
-          <p id="export-layout-detail">아직 선택되지 않았습니다.</p>
+          <h3>레이아웃</h3>
+          <p id="export-layout-detail">미선택</p>
         </section>
         <section class="panel panel--subtle export-modal__note">
-          <h3>생성 메모</h3>
-          <p id="export-note">스타일과 레이아웃을 모두 선택하면 생성 메모가 생성됩니다.</p>
+          <h3>호환성</h3>
+          <p id="export-note">스타일과 레이아웃을 선택하면 호환성 정보가 표시됩니다.</p>
         </section>
       </div>
 
@@ -175,7 +179,7 @@
         <button class="btn secondary" id="download-brief" type="button">implementation-brief.md</button>
       </div>
 
-      <div class="summary-preview"><pre id="brief-preview">선택을 마치면 brief가 여기에 표시됩니다.</pre></div>
+      <div class="summary-preview"><pre id="brief-preview">선택을 마치면 brief가 표시됩니다.</pre></div>
     </div>
   </dialog>
 
@@ -218,6 +222,10 @@
       const layoutPreviewFamily = document.getElementById("layout-preview-family");
       const closeLayoutPreviewButton = document.getElementById("close-layout-preview");
 
+      const inlineScopeFamily = document.getElementById("inline-scope-family");
+      const inlineScopePage = document.getElementById("inline-scope-page");
+      const inlineCompatNote = document.getElementById("inline-compat-note");
+
       const savedSelection = data.getSelectedLayoutSelection();
       const state = {
         selectedDesignId: data.getSelectedDesign()?.id || null,
@@ -259,20 +267,20 @@
 
       function getCompatibilityNote(design, family, selectedPage, scope) {
         if (!design || !family) {
-          return "스타일과 레이아웃을 모두 선택하면 생성 메모가 생성됩니다.";
+          return "스타일과 레이아웃을 선택하면 호환성 정보가 표시됩니다.";
         }
         const scopeCopy = scope === "page" && selectedPage
           ? `${selectedPage.pageTitle} 단일 생성`
-          : `${family.name} 전체 페이지 생성`;
+          : `${family.name} 전체 생성`;
         if (design.type === "motion") {
-          return `${scopeCopy} · 모션과 전환 로직까지 함께 설계해야 합니다.`;
+          return `${scopeCopy} · 모션 구현 필요`;
         }
-        return `${scopeCopy} · 정적 구현에 적합한 조합입니다.`;
+        return `${scopeCopy} · 정적 구현에 적합`;
       }
 
       function buildBrief(design, family, selectedPage, scope) {
         if (!design || !family) {
-          return "선택을 마치면 implementation brief가 생성됩니다.";
+          return "선택을 마치면 brief가 표시됩니다.";
         }
         return [
           "# Tama Templates Brief",
@@ -300,7 +308,7 @@
 
       function buildSimulationMarkup(design, family, selectedPage, scope) {
         if (!design || !family) {
-          return '<!DOCTYPE html><html><body style="margin:0;display:grid;place-items:center;height:100vh;font-family:sans-serif;background:#f7f5ef;color:#666">스타일과 레이아웃을 모두 선택하세요.</body></html>';
+          return '<!DOCTYPE html><html><body style="margin:0;display:grid;place-items:center;height:100vh;font-family:sans-serif;background:#f7f5ef;color:#666">스타일과 레이아웃을 선택하세요.</body></html>';
         }
         const styleThumb = `${window.location.origin}${design.thumbnailSrc}`;
         const pages = scope === "page" && selectedPage ? [selectedPage] : family.layouts.slice(0, 4);
@@ -472,7 +480,7 @@
                 </div>
               </div>
               <div class="preview-card__footer">
-                <button class="btn secondary ${isSelected ? "is-visible" : "is-hidden-action"}" type="button" data-preview-style="${concept.id}">미리보기</button>
+                <button class="btn secondary" type="button" data-preview-style="${concept.id}">미리보기</button>
               </div>
             </article>
           `;
@@ -484,7 +492,7 @@
         const selectedPage = getSelectedPage();
         layoutMeta.textContent = selectedPage
           ? `${selectedFamily.name} · ${selectedPage.pageTitle}`
-          : `${selectedFamily.name} · 전체 패밀리 생성`;
+          : `${selectedFamily.name} · 전체 패밀리`;
 
         layoutRail.innerHTML = data.layoutFamilies.map((family) => {
           const previewLayout = getPreviewLayout(family.slug);
@@ -509,7 +517,7 @@
                 </div>
               </div>
               <div class="preview-card__footer">
-                <button class="btn secondary ${isSelected ? "is-visible" : "is-hidden-action"}" type="button" data-preview-layout="${family.slug}">미리보기</button>
+                <button class="btn secondary" type="button" data-preview-layout="${family.slug}">미리보기</button>
               </div>
             </article>
           `;
@@ -523,14 +531,20 @@
         const scope = state.exportScope;
         exportStyleName.textContent = design ? design.name : "—";
         exportLayoutName.textContent = family ? family.name : "—";
-        exportScopeName.textContent = scope === "page" && selectedPage ? selectedPage.pageTitle : "Family";
-        exportStyleDetail.textContent = design ? `${design.name} · ${design.typeLabel}` : "아직 선택되지 않았습니다.";
+
+        inlineScopeFamily.classList.toggle("is-active", scope === "family");
+        inlineScopePage.classList.toggle("is-active", scope === "page");
+        inlineScopePage.disabled = !selectedPage;
+        inlineCompatNote.textContent = design && family
+          ? getCompatibilityNote(design, family, selectedPage, scope)
+          : "스타일과 레이아웃을 선택하면 호환성 정보가 표시됩니다.";
+        exportStyleDetail.textContent = design ? `${design.name} · ${design.typeLabel}` : "미선택";
         exportLayoutDetail.textContent = family
           ? scope === "page" && selectedPage
             ? `${family.name} · ${selectedPage.pageTitle}`
             : `${family.name} 전체 페이지`
-          : "아직 선택되지 않았습니다.";
-        exportNote.textContent = getCompatibilityNote(design, family, selectedPage, scope);
+          : "미선택";
+        exportNote.textContent = design && family ? getCompatibilityNote(design, family, selectedPage, scope) : "스타일과 레이아웃을 선택하면 호환성 정보가 표시됩니다.";
         briefPreview.textContent = buildBrief(design, family, selectedPage, scope);
         exportSimFrame.srcdoc = buildSimulationMarkup(design, family, selectedPage, scope);
         updateScopeButtons();
@@ -574,7 +588,6 @@
       exportModal.addEventListener("click", (event) => {
         if (event.target === exportModal) exportModal.close();
       });
-      downloadBundleButton.addEventListener("click", downloadBundle);
       scopeFamilyButton.addEventListener("click", () => {
         const family = getSelectedFamily();
         if (!family) return;
@@ -648,6 +661,46 @@
       downloadBriefButton.addEventListener("click", () => {
         downloadFile("implementation-brief.md", buildBrief(getSelectedDesign(), getSelectedFamily(), getSelectedPage(), state.exportScope), "text/markdown");
       });
+
+      inlineScopeFamily.addEventListener("click", () => {
+        const family = getSelectedFamily();
+        if (!family) return;
+        state.exportScope = "family";
+        state.selectedPageId = null;
+        data.setSelectedLayoutSelection({ familySlug: family.slug, selectedPageId: null, exportScope: "family" });
+        sync();
+      });
+
+      inlineScopePage.addEventListener("click", () => {
+        const page = getSelectedPage();
+        if (!page) return;
+        state.exportScope = "page";
+        data.setSelectedLayoutSelection({ familySlug: page.familySlug, selectedPageId: page.id, exportScope: "page" });
+        sync();
+      });
+
+      function showToast(message) {
+        let toast = document.querySelector(".toast");
+        if (!toast) {
+          toast = document.createElement("div");
+          toast.className = "toast";
+          document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.remove("toast--visible");
+        void toast.offsetWidth;
+        toast.classList.add("toast--visible");
+        setTimeout(() => toast.classList.remove("toast--visible"), 2400);
+      }
+
+      downloadBundleButton.addEventListener("click", () => {
+        downloadBundle();
+        showToast("4개 파일을 내보냈습니다");
+      });
+
+      if (state.selectedDesignId || savedSelection?.familySlug) {
+        showToast("이전 선택이 복원되었습니다");
+      }
 
       sync();
     })();
